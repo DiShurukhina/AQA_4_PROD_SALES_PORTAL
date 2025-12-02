@@ -4,7 +4,7 @@ import { SalesPortalPage } from "./salesPortal.page";
 export type HomeModuleButton = "Products" | "Customers" | "Orders";
 
 export class HomePage extends SalesPortalPage {
-  readonly welcomText = this.page.locator(".welcome-text");
+  readonly welcomeText = this.page.locator(".welcome-text");
   readonly productsButton = this.page.locator("#products-from-home");
   readonly ordersButton = this.page.locator("#orders-from-home");
   readonly customersButton = this.page.locator("#customers-from-home");
@@ -29,7 +29,7 @@ export class HomePage extends SalesPortalPage {
     "#canceled-orders-container p.card-text",
   );
 
-  readonly uniqueElement = this.welcomText;
+  readonly uniqueElement = this.welcomeText;
 
   async clickOnViewModel(module: HomeModuleButton) {
     await test.step(`Click ${module} module on Home page`, async () => {
