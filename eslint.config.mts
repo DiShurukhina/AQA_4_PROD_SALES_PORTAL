@@ -21,7 +21,7 @@ export default [
       "@typescript-eslint/no-explicit-any": "off",
       "no-empty-pattern": "off",
       "no-useless-escape": "off",
-      eqeqeq: "error" // Обязательное использование === вместо ==
+      eqeqeq: "error" // Enforce strict equality (=== instead of ==)
     }
   },
   {
