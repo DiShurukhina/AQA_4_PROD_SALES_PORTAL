@@ -15,7 +15,7 @@ export class CustomersApi {
       method: "post",
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       },
       data: customer,
     };
