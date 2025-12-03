@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","500","Login","sales-portal-api","Wed Dec 03 10:13:41 UTC 2025","passed","Wed Dec 03 10:13:42 UTC 2025","[API] [Sales Portal] [Login]","","",""

@@ -1,1 +1,1 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[]}
+{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[{"name":"Login","uid":"42c2849358c5c134","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"passed","time":{"start":1764756821859,"stop":1764756822359,"duration":500},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":["sales-portal-api"],"tags":["auth","regression","smoke","api"]}]}
