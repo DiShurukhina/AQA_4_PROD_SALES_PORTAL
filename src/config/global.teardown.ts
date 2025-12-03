@@ -10,6 +10,6 @@ export default async function () {
     
 Link to deployed report:
 
-https://anatoly-karpovich.github.io/aqa-4-playwright/allure-report/#`);
+https://dishurukhina.github.io/AQA_4_PROD_SALES_PORTAL/allure-report/#`);
 }
 
