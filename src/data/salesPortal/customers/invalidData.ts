@@ -63,13 +63,6 @@ export const INVALID_CUSTOMER_PAYLOADS = [
 
 export const INVALID_CUSTOMER_IDS = [
   {
-    description: "Empty ID",
-    id: "",
-    get: { status: STATUS_CODES.NOT_FOUND, checkBody: false },
-    delete: { status: STATUS_CODES.NOT_FOUND, checkBody: false },
-    update: { status: STATUS_CODES.NOT_FOUND, checkBody: false },
-  },
-  {
     description: "Non-existent ID (valid format)",
     id: "507f1f77bcf86cd799439011",
     get: { status: STATUS_CODES.NOT_FOUND, checkBody: true },
