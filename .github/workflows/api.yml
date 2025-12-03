@@ -1,4 +1,4 @@
-name: Run Sales Portal UI tests
+name: Run Sales Portal API tests
 on:
   push:
     branches:
@@ -38,7 +38,7 @@ jobs:
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: test:api
+        run: npm run test:api
         continue-on-error:
           true
           
