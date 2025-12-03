@@ -5,14 +5,13 @@ import {
   ICustomer,
   ICustomerFromResponse,
   ICustomerListResponse,
+  IGetCustomersParams,
 } from "data/types/customer.types";
-import { logStep } from "utils/report/logStep.utils";
 import { validateResponse } from "utils/validation/validateResponse.utils";
 
 export class CustomersApiService {
   constructor(private customerApi: CustomersApi) {}
 
-  @logStep("CREATE CUSTOMER VIA API")
   async create(token: string, customerData?: ICustomer) {
     const data = generateCustomerData(customerData);
     const response = await this.customerApi.create(token, data);
@@ -25,7 +24,6 @@ export class CustomersApiService {
     return response.body.Customer;
   }
 
-  @logStep("DELETE CUSTOMER VIA API")
   async delete(token: string, id: string) {
     const response = await this.customerApi.delete(token, id);
     validateResponse(response, {
@@ -33,7 +31,6 @@ export class CustomersApiService {
     });
   }
 
-  @logStep("GET CUSTOMER BY ID VIA API")
   async getById(token: string, id: string): Promise<ICustomerFromResponse> {
     const response = await this.customerApi.getById(token, id);
     validateResponse(response, {
@@ -45,7 +42,6 @@ export class CustomersApiService {
     return response.body.Customer;
   }
 
-  @logStep("GET ALL CUSTOMERS VIA API")
   async getAll(token: string): Promise<ICustomerFromResponse[]> {
     const response = await this.customerApi.getAll(token);
     validateResponse(response, {
@@ -57,10 +53,9 @@ export class CustomersApiService {
     return response.body.Customers;
   }
 
-  @logStep("GET CUSTOMERS LIST VIA API")
   async getList(
     token: string,
-    params: Record<string, string | number | Array<string>>,
+    params: IGetCustomersParams,
   ): Promise<ICustomerListResponse> {
     const response = await this.customerApi.getList(token, params);
     validateResponse(response, {
@@ -72,7 +67,6 @@ export class CustomersApiService {
     return response.body;
   }
 
-  @logStep("UPDATE CUSTOMER VIA API")
   async update(
     token: string,
     id: string,

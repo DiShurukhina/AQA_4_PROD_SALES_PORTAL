@@ -6,14 +6,13 @@ import {
   ICustomerResponse,
   ICustomerListResponse,
   ICustomersResponse,
+  IGetCustomersParams,
 } from "data/types/customer.types";
-import { logStep } from "utils/report/logStep.utils";
 import { convertRequestParams } from "utils/queryParams.utils";
 
 export class CustomersApi {
   constructor(private apiClient: IApiClient) {}
 
-  @logStep("POST /api/customer")
   async create(token: string, customer: ICustomer) {
     const options: IRequestOptions = {
       baseURL: apiConfig.baseURL,
@@ -28,7 +27,6 @@ export class CustomersApi {
     return await this.apiClient.send<ICustomerResponse>(options);
   }
 
-  @logStep("DELETE /api/customer")
   async delete(token: string, _id: string) {
     const options: IRequestOptions = {
       baseURL: apiConfig.baseURL,
@@ -43,11 +41,7 @@ export class CustomersApi {
     return await this.apiClient.send<null>(options);
   }
 
-  @logStep("GET /api/customers (filtered)")
-  async getList(
-    token: string,
-    params: Record<string, string | number | Array<string>>,
-  ) {
+  async getList(token: string, params: IGetCustomersParams) {
     const query = convertRequestParams(params);
     const options: IRequestOptions = {
       baseURL: apiConfig.baseURL,
@@ -61,7 +55,6 @@ export class CustomersApi {
     return await this.apiClient.send<ICustomerListResponse>(options);
   }
 
-  @logStep("GET /api/customers/all")
   async getAll(token: string) {
     const options: IRequestOptions = {
       baseURL: apiConfig.baseURL,
@@ -75,7 +68,6 @@ export class CustomersApi {
     return await this.apiClient.send<ICustomersResponse>(options);
   }
 
-  @logStep("GET /api/customers/{id}")
   async getById(token: string, _id: string) {
     const options: IRequestOptions = {
       baseURL: apiConfig.baseURL,
@@ -89,7 +81,6 @@ export class CustomersApi {
     return await this.apiClient.send<ICustomerResponse>(options);
   }
 
-  @logStep("PUT /api/customers/{id}")
   async update(token: string, _id: string, customer: Partial<ICustomer>) {
     const options: IRequestOptions = {
       baseURL: apiConfig.baseURL,
