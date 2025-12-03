@@ -5,11 +5,12 @@ export default async function () {
   if (!process.env.CI) return;
 
   const notificationService = new NotificationService(new TelegramService());
+  const [ owner, repoName ] = process.env.GITHUB_REPOSITORY!.split("/");
 
   await notificationService.postNotification(`Test run finished!
     
 Link to deployed report:
 
-https://dishurukhina.github.io/AQA_4_PROD_SALES_PORTAL/allure-report/#`);
+https://${owner}.github.io/${repoName}/allure-report/#`);
 }
 
