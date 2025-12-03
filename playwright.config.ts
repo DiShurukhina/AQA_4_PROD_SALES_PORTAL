@@ -76,16 +76,6 @@ export default defineConfig({
       testDir: "src/tests/api",
     },
     {
-      name: "sales-portal-visual",
-      use: {
-        ...devices["Desktop Chrome"],
-        viewport: { width: 1920, height: 1080 },
-        storageState: "src/.auth/user.json",
-      },
-      dependencies: ["setup"],
-      testDir: "src/tests/ui/sales-portal/visual",
-    },
-    {
       name: "chromium",
       use: { ...devices["Desktop Chrome"], headless: true },
       testDir: "src/tests/ui",

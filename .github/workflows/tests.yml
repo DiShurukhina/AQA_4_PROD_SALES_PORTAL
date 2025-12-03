@@ -1,4 +1,4 @@
-name: Run Sales Portal API tests
+name: Run Sales Portal tests
 on:
   push:
     branches:
@@ -14,7 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.57.0-noble
-
+    env:
+        SALES_PORTAL_API_URL: ${{ secrets.SALES_PORTAL_API_URL }}
+        SALES_PORTAL_URL: ${{ secrets.SALES_PORTAL_URL }}
+        USER_NAME: ${{ secrets.USER_NAME }}
+        USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     steps:
       # Checkout
       - uses: actions/checkout@v4
@@ -31,17 +37,14 @@ jobs:
 
       # Run tests
       - name: Run tests API
-        env:
-          SALES_PORTAL_API_URL: ${{ secrets.SALES_PORTAL_API_URL }}
-          SALES_PORTAL_URL: ${{ secrets.SALES_PORTAL_URL }}
-          USER_NAME: ${{ secrets.USER_NAME }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: npm run test:api:regression
         continue-on-error: true
+    
+      - name: Run tests UI
+        run: npm run test:ui:regression
+        continue-on-error: true
           
-          # Create Allure report
+        # Create Allure report
       - name: Create Allure report
         run: npm run allure-report
 
