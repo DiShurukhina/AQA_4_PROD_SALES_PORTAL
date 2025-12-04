@@ -1,7 +1,7 @@
 import { COUNTRY } from "data/salesPortal/country";
 import { ID, ICreatedOn, SortOrder, IResponseFields } from "./core.types";
 
-type Country = keyof typeof COUNTRY;
+export type Country = keyof typeof COUNTRY;
 
 export interface ICustomer {
   email: string;
@@ -22,15 +22,17 @@ export interface ICustomerDetails extends Required<ICustomer>, ICreatedOn {}
 
 export interface ICustomerFromResponse
   extends Required<ICustomer>, ICreatedOn, ID {}
+
 export interface ICustomerResponse extends IResponseFields {
   Customer: ICustomerFromResponse;
 }
 
 export interface ICustomersResponse extends IResponseFields {
-  Customer: ICustomerFromResponse;
+  Customers: ICustomerFromResponse[];
 }
 
-export interface ICustomerSortedResponse extends ICustomerResponse {
+export interface ICustomerListResponse extends IResponseFields {
+  Customers: ICustomerFromResponse[];
   total: number;
   page: number;
   limit: number;
@@ -59,3 +61,6 @@ export interface ICreateCustomerCases {
   title: string;
   customerData: ICustomer;
 }
+export type ICustomerInvalidPayload = Omit<ICustomer, "country"> & {
+  country: string;
+};
