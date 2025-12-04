@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","757","GET /api/customers?country returns only selected country","sales-portal-api","Thu Dec 04 14:49:28 UTC 2025","passed","Thu Dec 04 14:49:29 UTC 2025","CST-003 Get customers list (Filter by Country)","","",""
