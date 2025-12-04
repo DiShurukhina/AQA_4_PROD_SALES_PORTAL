@@ -7,7 +7,7 @@ import { COUNTRY } from "data/salesPortal/country";
 import { TAGS } from "data/tags";
 
 test.describe("CST-003 Get customers list (Filter by Country)", () => {
-  test("GET /api/customers?country returns only selected country", {tag: [TAGS.API, TAGS.PRODUCTS, TAGS.REGRESSION]}, async ({
+  test("GET /api/customers?country returns only selected country", {tag: [TAGS.API, TAGS.CUSTOMERS, TAGS.REGRESSION]}, async ({
     loginApiService,
     customersApi,
   }) => {
