@@ -1,1 +1,1 @@
-[{"uid":"b4b8303e17d1704b","name":"GET /api/customers?country returns only selected country","time":{"start":1764859768956,"stop":1764859769713,"duration":757},"status":"passed","severity":"normal"}]
+[{"uid":"43210d923ff912d8","name":"GET /api/customers?country returns only selected country","time":{"start":1764860658047,"stop":1764860658586,"duration":539},"status":"passed","severity":"normal"}]
