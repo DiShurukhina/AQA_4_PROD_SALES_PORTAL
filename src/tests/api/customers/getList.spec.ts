@@ -4,10 +4,9 @@
 import { test, expect } from "fixtures/api.fixture";
 import { STATUS_CODES } from "data/statusCodes";
 import { COUNTRY } from "data/salesPortal/country";
-import { TAGS } from "data/tags";
 
 test.describe("CST-003 Get customers list (Filter by Country)", () => {
-  test("CST-003: GET /api/customers?country returns only selected country", {tag: [TAGS.API, TAGS.CUSTOMERS, TAGS.REGRESSION]}, async ({
+  test("@api @customers @regression CST-003: GET /api/customers?country returns only selected country", async ({
     loginApiService,
     customersApi,
   }) => {

@@ -5,10 +5,9 @@ import { test, expect } from "fixtures/api.fixture";
 import { STATUS_CODES } from "data/statusCodes";
 import { validateJsonSchema } from "utils/validation/validateSchema.utils";
 import { getAllCustomersSchema } from "data/schemas/customers/getAllCustomers.schema";
-import { TAGS } from "data/tags";
 
 test.describe("CST-010 Get ALL customers (Technical endpoint)", () => {
-  test(`${TAGS.API} ${TAGS.CUSTOMERS} ${TAGS.SMOKE} CST-010: GET /api/customers/all returns array of customers`, async ({
+  test("@api @customers @smoke CST-010: GET /api/customers/all returns array of customers", async ({
     loginApiService,
     customersApi,
   }) => {
