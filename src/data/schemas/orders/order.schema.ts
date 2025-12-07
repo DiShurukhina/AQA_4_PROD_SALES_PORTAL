@@ -52,7 +52,7 @@ const orderHistorySchema = {
       enum: Object.values(ORDER_HISTORY_ACTIONS),
     },
   },
-  required: ["_id", "status", "customer", "products", "total_price", "delivery", "changedOn", "action"],
+  required: ["_id", "status", "customer", "products", "total_price", "delivery", "assignedManager", "changedOn", "action"],
   additionalProperties: false,
 };
 
@@ -96,6 +96,7 @@ const orderFromResponseSchema = {
     "comments",
     "history",
     "assignedManager",
+    "delivery",
   ],
   additionalProperties: false,
 };
