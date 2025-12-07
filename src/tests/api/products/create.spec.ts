@@ -27,7 +27,7 @@ test.describe("[API][Sales Portal][Products]", () => {
   test.describe("[Create product]", () => {
     for (const positiveCase of createProductPositiveCases) {
       test(
-        `${positiveCase.title}`,
+        positiveCase.title,
         { tag: [TAGS.SMOKE, TAGS.REGRESSION, TAGS.API, TAGS.PRODUCTS] },
         async ({ productsApi }) => {
           const createdProduct = await productsApi.create(positiveCase.productData as IProduct, token);

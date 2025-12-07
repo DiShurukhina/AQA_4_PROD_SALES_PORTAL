@@ -7,12 +7,12 @@ import _ from "lodash";
 
 export const createProductPositiveCases: ICreateProductCase[] = [
   {
-    title: "Create product with 3 character length",
+    title: "Create product with 3 character length in name",
     productData: generateProductData({ name: faker.string.alphanumeric({ length: 3 }) }),
     expectedStatus: STATUS_CODES.CREATED,
   },
   {
-    title: "Create product with 40 character length",
+    title: "Create product with 40 character length in name",
     productData: generateProductData({ name: faker.string.alphanumeric({ length: 40 }) }),
     expectedStatus: STATUS_CODES.CREATED,
   },
