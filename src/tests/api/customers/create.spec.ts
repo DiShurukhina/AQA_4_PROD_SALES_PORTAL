@@ -8,11 +8,16 @@ import { validateJsonSchema } from "utils/validation/validateSchema.utils";
 import { createCustomerSchema } from "data/schemas/customers/create.schema";
 import { COUNTRY } from "data/salesPortal/country";
 import { faker } from "@faker-js/faker";
-import { ICustomer, ICustomerInvalidPayload } from "data/types/customer.types";
+// import { getInvalidPayloadScenarios } from "data/salesPortal/customers/invalidData";
 
 test.describe("CST-001/002 Create customer", () => {
-  test("CST-001: Create new customer (Valid Data)", async ({ loginApiService, customersApi }) => {
-    const token = await loginApiService.loginAsAdmin();
+  let token: string;
+
+  test.beforeAll(async ({ loginApiService }) => {
+    token = await loginApiService.loginAsAdmin();
+  });
+
+  test("@api @customers @smoke CST-001: Create new customer (Valid Data)", async ({ customersApi }) => {
     const expectedEmail = `tester+${faker.string.alphanumeric({ length: 6 })}@gmail.com`;
     const expectedCountry = COUNTRY.USA;
     const payload = generateCustomerData({

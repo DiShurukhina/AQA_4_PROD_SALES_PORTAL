@@ -55,6 +55,10 @@ export interface IGetCustomersParams {
 
 export type CustomerTableHeader = "email" | "name" | "country" | "createdOn";
 
+export interface ICreateCustomerCases {
+  title: string;
+  customerData: ICustomer;
+}
 export type ICustomerInvalidPayload = Omit<ICustomer, "country"> & {
   country: string;
 };
