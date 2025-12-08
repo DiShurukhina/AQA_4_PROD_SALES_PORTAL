@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:41:57 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "332",
+    "etag": "W/\"14c-IVd7Ql8UULrpHEG0P8rsMj+EN0U\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Wyman.Schmidt86@yahoo.com",
+      "name": "K",
+      "country": "Belarus",
+      "city": "North Wilsonfort",
+      "street": "Emil Keys 27",
+      "house": 907,
+      "flat": 6290,
+      "phone": "+306242092191940",
+      "createdOn": "2025-12-08T09:41:57.000Z",
+      "notes": "vophA9Uk8D7wyLcsRSZ4MPvlPlhiBS",
+      "_id": "69369d651c508c5d5e9a17c1"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

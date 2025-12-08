@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Computer13230",
+    "manufacturer": "Google",
+    "price": 92003,
+    "notes": "pPsLIbUtdkuALzH27pRvLPjA8oibS9b6Z83gLcWITro5xP3dWTSxArhPRZSnGBli5SexVbMNVP5D725M3oacKGxYecfvaoQTfH6Je1a4yYTEM3c0pxJDrmKv5WE2pHzjgrIf86Xcidt1Y8B3Oi5qC0EmC9YGbjpyWPPjvTHgqgXZmtjJXKmPWSZEeJqVmEnfty2k375QfvMDdRK0N15piRrAOsoAtNrKnOrfLcDfljjqU3ibegQ5huPkVc"
+  }
+}

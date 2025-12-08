@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Gloves96267",
+    "manufacturer": "Tesla",
+    "price": 0,
+    "amount": 21,
+    "notes": "JnrFztKdmPNtqXM27BYD7iP1y7GstA8DUd2YDxoqQEzThfQzUGnpzqZ68No4ufPwZdW7oJnw5uyu4VPLaSuua047AOteJobf5lUSbFnmavazddxTGYdb7N16lZp4y08EZqZQqeppoLSPROxtfvV9DJxsraVxHiWJrHx860XEGs1CPrI8KzHEShS2J3nmKoteq5UrCorRExJCcuu8wOfjmBDF4ual5mqLBGhsSmSCqQ2BEj5YpAOZljyG7k"
+  }
+}

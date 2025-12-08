@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:41:59 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "355",
+    "etag": "W/\"163-2TeY/EndH3EACbY9R07tZtwgb/Q\"",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Evangeline_Shanahan50@hotmail.com",
+      "name": "Rodrigo Corwin",
+      "country": "Belarus",
+      "city": "Lake Jensenport",
+      "street": "Abernathy Roads 1",
+      "house": 1,
+      "flat": 2703,
+      "phone": "+847468947312430",
+      "createdOn": "2025-12-08T09:41:59.000Z",
+      "notes": "TSXkAvEJXs0earnAMiBw9QDFfKtARf",
+      "_id": "69369d671c508c5d5e9a1843"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

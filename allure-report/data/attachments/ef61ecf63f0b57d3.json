@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Salad90989",
+    "manufacturer": "Google",
+    "price": 99999,
+    "amount": 33,
+    "notes": "x7WfpfpE7X0CNkb8DwaFeH1tyPDsjLAhUt9VK70maLpxX8QhvXlSLmmFP1EHPVXmljwpphMUAZK19MtktkgqOGgbCh72iPNYeoHKyZdECGsfesKQnImwB29ITHOtXSWf0BHJeFvnCJMqegIqbXi8VE8z9HmxvhCf3opv9EE0N21dqYQn3Zq21Qc7t2NWOuwihIgEER7y65WsPe78HxIU53IwiWFvgFPEigZTXs1IC7cODzEW4uZfeIvGQP"
+  }
+}

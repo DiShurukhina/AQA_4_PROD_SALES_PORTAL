@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Shirt75088",
+    "manufacturer": "Amazon",
+    "price": 20914,
+    "amount": 276,
+    "notes": "Zwl9zk5XfW00MrzSftiZbDVtxd9yBdaqKxOvGNYfdNnZngBMkz3akzKHyIeDb5v9k6YRkKPCz6j7OQ32xblWduY8p7gRruAqOx8u1gkZ1YC9mRGnG7uMvSwILAOwGjXiLoNKY0cXghJlk20Rmsgw8bn0JFNHpi2urpvCiNrL2VolYopiRKnPmYc2fIZN7OznDK4QKO97EY0tFBRvqQVyneux1Gjq5HfukF1qsZ3xYqK0DabtSTbo73JREu"
+  }
+}

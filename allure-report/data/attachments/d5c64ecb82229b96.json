@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Shirt34276",
+    "manufacturer": "Xiaomi",
+    "price": 100000,
+    "amount": 468,
+    "notes": "FhHZdTFZ8eZ1M6bxaGxGPQaFgPxoDfrLVVzqa2oeMuMfaLlL3Hc97QFcio6ES0fXkm0PxvwaOrU8QA9WShFM1mHxqQn9WLQspPceeXD5QtyiaeqqyzFeOh9ewLBYtushZWs1gMZWCPSYfePAjcMv8HlLKxdUSQ8KWp7198AuuaQ4MftHiUCq7UJd4YdI5D7JWKrUFN0BnmiO3YN4UTQuVDMYTq3WsK6qEpTSoJT9P5V4Gw6v6hTmpjxtyl"
+  }
+}

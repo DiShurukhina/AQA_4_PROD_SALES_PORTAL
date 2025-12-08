@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Lq",
+    "manufacturer": "Xiaomi",
+    "price": 57522,
+    "amount": 379,
+    "notes": "rycggSF1sic8njcTlSxJegCJcg9tn3wCVMDJ1oPrYldMApU4avGDP0wRlXUHjvrnMSxK6eMVv0h6cjPrRl7trfefQ8SFZFSTykZTCM3LEFODnpa3H50GmSG8DAcgU94bcNaySOM7U0hcaQNxGgYmJ9WOfpUFfM0nxXAvrLCp1uYvV8LvzvNWr7wpd58d57g1ticqvpvaMI048TuY0B74VsBVHHp40elljRYBgyGfhhaeiDaAK49kU4b9pe"
+  }
+}

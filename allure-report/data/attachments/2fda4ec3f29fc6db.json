@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:41:58 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "330",
+    "etag": "W/\"14a-0WLc1ToYoXjMCEUz6vUCD1JZk/w\"",
+    "keep-alive": "timeout=5, max=97",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Emely27@yahoo.com",
+      "name": "Abbey Gottlieb",
+      "country": "Germany",
+      "city": "Elmhurst",
+      "street": "Eldon View 36",
+      "house": 932,
+      "flat": 9999,
+      "phone": "+700487567129572",
+      "createdOn": "2025-12-08T09:41:58.000Z",
+      "notes": "ivchzaGunl5BxKCJ93jFhPXcnAVZJB",
+      "_id": "69369d661c508c5d5e9a1820"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

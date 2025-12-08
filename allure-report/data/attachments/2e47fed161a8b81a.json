@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Lorine17@gmail.com",
+    "name": "",
+    "country": "USA",
+    "city": "Antioch",
+    "street": "Larkin Land 22",
+    "house": 514,
+    "flat": 4617,
+    "phone": "+575758626106634",
+    "notes": "NyR4nkKRgUjSvuwI530GU11M8Mp148"
+  }
+}

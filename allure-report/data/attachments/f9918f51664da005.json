@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:42:03 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "454",
+    "etag": "W/\"1c6-4STMPDmxUMfAU7S/u4gRw28W9Lw\"",
+    "keep-alive": "timeout=5, max=96",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Shirt75088",
+      "amount": 276,
+      "price": 20914,
+      "manufacturer": "Amazon",
+      "createdOn": "2025-12-08T09:42:03.000Z",
+      "notes": "Zwl9zk5XfW00MrzSftiZbDVtxd9yBdaqKxOvGNYfdNnZngBMkz3akzKHyIeDb5v9k6YRkKPCz6j7OQ32xblWduY8p7gRruAqOx8u1gkZ1YC9mRGnG7uMvSwILAOwGjXiLoNKY0cXghJlk20Rmsgw8bn0JFNHpi2urpvCiNrL2VolYopiRKnPmYc2fIZN7OznDK4QKO97EY0tFBRvqQVyneux1Gjq5HfukF1qsZ3xYqK0DabtSTbo73JREu",
+      "_id": "69369d6b1c508c5d5e9a19f9"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:42:08 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "452",
+    "etag": "W/\"1c4-Ttc+/X6nOJFOjaBy2NJCaTq8GDY\"",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Table96940",
+      "amount": 0,
+      "price": 45375,
+      "manufacturer": "Google",
+      "createdOn": "2025-12-08T09:42:08.000Z",
+      "notes": "duBek3pZ9pgsZVdOmvsNCm9pJZ4ViPO7frdMuxj5hvp8mCefoJUmGVJPZJvvJ53Gh4MXIiup9hq131KRvIDJqAnsyv0fr4mpW57ZNdO2Gf1NGRgfFSV0PXH66xUune83HkRoUUFecpwglcoMrkqsvXfiY09N8i5PFPdD1frCzrXjNwuHNb321auaj3pr06oiRHV9dnLnyknEwDqLwvwk75Av2EQlWGk2lv1eAGT3muH8H9RHqxfuKg00RH",
+      "_id": "69369d701c508c5d5e9a1aa6"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

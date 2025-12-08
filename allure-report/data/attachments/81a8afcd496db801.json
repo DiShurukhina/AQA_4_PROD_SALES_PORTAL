@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Mouse93060",
+    "price": 64961,
+    "amount": 695,
+    "notes": "ziBdotEuRKIrHglZ7F7lpBE5GcuBigRa9kYJG6nbyDKoOAOGA8TwGEAVmGFfSRijEPiE562gOuCMtjP5qauELy5iCssMDFMDhcSV4I7AR1kxRXws6iGfdGUM9j8TQ30SbaXbjwK2jzS8xtxlUnVzGVxbHiFO2h6pPxNuVeeVSopqkFXE2Hp9sCOJt5veXJ3mcBRJnJKIRASEgM8bur2UqjUlAks8WmQ08NXUaGAGKAqDxSHyptwTEGP4Tj"
+  }
+}

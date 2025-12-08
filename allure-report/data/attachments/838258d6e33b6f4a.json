@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:41:59 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "446",
+    "etag": "W/\"1be-thqwNctFzQESDfOPdweu/VU4/vQ\"",
+    "keep-alive": "timeout=5, max=94",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "HUU",
+      "amount": 976,
+      "price": 53155,
+      "manufacturer": "Tesla",
+      "createdOn": "2025-12-08T09:41:59.000Z",
+      "notes": "rW77BtfNZM8Fv5cZClw38nqazXdBro89htI4fctZAis1LIxazo2A6qRFN113T6j2MCcsPbyWxxcyn3hGiVSf43g3KbWh8TzGV6tz9565Ltt0sqUp5gcXGesd7aXLn8LAWewShkZWJtDDIZZZWK0X6JAlLz7BZwt6lQYpWNGgVWvdxz4FymNRpk9gD1nSJRaGoohXHKgMqjqV5i37q4iWazUxFjkI3fguId5eh8kiNoGd7WUL05yYADDJsI",
+      "_id": "69369d671c508c5d5e9a1880"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

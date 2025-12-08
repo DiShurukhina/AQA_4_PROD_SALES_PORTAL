@@ -1,0 +1,26 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:42:01 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "191",
+    "etag": "W/\"bf-YFKDJnpvwB+4a39fRgHgaPEWBSM\"",
+    "keep-alive": "timeout=5, max=86",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Ball52850",
+      "amount": 924,
+      "price": 1135,
+      "manufacturer": "Google",
+      "createdOn": "2025-12-08T09:42:01.000Z",
+      "_id": "69369d691c508c5d5e9a1949"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

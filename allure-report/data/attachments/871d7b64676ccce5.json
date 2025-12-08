@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Phyllis.Wuckert@hotmail.com",
+    "name": "STESHA",
+    "country": "Belarus",
+    "city": "Sallieberg",
+    "street": "Torphy Shoals 39",
+    "house": 814,
+    "flat": 5575,
+    "phone": "+333745144639242",
+    "notes": "2uAam1m3VlilQVPunoKJ52AAEZKQmq"
+  }
+}

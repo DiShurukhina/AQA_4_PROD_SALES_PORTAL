@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:41:56 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "347",
+    "etag": "W/\"15b-qEpLbyHSYyd8He9Rkehidcye/B4\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Alessandra.Reichel@gmail.com",
+      "name": "Wade Murphy",
+      "country": "Canada",
+      "city": "Stiedemannville",
+      "street": "Lauretta Neck 95",
+      "house": 927,
+      "flat": 5534,
+      "phone": "+011499026997809",
+      "createdOn": "2025-12-08T09:41:56.000Z",
+      "notes": "GOV4l8k0XbGpOj3TAcNBqbhV5d8bJQ",
+      "_id": "69369d641c508c5d5e9a1791"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

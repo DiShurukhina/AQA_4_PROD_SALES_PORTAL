@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:41:59 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "359",
+    "etag": "W/\"167-Ly+uplhyJexOpqAHPHrvj67TIow\"",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Delfina.Reynolds-Shanahan@gmail.com",
+      "name": "Tiffany Keebler",
+      "country": "Germany",
+      "city": "North Elveraborough",
+      "street": "Brekke Mission 18",
+      "house": 311,
+      "flat": 3775,
+      "phone": "+1234567890",
+      "createdOn": "2025-12-08T09:41:59.000Z",
+      "notes": "gqCUgNkovlQkHW0Bl6GWuVs1X0Zjkn",
+      "_id": "69369d671c508c5d5e9a1850"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

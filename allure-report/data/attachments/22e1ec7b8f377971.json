@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 09:41:58 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "300",
+    "etag": "W/\"12c-CMJnYjKKMf13vRJLyafd303ySQM\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Taylor17@yahoo.com",
+      "name": "Meta Mohr",
+      "country": "Germany",
+      "city": "Vineland",
+      "street": "Jovany Parkway 87",
+      "house": 151,
+      "flat": 8664,
+      "phone": "+404904184632516",
+      "createdOn": "2025-12-08T09:41:58.000Z",
+      "notes": "",
+      "_id": "69369d661c508c5d5e9a17f9"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}
