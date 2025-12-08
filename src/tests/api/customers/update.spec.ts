@@ -3,6 +3,7 @@
 // Service returns ICustomerFromResponse directly
 import { test, expect } from "fixtures/api.fixture";
 import { STATUS_CODES } from "data/statusCodes";
+import { TAGS } from "data/tags";
 import { generateCustomerData } from "data/salesPortal/customers/generateCustomerData";
 import { validateJsonSchema } from "utils/validation/validateSchema.utils";
 import { updateCustomerSchema } from "data/schemas/customers/update.schema";
@@ -10,75 +11,95 @@ import { updateCustomerSchema } from "data/schemas/customers/update.schema";
 
 test.describe("CST-006/007/011 Update customer", () => {
   let token: string;
+  let createdCustomerIds: string[] = [];
 
   test.beforeAll(async ({ loginApiService }) => {
     token = await loginApiService.loginAsAdmin();
   });
 
-  test("@api @customers @smoke CST-006: Update customer with valid data", async ({ customersApi }) => {
-    const created = await customersApi.create(token, generateCustomerData());
-    const id = created.body.Customer._id;
-    const original = created.body.Customer;
-
-    const updatedNotes = "Updated notes content";
-    const updatedPhone = "+155512345678";
-
-    const response = await customersApi.update(token, id, {
-      email: original.email,
-      name: original.name,
-      country: original.country,
-      city: original.city,
-      street: original.street,
-      house: original.house,
-      flat: original.flat,
-      phone: updatedPhone,
-      notes: updatedNotes,
-    });
-
-    expect(response.status).toBe(STATUS_CODES.OK);
-    validateJsonSchema(response.body, updateCustomerSchema);
-    expect(response.body.IsSuccess).toBe(true);
-    expect(response.body.ErrorMessage).toBeNull();
-    expect(response.body.Customer._id).toBe(id);
-    expect(response.body.Customer.notes).toBe(updatedNotes);
-    expect(response.body.Customer.phone).toBe(updatedPhone);
+  test.afterEach(async ({ customersApi }) => {
+    for (const id of createdCustomerIds) {
+      await customersApi.delete(token, id);
+    }
+    createdCustomerIds = [];
   });
 
-  test("CST-007: Update customer with invalid Id", async ({ loginApiService, customersApi }) => {
-    const token = await loginApiService.loginAsAdmin();
-    const invalidId = "000000000000000000000000";
+  test(
+    "CST-006: Update customer with valid data",
+    { tag: [TAGS.API, TAGS.CUSTOMERS, TAGS.SMOKE] },
+    async ({ customersApi }) => {
+      const created = await customersApi.create(token, generateCustomerData());
+      const id = created.body.Customer._id;
+      createdCustomerIds.push(id);
+      const original = created.body.Customer;
 
-    const response = await customersApi.update(token, invalidId, {
-      name: "Updated Name",
-    });
+      const updatedNotes = "Updated notes content";
+      const updatedPhone = "+155512345678";
 
-    expect(response.status).toBe(STATUS_CODES.NOT_FOUND);
-    expect(response.body.IsSuccess).toBe(false);
-    expect(response.body.ErrorMessage).toBeTruthy();
-  });
+      const response = await customersApi.update(token, id, {
+        email: original.email,
+        name: original.name,
+        country: original.country,
+        city: original.city,
+        street: original.street,
+        house: original.house,
+        flat: original.flat,
+        phone: updatedPhone,
+        notes: updatedNotes,
+      });
 
-  test("CST-011: Update customer with invalid phone", async ({ loginApiService, customersApi }) => {
-    const token = await loginApiService.loginAsAdmin();
-    const created = await customersApi.create(token, generateCustomerData());
-    const id = created.body.Customer._id;
-    const original = created.body.Customer;
+      expect(response.status).toBe(STATUS_CODES.OK);
+      validateJsonSchema(response.body, updateCustomerSchema);
+      expect(response.body.IsSuccess).toBe(true);
+      expect(response.body.ErrorMessage).toBeNull();
+      expect(response.body.Customer._id).toBe(id);
+      expect(response.body.Customer.notes).toBe(updatedNotes);
+      expect(response.body.Customer.phone).toBe(updatedPhone);
+    },
+  );
 
-    const invalidPhone = "1555-ABC";
+  test(
+    "CST-007: Update customer with invalid Id",
+    { tag: [TAGS.API, TAGS.CUSTOMERS, TAGS.REGRESSION] },
+    async ({ loginApiService, customersApi }) => {
+      const token = await loginApiService.loginAsAdmin();
+      const invalidId = "000000000000000000000000";
 
-    const response = await customersApi.update(token, id, {
-      email: original.email,
-      name: original.name,
-      country: original.country,
-      city: original.city,
-      street: original.street,
-      house: original.house,
-      flat: original.flat,
-      phone: invalidPhone,
-      notes: original.notes,
-    });
+      const response = await customersApi.update(token, invalidId, generateCustomerData());
 
-    expect(response.status).toBe(STATUS_CODES.BAD_REQUEST);
-    expect(response.body.IsSuccess).toBe(false);
-    expect(response.body.ErrorMessage).toBeTruthy();
-  });
+      expect(response.status).toBe(STATUS_CODES.NOT_FOUND);
+      expect(response.body.IsSuccess).toBe(false);
+      expect(response.body.ErrorMessage).toBeTruthy();
+    },
+  );
+
+  test(
+    "CST-011: Update customer with invalid phone",
+    { tag: [TAGS.API, TAGS.CUSTOMERS, TAGS.REGRESSION] },
+    async ({ loginApiService, customersApi }) => {
+      const token = await loginApiService.loginAsAdmin();
+      const created = await customersApi.create(token, generateCustomerData());
+      const id = created.body.Customer._id;
+      createdCustomerIds.push(id);
+      const original = created.body.Customer;
+
+      const invalidPhone = "1555-ABC";
+
+      const response = await customersApi.update(token, id, {
+        email: original.email,
+        name: original.name,
+        country: original.country,
+        city: original.city,
+        street: original.street,
+        house: original.house,
+        flat: original.flat,
+        phone: invalidPhone,
+        notes: original.notes,
+      });
+
+      expect(response.status).toBe(STATUS_CODES.BAD_REQUEST);
+      expect(response.body.IsSuccess).toBe(false);
+      expect(response.body.ErrorMessage).toBeTruthy();
+    },
+  );
 });
