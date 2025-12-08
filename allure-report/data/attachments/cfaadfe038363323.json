@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Table91732",
+    "manufacturer": "Amazon",
+    "price": 25033,
+    "amount": "EqE",
+    "notes": "MgCDI2hMtw8tqr5TWHvTWyDDsb5DB5oIfqmBSrfsHZJ93Q79UMKDV4aKKNO33dqLoynbpidzNf1v2z3GbPbzEDNqnVOS4Dq2IuCB1LFCTnFgX8b6Tsjdrfb8VaEQkHQyLqbHk8bksbA17zYPHz8RjkvIzzW1IF8SGhsfNCLKJRkG6nvjTlkGTQXGvzS1pPmP74jfJwMOkT7PHujmd0E1NqcLSFO7raeIg6lSFk55skViacfMjMc2Ldw1PD"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:48 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "444",
+    "etag": "W/\"1bc-f5TYsQxubJcf0XhjRtqBKOrjIQI\"",
+    "keep-alive": "timeout=5, max=90",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "uEv",
+      "amount": 92,
+      "price": 63660,
+      "manufacturer": "Sony",
+      "createdOn": "2025-12-08T08:44:48.000Z",
+      "notes": "lNZykRtQtoZaIEslvITCg5oLYlSfA17wUS077PPmEEU5y8uGPyy5UkNoxBHEOuBltuEXQiICmSFLmG2JuKS17rPoz6Q9WVeRdmmIyIGIednprRS1Ayly2MjhHMBxcd6TwPQP3EQyv3GK9ingIcCGGTxF2XjtirXk6swoSbX3NQzhG1YWKPFuV4C4meH9rbi2VRSZKH3jhUh6LdHUgxhoUCMpJRVFZ7LREQUahSfN26sfI3mF1ftLD7rZbk",
+      "_id": "693690001c508c5d5e9a14c6"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

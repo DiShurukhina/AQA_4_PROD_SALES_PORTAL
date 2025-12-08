@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Fish16471",
+    "manufacturer": "Microsoft",
+    "amount": 676,
+    "notes": "n5hY2n6hfOSLEp1OFE5aTwTQMDIMrfpGeKv8kRArL6FGY6ONwFPSdGCbM3E0918YmwYciJM7MLfhEtRI22T0gxHbLhisemygUFVdDnA9TLLTMgBKO6HOv5uoysyJd0jjPYtj02ZxinPmkdhvWWqiepJfDb3A0Vi8phdf12rbACcwbLJAGmue0JfscVnxyM3sRXJoE9mPUYpN8j14zYRmm0CraOgH6ZjUlkUk09aHgsvOiSTwj7DmucNtUJ"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Archibald26@yahoo.com",
+    "name": "Roosevelt Morar",
+    "country": "Russia",
+    "city": "Kapa'a",
+    "street": "Clark Course 87",
+    "house": 573,
+    "flat": 5508,
+    "phone": "+762616215453554",
+    "notes": "D6NrsmLSjE2539NqL2liYtR2U1Q6LO"
+  }
+}

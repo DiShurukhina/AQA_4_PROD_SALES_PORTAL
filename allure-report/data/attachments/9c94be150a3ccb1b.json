@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Berniece58@gmail.com",
+    "name": "Alberto Bartoletti",
+    "country": "Russia",
+    "city": "Lake Blancaton",
+    "street": "O Conner Underpass 73",
+    "house": 12,
+    "flat": 1,
+    "phone": "+332527710332808",
+    "notes": "sgoAh7G38WEBa59qmWnbpMDYaIwnlI"
+  }
+}

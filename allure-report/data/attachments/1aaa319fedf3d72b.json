@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:47 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "343",
+    "etag": "W/\"157-bap3MQ5he7D1Owh8kaagX9sp/uM\"",
+    "keep-alive": "timeout=5, max=93",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Garry.Pfeffer4@hotmail.com",
+      "name": "Josiah Baumbach",
+      "country": "Germany",
+      "city": "Suffolk",
+      "street": "Talbot Road 5",
+      "house": 50,
+      "flat": 2556,
+      "phone": "+12345678901234567890",
+      "createdOn": "2025-12-08T08:44:47.000Z",
+      "notes": "mZ9HLsr4w7PUkJB5u1QJHkSz0seVPy",
+      "_id": "69368fff1c508c5d5e9a1491"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

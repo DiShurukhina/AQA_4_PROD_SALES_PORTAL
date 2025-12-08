@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:47 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "340",
+    "etag": "W/\"154-wFJ9q4XkupmGj0vMtDS8gqVxSJU\"",
+    "keep-alive": "timeout=5, max=93",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "DONNY.BLACK@tTEST.COM",
+      "name": "Destini Wilderman",
+      "country": "Germany",
+      "city": "Parkermouth",
+      "street": "Birch Road 51",
+      "house": 936,
+      "flat": 2464,
+      "phone": "+453609514198219",
+      "createdOn": "2025-12-08T08:44:47.000Z",
+      "notes": "S8OGrUCMk0sgtxYtZTtv3FvtFmfKjR",
+      "_id": "69368fff1c508c5d5e9a147d"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "g6",
+    "manufacturer": "Tesla",
+    "price": 88732,
+    "amount": 183,
+    "notes": "NtItycX5FZ1edZLtp455h7XRjNZ3Pwh5YzJAdEPOZTbUvDGzLF43DHgwxRhvuoOa407S8qDQznHv8dpuHimOmyY756Dm8SfxhI3OLFtQLZ40jBpNhTO9U8ZmuKsKvSYM4ZLIl0efhGjrjr4hnYxPgL85ounfqFU3a5PEcN9ZGaL4KyuCQIvdLLyCLqeKlj8wmpX9xs4zssYySO6jdJux84biI9SS8sde98eQACtVCygLxMcD40jcov5y8V"
+  }
+}

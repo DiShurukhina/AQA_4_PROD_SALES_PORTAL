@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:47 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "344",
+    "etag": "W/\"158-96nTzYwNuW2kkyq0LbyLP/gl+ps\"",
+    "keep-alive": "timeout=5, max=93",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Fausto_Kling4@hotmail.com",
+      "name": "Robin Roberts",
+      "country": "Russia",
+      "city": "West Isadorecester",
+      "street": "The Limes 95",
+      "house": 999,
+      "flat": 525,
+      "phone": "+861642738852412",
+      "createdOn": "2025-12-08T08:44:47.000Z",
+      "notes": "it4Pgae9MJUFkwKZ59FH8DWAHsre6n",
+      "_id": "69368fff1c508c5d5e9a1485"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

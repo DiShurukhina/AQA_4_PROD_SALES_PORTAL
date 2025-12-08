@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Ball61811",
+    "manufacturer": "Amazon",
+    "price": -50,
+    "amount": 199,
+    "notes": "elYRl9dZWWrQluNX0U5e28cCbtquBNeCvNbvH558LZkRqTAKPB9nE1BemHKPGYpRt9HMHZ4CjjPKGJ54j3ut34pNjniRpHjpiDNqlajTEluZHhDlUd0AohsXfgeGAYSSkwYbzbe2HRTqYT7PqED11e4LK0FiOgAnQeUa4BxQg5Q88fHNN8dGJiPJd1qukVzTUhAWvBU0ye7QyZIKQLBffiJUiNDWVP1CTaG7spMKqJrxfadugXVSuCiZNk"
+  }
+}

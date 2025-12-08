@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:46 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "333",
+    "etag": "W/\"14d-Jkb5tFYHPz96t4eS6OdwZKyMdhg\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Charlie_Brekke@gmail.com",
+      "name": "K",
+      "country": "Germany",
+      "city": "St Clair Shores",
+      "street": "Kamren Shoals 83",
+      "house": 842,
+      "flat": 612,
+      "phone": "+621045783815164",
+      "createdOn": "2025-12-08T08:44:46.000Z",
+      "notes": "dPKIWSJhtYRPQcq2qBXQzjnyDlt4Pi",
+      "_id": "69368ffe1c508c5d5e9a13fb"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

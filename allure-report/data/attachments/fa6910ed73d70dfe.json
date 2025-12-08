@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Ethelyn.Beier@gmail.com",
+    "name": "Lyric Conroy",
+    "country": "Germany",
+    "city": "Hoseastad",
+    "street": "Jamie's",
+    "house": 902,
+    "flat": 2025,
+    "phone": "+797872254893105",
+    "notes": "FLJGhwrzlU1yFu6zqIruzEyTJKrlMU"
+  }
+}

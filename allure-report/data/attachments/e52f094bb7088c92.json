@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:46 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "341",
+    "etag": "W/\"155-b523Nkqa0oapcsqxOXkIP3dqBEc\"",
+    "keep-alive": "timeout=5, max=97",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Valentine_Ward0@hotmail.com",
+      "name": "Ora Bernier",
+      "country": "Ukraine",
+      "city": "Nadiastead",
+      "street": "Gerlach Wall 14",
+      "house": 819,
+      "flat": 9999,
+      "phone": "+513724393439738",
+      "createdOn": "2025-12-08T08:44:46.000Z",
+      "notes": "Vn9mB0gTGxLlDzF6EoYTEAlwyJZNYD",
+      "_id": "69368ffe1c508c5d5e9a1435"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

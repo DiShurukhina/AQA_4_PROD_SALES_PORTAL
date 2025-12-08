@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Mouse15781",
+    "manufacturer": "Sony",
+    "price": 35704,
+    "amount": 897,
+    "notes": "x2Wn7MwBjahftj2hmLMamAu06RiTc2CW34Y6sOxBlO5XnDXEwOfsWY612nTEpCYcd2n8kOsqrYY2b7URC0t2JtMgM31ZntTYWGOeG3BBL9xcAJdJu07Rizj3YYVR06lrdl8F6DIBFc1Z6BqwQFs4GhPucfpNuMmX62NF1Q1xM9iyE4cECizOgE0pSI8gBVi9czTXAn4VFjQl8gsXbVh1OlS8iocBAr3XuzLJLicDnxlBRHbJ0Tnd15iLSM"
+  }
+}

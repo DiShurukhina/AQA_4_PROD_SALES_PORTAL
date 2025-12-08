@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Computer54555",
+    "manufacturer": "Sony",
+    "price": "iEYOQ",
+    "amount": 646,
+    "notes": "khpIsdczCCSzqTzhIjxPkfUkSuEXTpYxsFbmYOiGkwRY30Qn19C5pFQtmA0OyTTYng0Y18BwlEgyKB6NVpiudv5hYSHAM7MbSiPwpm1Eco6WycxGEfbK1CI1j5eYOtpqwLSAeIphwq6soUV23xiPGTaiWFHeysOOIGmKogjd0MBJgTbYFvgV1HntwdSbLzRzD7aotKXZZKz1VSoy763PN6gPCqUpA330dk8O8mQX5gHDYenB3xCJmDyK1g"
+  }
+}

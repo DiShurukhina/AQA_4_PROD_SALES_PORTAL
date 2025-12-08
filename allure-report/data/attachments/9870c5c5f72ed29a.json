@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:56 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "450",
+    "etag": "W/\"1c2-hggJiJFLox1h2SdNkM0hl4eqW9c\"",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Pizza87345",
+      "amount": 0,
+      "price": 23501,
+      "manufacturer": "Sony",
+      "createdOn": "2025-12-08T08:44:56.000Z",
+      "notes": "JDf51XqSNqy1I4msKv5incdG8eabTftEINbfNR1TzbCYgoPQyr9X0KqL07h9Fgeo2UqSgsY0bpl0wdAuYnfhgapBvJBrmEbUVGIPyzT8U7ifRagjkNSE01PjeFYSsbbog5XTSKYiHgFdeH8T4PUXY0FCxyTNzmkHmekCHSaGmYla4zGGRlBsyFcl118xkYElnFQca0wVv63OC5ppGTzfNSWQB6zHnCkGii7Rclx3hO6uBCiJ7GdV0mstWT",
+      "_id": "693690081c508c5d5e9a16da"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

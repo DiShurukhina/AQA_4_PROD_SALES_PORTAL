@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:46 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "353",
+    "etag": "W/\"161-rQgWxdngm6o517sKBqep2VdWL2M\"",
+    "keep-alive": "timeout=5, max=97",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Ahmed_Hartmann21@gmail.com",
+      "name": "Heath Lind Roob",
+      "country": "Ukraine",
+      "city": "Nolagthiosd Ghdipiso",
+      "street": "Ferry Bridge 4",
+      "house": 516,
+      "flat": 7156,
+      "phone": "+078994993073295",
+      "createdOn": "2025-12-08T08:44:46.000Z",
+      "notes": "b6PtxhjoIN3lr7NGhYcA6WU9lzu7Q6",
+      "_id": "69368ffe1c508c5d5e9a1430"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

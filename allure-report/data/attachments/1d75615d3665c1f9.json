@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Titus_Shields@yahoo.com",
+    "name": "Loraine Champlin",
+    "country": "USA",
+    "city": "Halvorsonchester",
+    "street": "J",
+    "house": 373,
+    "flat": 1109,
+    "phone": "+877891498733200",
+    "notes": "eDedq5QtnmVHcGzq4fqCbclDtRm5Ou"
+  }
+}

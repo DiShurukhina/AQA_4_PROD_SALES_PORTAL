@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 08:44:47 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "340",
+    "etag": "W/\"154-oISkFn04aTYcmJH8OIj73BmirQ4\"",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Griffin_Goodwin59@gmail.com",
+      "name": "Abigayle Nader",
+      "country": "USA",
+      "city": "New Sigridton",
+      "street": "Morissette Key 94",
+      "house": 968,
+      "flat": 3061,
+      "phone": "+1234567890",
+      "createdOn": "2025-12-08T08:44:47.000Z",
+      "notes": "KfYvMJ8QGHaH4UoXPh8dCET1yUtUDg",
+      "_id": "69368fff1c508c5d5e9a1463"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

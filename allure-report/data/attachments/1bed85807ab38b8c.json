@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Kelsie.Hartmann59@hotmail.com",
+    "name": "Sony87",
+    "country": "Belarus",
+    "city": "Elk Grove",
+    "street": "Daniel Row 57",
+    "house": 382,
+    "flat": 2979,
+    "phone": "+242495303831430",
+    "notes": "C93f0p7N1nwUaAgC0TLuiySqa0kr8C"
+  }
+}

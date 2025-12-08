@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Griffin_Goodwin59@gmail.com",
+    "name": "Abigayle Nader",
+    "country": "USA",
+    "city": "New Sigridton",
+    "street": "Morissette Key 94",
+    "house": 968,
+    "flat": 3061,
+    "phone": "+1234567890",
+    "notes": "KfYvMJ8QGHaH4UoXPh8dCET1yUtUDg"
+  }
+}

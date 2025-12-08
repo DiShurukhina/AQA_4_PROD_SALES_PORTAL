@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Paolo8@hotmail.com",
+    "name": "Nyasia Mertz",
+    "country": "Ukraine",
+    "city": "Fort Norbertoland",
+    "street": "Skiles Cliff 90",
+    "house": 731,
+    "flat": 6351,
+    "phone": "+514855586676946",
+    "notes": ""
+  }
+}
