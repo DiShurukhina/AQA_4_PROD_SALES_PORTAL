@@ -1,16 +1,16 @@
 name: Run Sales Portal tests
+
 on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request_target:
     branches:
       - main
-  workflow_dispatch: # Manually trigger the workflow
+  workflow_dispatch:
 
 permissions:
-  pages: write
-  pull-requests: write
+  contents: read
 
 jobs:
   test:
@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.57.0-noble
+
     env:
         SALES_PORTAL_API_URL: ${{ secrets.SALES_PORTAL_API_URL }}
         SALES_PORTAL_URL: ${{ secrets.SALES_PORTAL_URL }}
@@ -25,9 +26,12 @@ jobs:
         USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
     steps:
-      # Checkout
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+
       # Install OpenJDK
       - name: Install OpenJDK
         run: |
@@ -35,16 +39,13 @@ jobs:
           apt-get install -y openjdk-17-jre
           echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))" >> $GITHUB_ENV
 
-      # Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # Run tests
       - name: Run tests API
         run: npm run test:api:regression
         continue-on-error: true
-          
-        # Create Allure report
+
       - name: Create Allure report
         run: npm run allure-report
 
@@ -54,7 +55,6 @@ jobs:
           name: regression-report
           path: ./allure-report
 
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         if: success()
         uses: peaceiris/actions-gh-pages@v3
