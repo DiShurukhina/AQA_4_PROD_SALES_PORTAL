@@ -8,7 +8,6 @@ export const deleteProductPositiveCases: ICreateProductCase[] = [
   {
     title: "Delete product",
     expectedStatus: STATUS_CODES.DELETED,
-    isSuccess: true,
     expectedErrorMessage: null,
   },
 ];
@@ -18,14 +17,12 @@ export const deleteProductNegativeCases: ICreateProductCase[] = [
     title: "404 returned for empty id",
     id: "",
     expectedStatus: STATUS_CODES.NOT_FOUND,
-    isSuccess: false,
     expectedErrorMessage: RESPONSE_ERRORS.NOT_FOUND,
   },
   {
     title: "404 returned for non-existing id of valid format",
     id: new ObjectId().toHexString(),
     expectedStatus: STATUS_CODES.NOT_FOUND,
-    isSuccess: false,
     expectedErrorMessage: RESPONSE_ERRORS.NOT_FOUND,
   },
   {
@@ -33,6 +30,5 @@ export const deleteProductNegativeCases: ICreateProductCase[] = [
     id: faker.string.alphanumeric({ length: 10 }),
     expectedStatus: STATUS_CODES.BAD_REQUEST,
     expectedErrorMessage: RESPONSE_ERRORS.BAD_REQUEST,
-    isSuccess: false,
   },
 ];
