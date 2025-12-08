@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 10:41:32 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "448",
+    "etag": "W/\"1c0-OdLfioiPVlD97Yu/t5upl9P0bgU\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Mouse91650",
+      "amount": 84,
+      "price": 1,
+      "manufacturer": "Tesla",
+      "createdOn": "2025-12-08T10:41:32.000Z",
+      "notes": "j5R0XZIglGowr8ohO2N11Ks5rOJ4jXLZbo8g0NSUGmSFO4JglsN4VYpgsmLYItOKINLDSTb17I7XROGrE7TZVXkFNYyZxFGWLt8RO028GJ3F6hqJ2Yf4zCHYwbGhXaWW6zr19MmY4tBNaueUIFSQ1KYgy6OmjSYWo0ZNQgKd0HFEFBpY3O26wF5uQrnkXpqNHQZ10kwSmw89QW03FNh3yx8KBWDeWzHPTfp4FE7sKlx4vxrTvVxGBK1ZFC",
+      "_id": "6936ab5c1c508c5d5e9a22da"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

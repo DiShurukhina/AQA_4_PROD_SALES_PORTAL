@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Computer52799",
+    "manufacturer": "Google",
+    "amount": 908,
+    "notes": "H4WUxtvBllMcqilcOxTld8cmciSmPJiuiiLZkE7Xmul6PfTORNP8b5YMyTAJxqHbgdES8gIb27boVIhqUyBl9plAoDBVnhBaiLAc2KhWQUk8EJ5s8K22E42US5xubqbGiGQXJwbUXiYK61fRwBkhc09esMzHlXmau0xeSSih0kpJUpTsTAgsDcjfhP2kYQYQrQRDfc4JjXCVt1lM1Hti0RVsFiuaSm0oyqwWrTNuuapPWosQXTEcJovLkD"
+  }
+}

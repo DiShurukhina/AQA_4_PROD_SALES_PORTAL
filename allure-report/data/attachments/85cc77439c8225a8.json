@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 10:41:22 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "335",
+    "etag": "W/\"14f-7Zf3UuHsR+aQQfv6jnXeX1BOAvc\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Clarabelle.OReilly20@yahoo.com",
+      "name": "K",
+      "country": "Canada",
+      "city": "Ceciliatown",
+      "street": "Grimes Lights 65",
+      "house": 331,
+      "flat": 1334,
+      "phone": "+406959177612287",
+      "createdOn": "2025-12-08T10:41:22.000Z",
+      "notes": "L9wM7uUMsUgqU8BOYlXReQuTCRhfy9",
+      "_id": "6936ab521c508c5d5e9a204d"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

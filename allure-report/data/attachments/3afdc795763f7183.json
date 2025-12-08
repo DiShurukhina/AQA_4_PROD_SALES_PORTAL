@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Mouse31064",
+    "manufacturer": "Apple",
+    "price": 46440,
+    "amount": "qpz",
+    "notes": "DQQT3OJMoYu7XquTAZOW1Z1aEXwZUnLxYZMK6hrt4zMXPW8WeKUlXdFPEnL0nLXVZAU6of2drDu5KCxTsqrwFPk6Wdzew4S8FK0tivxCxIFQWY30xfcC3deBL8e952GiFnntkIUEpN0FWt8NyaHexI3MWGqArMzqQPmHYMBBWLtK4q8TT0guAnZUMKmc3gCYOi9ryTzPqA1ntcav58zLhnSbhInkQhHw2NqkrvIyIjAMV4QVp9Umu7ShjC"
+  }
+}

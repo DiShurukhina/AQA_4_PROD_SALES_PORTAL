@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 10:41:23 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "329",
+    "etag": "W/\"149-/V+uEcBna8LQlhrgobOIXxIORI8\"",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Pierce_Doyle@gmail.com",
+      "name": "Zula Hoppe",
+      "country": "France",
+      "city": "TORONTO",
+      "street": "Maggio Locks 94",
+      "house": 6,
+      "flat": 2697,
+      "phone": "+990538770094581",
+      "createdOn": "2025-12-08T10:41:23.000Z",
+      "notes": "FzjiAHDDI2jTMeuuGPgIxaSwNsN5KZ",
+      "_id": "6936ab531c508c5d5e9a20c0"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

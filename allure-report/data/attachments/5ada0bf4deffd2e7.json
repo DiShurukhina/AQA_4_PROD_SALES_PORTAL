@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Norval_Ruecker89@hotmail.com",
+    "name": "Luz Farrell",
+    "country": "Belarus",
+    "city": "South Marianna",
+    "street": "Miguel Hills 11",
+    "house": 0,
+    "flat": 1117,
+    "phone": "+524057352370555",
+    "notes": "vtJmeXQb8u9rbzTfjOn2o0X1N2ht7D"
+  }
+}

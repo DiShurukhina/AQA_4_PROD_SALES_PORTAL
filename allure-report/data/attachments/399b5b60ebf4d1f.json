@@ -1,0 +1,26 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 10:41:26 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "193",
+    "etag": "W/\"c1-Bf3ceeG6d6HCkjqYo7grmcaykJU\"",
+    "keep-alive": "timeout=5, max=86",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Cheese12250",
+      "amount": 244,
+      "price": 97010,
+      "manufacturer": "Apple",
+      "createdOn": "2025-12-08T10:41:26.000Z",
+      "_id": "6936ab561c508c5d5e9a21d9"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

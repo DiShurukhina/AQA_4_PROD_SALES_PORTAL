@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 10:41:22 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "322",
+    "etag": "W/\"142-wEQCxRgRGP3MWTTYIytb2q3/3bs\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Treva19@yahoo.com",
+      "name": "Bobby Mills",
+      "country": "Russia",
+      "city": "M",
+      "street": "Crooks Summit 74",
+      "house": 442,
+      "flat": 7325,
+      "phone": "+504093569462123",
+      "createdOn": "2025-12-08T10:41:22.000Z",
+      "notes": "I0hAxyKSz3NqVIth6a5zEL87Wc5ZJo",
+      "_id": "6936ab521c508c5d5e9a205f"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Mouse14931",
+    "manufacturer": "Samsung",
+    "price": 99999,
+    "amount": 362,
+    "notes": "qkQie83k4lPl87EYu6mQOrzLI0qvNlxnPWffdTtukNgyGBIwqwNTAx8aqMo3B33ftUzu5KbGDKIzOpvlVltaoXciFPeLwM4QEulDO7jeRBHGpdOHangcz9PMqsJU9xlrFQ4IF9ZyrR173IsqcFWJ1kJiBQz5BVgZJHfdI5RgCDhSEZggHFCkJjTIsKDnbRiFEchVsL38GQHMizv24DduzwIJLkl9GLTy1fndWKIefTVaW9iCTndHVh6smc"
+  }
+}

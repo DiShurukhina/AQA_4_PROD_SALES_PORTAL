@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Car1235",
+    "manufacturer": "Xiaomi",
+    "price": 26896,
+    "amount": 1000,
+    "notes": "B9M3slA8y3Es0CAlZTNzMj5kSd9yrkCOjD2au38xLttLvxG8q3WS4tZbULrL0ZFsTZaRvPPV8rsiJscoErvTFxZw22CTmSW7ZUXCq5i3zpinKNbRPfSXjifzle5uS9Ma2CFAH78N57iY0Bl5eT8eoSeUTN4BgXdtQEj5Kq5ak2mBJQEBL9SI4BIrdkpGTrXNsAGo4TOhmdd9qGdnv7123wJrVK9FCKRc9byUSC4lmCsEylRf0Q9n5cspn3"
+  }
+}

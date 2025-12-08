@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Kyler.Pfeffer@hotmail.com",
+    "name": "Brody Schoen",
+    "country": "France",
+    "city": "North Torreyview",
+    "street": "Gorczany Mews 66",
+    "house": 495,
+    "flat": 9819,
+    "phone": "+12345678901234567890",
+    "notes": "vQ0KyORhkhbvS8t3BGmpx8mmT3pz3Z"
+  }
+}

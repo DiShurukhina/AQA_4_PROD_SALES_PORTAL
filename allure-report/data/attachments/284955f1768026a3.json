@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "email": "Cale_Adams@gmail.com",
+    "name": "Josiah Williamson",
+    "country": "Germany",
+    "city": "Cristchester",
+    "street": "Schaefer Mill 61",
+    "house": 1,
+    "flat": 4686,
+    "phone": "+199925526814679",
+    "notes": "DsOfT7P4FlzYrLYGsRX9jyvwnFPF37"
+  }
+}

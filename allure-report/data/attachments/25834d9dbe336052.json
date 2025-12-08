@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 08 Dec 2025 10:41:23 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "339",
+    "etag": "W/\"153-ceuFjdVrve8NLdV+4XQdCmTmdns\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Richmond_Schumm@yahoo.com",
+      "name": "Lisette Rohan",
+      "country": "France",
+      "city": "Summerville",
+      "street": "Cassin Hollow 53",
+      "house": 779,
+      "flat": 1,
+      "phone": "+397934977595049",
+      "createdOn": "2025-12-08T10:41:23.000Z",
+      "notes": "0v4QjsJuqRiT4BBmbSrOmcFObV5Yd3",
+      "_id": "6936ab531c508c5d5e9a207d"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

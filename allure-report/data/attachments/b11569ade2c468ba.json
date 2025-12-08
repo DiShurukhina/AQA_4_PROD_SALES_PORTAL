@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1MTgzNDgzLCJleHAiOjE3NjUyNjk4ODN9.IjFRTs6HdkWkT377rdWUI6ZpSZd0z5mnKk3tiJxhtso"
+  },
+  "body": {
+    "name": "Chips80603",
+    "manufacturer": "Microsoft",
+    "price": 70467,
+    "notes": "9rV62t1BLZ8u2VCiVqJMfmxLdW7nNwYeC7AmtSPcLZKp5HQURuafdmD6H9p6TzIMR04jI1a1Z4aLpiSrrmvXe78VjBEuUejjwb1TtbOXYVLMn7EmXO6SZJj8tHQIx4Z0WPBdr8awHnYwIRb3ojQYbLZG8zy1g7eX6o5FykMirB6CVq7POAp49lAqX8nTJXyEeAqOzPXPHhbx3ExkPPl748wPuLMoftFVgf5rvEkaeMjO0YvbjJiK7oLbdA"
+  }
+}
