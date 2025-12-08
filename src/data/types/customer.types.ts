@@ -15,13 +15,11 @@ export interface ICustomer {
   notes?: string;
 }
 
-export interface ICustomerInTable
-  extends Pick<ICustomer, "email" | "name" | "country">, ICreatedOn {}
+export interface ICustomerInTable extends Pick<ICustomer, "email" | "name" | "country">, ICreatedOn {}
 
 export interface ICustomerDetails extends Required<ICustomer>, ICreatedOn {}
 
-export interface ICustomerFromResponse
-  extends Required<ICustomer>, ICreatedOn, ID {}
+export interface ICustomerFromResponse extends Required<ICustomer>, ICreatedOn, ID {}
 
 export interface ICustomerResponse extends IResponseFields {
   Customer: ICustomerFromResponse;
@@ -57,6 +55,10 @@ export interface IGetCustomersParams {
 
 export type CustomerTableHeader = "email" | "name" | "country" | "createdOn";
 
+export interface ICreateCustomerCases {
+  title: string;
+  customerData: ICustomer;
+}
 export type ICustomerInvalidPayload = Omit<ICustomer, "country"> & {
   country: string;
 };

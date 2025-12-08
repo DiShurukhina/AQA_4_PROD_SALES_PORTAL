@@ -11,9 +11,7 @@ export class RequestApi extends BaseApiClient {
   private response: APIResponse | undefined;
   private testInfo = test.info;
 
-  async send<T extends object | null>(
-    options: IRequestOptions,
-  ): Promise<IResponse<T>> {
+  async send<T extends object | null>(options: IRequestOptions): Promise<IResponse<T>> {
     try {
       const url = options.baseURL + options.url;
       const fetchOptions = _.omit(options, ["baseURL", "url"]);
@@ -22,8 +20,7 @@ export class RequestApi extends BaseApiClient {
 
       this.response = await this.requestContext.fetch(url, fetchOptions);
 
-      if (this.response.status() >= 500)
-        throw new Error("Request failed with status " + this.response.status());
+      if (this.response.status() >= 500) throw new Error("Request failed with status " + this.response.status());
       const result = await this.transformResponse();
 
       await this.attachResponse(options, result);
@@ -52,39 +49,30 @@ export class RequestApi extends BaseApiClient {
   }
 
   private async attachRequest(options: IRequestOptions) {
-    await this.testInfo().attach(
-      `Request ${options.method.toUpperCase()} ${options.url}`,
-      {
-        body: JSON.stringify(
-          {
-            headers: options.headers,
-            body: options.data,
-          },
-          null,
-          2,
-        ),
-        contentType: "application/json",
-      },
-    );
+    await this.testInfo().attach(`Request ${options.method.toUpperCase()} ${options.url}`, {
+      body: JSON.stringify(
+        {
+          headers: options.headers,
+          body: options.data,
+        },
+        null,
+        2,
+      ),
+      contentType: "application/json",
+    });
   }
 
-  private async attachResponse<T extends object | null>(
-    options: IRequestOptions,
-    response: IResponse<T>,
-  ) {
-    await this.testInfo().attach(
-      `Response ${response.status} ${options.method.toUpperCase()} ${options.url}`,
-      {
-        body: JSON.stringify(
-          {
-            headers: response.headers,
-            body: response.body,
-          },
-          null,
-          2,
-        ),
-        contentType: "application/json",
-      },
-    );
+  private async attachResponse<T extends object | null>(options: IRequestOptions, response: IResponse<T>) {
+    await this.testInfo().attach(`Response ${response.status} ${options.method.toUpperCase()} ${options.url}`, {
+      body: JSON.stringify(
+        {
+          headers: response.headers,
+          body: response.body,
+        },
+        null,
+        2,
+      ),
+      contentType: "application/json",
+    });
   }
 }
