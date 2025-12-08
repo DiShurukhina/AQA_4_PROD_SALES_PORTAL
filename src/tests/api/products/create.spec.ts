@@ -34,7 +34,7 @@ test.describe("[API][Sales Portal][Products]", () => {
           validateResponse(createdProduct, {
             status: positiveCase.expectedStatus,
             schema: createProductSchema,
-            IsSuccess: positiveCase.isSuccess,
+            IsSuccess: positiveCase.isSuccess as boolean,
             ErrorMessage: positiveCase.expectedErrorMessage,
           });
 
@@ -53,7 +53,7 @@ test.describe("[API][Sales Portal][Products]", () => {
         const createdProduct = await productsApi.create(negativeCase.productData as IProduct, token);
         validateResponse(createdProduct, {
           status: negativeCase.expectedStatus,
-          IsSuccess: negativeCase.isSuccess,
+          IsSuccess: negativeCase.isSuccess as boolean,
           ErrorMessage: negativeCase.expectedErrorMessage,
         });
       });
