@@ -1,4 +1,4 @@
-import { obligatoryFieldsSchema, obligatoryRequredFields } from "../core.schema";
+import { obligatoryFieldsSchema, obligatoryRequiredFields } from "../core.schema";
 import { ROLES } from "data/types/user.types";
 
 export const userSchema = {
@@ -27,7 +27,7 @@ export const getUserSchema = {
     User: userSchema,
     ...obligatoryFieldsSchema,
   },
-  required: ["User", ...obligatoryRequredFields],
+  required: ["User", ...obligatoryRequiredFields],
   additionalProperties: false,
 };
 
@@ -40,6 +40,6 @@ export const getAllUsersSchema = {
     },
     ...obligatoryFieldsSchema,
   },
-  required: ["Users", ...obligatoryRequredFields],
+  required: ["Users", ...obligatoryRequiredFields],
   additionalProperties: false,
 };

@@ -1,4 +1,4 @@
-import { obligatoryRequredFields } from "../core.schema";
+import { obligatoryRequiredFields } from "../core.schema";
 import { COUNTRY } from "data/salesPortal/country";
 
 export const customerSchema = {
@@ -23,7 +23,7 @@ export const createCustomerSchema = {
   type: "object",
   properties: {
     Customer: customerSchema,
-    ...obligatoryRequredFields,
+    ...obligatoryRequiredFields,
   },
-  required: ["Customer", ...obligatoryRequredFields],
+  required: ["Customer", ...obligatoryRequiredFields],
 };

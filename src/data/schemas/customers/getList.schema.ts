@@ -1,4 +1,4 @@
-import { obligatoryFieldsSchema, obligatoryRequredFields } from "../core.schema";
+import { obligatoryFieldsSchema, obligatoryRequiredFields } from "../core.schema";
 import { customerSchema } from "./customer.schema";
 
 export const getListCustomersSchema = {
@@ -16,5 +16,5 @@ export const getListCustomersSchema = {
     sorting: { type: "object" },
     ...obligatoryFieldsSchema,
   },
-  required: ["Customers", ...obligatoryRequredFields],
+  required: ["Customers", ...obligatoryRequiredFields],
 };

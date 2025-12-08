@@ -1,4 +1,4 @@
-import { obligatoryFieldsSchema, obligatoryRequredFields } from "../core.schema";
+import { obligatoryFieldsSchema, obligatoryRequiredFields } from "../core.schema";
 import { productSchema } from "../products/product.schema";
 import { customerSchema } from "../customers/customer.schema";
 import { deliveryInfoSchema } from "../delivery/delivery.schema";
@@ -52,7 +52,17 @@ const orderHistorySchema = {
       enum: Object.values(ORDER_HISTORY_ACTIONS),
     },
   },
-  required: ["_id", "status", "customer", "products", "total_price", "delivery", "assignedManager", "changedOn", "action"],
+  required: [
+    "_id",
+    "status",
+    "customer",
+    "products",
+    "total_price",
+    "delivery",
+    "assignedManager",
+    "changedOn",
+    "action",
+  ],
   additionalProperties: false,
 };
 
@@ -107,7 +117,7 @@ export const getOrderSchema = {
     order: orderFromResponseSchema,
     ...obligatoryFieldsSchema,
   },
-  required: ["order", ...obligatoryRequredFields],
+  required: ["order", ...obligatoryRequiredFields],
   additionalProperties: false,
 };
 
@@ -154,6 +164,6 @@ export const getAllOrdersSchema = {
     },
     ...obligatoryFieldsSchema,
   },
-  required: ["orders", "total", "page", "limit", "search", "status", "sorting", ...obligatoryRequredFields],
+  required: ["orders", "total", "page", "limit", "search", "status", "sorting", ...obligatoryRequiredFields],
   additionalProperties: false,
 };

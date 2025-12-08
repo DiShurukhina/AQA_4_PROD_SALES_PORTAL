@@ -1,7 +1,4 @@
-import {
-  obligatoryFieldsSchema,
-  obligatoryRequredFields,
-} from "../core.schema";
+import { obligatoryFieldsSchema, obligatoryRequiredFields } from "../core.schema";
 import { productSchema } from "./product.schema";
 
 export const getAllProductsSchema = {
@@ -13,5 +10,5 @@ export const getAllProductsSchema = {
     },
     ...obligatoryFieldsSchema,
   },
-  required: ["Products", ...obligatoryRequredFields],
+  required: ["Products", ...obligatoryRequiredFields],
 };
