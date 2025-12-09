@@ -52,11 +52,21 @@ const orderHistorySchema = {
       enum: Object.values(ORDER_HISTORY_ACTIONS),
     },
   },
-  required: ["_id", "status", "customer", "products", "total_price", "delivery", "assignedManager", "changedOn", "action"],
+  required: [
+    "_id",
+    "status",
+    "customer",
+    "products",
+    "total_price",
+    "delivery",
+    "assignedManager",
+    "changedOn",
+    "action",
+  ],
   additionalProperties: false,
 };
 
-const orderFromResponseSchema = {
+export const orderFromResponseSchema = {
   type: "object",
   properties: {
     _id: { type: "string" },

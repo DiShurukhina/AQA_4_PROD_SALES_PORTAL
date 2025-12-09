@@ -10,7 +10,7 @@ export interface IOrderProduct extends IProduct {
   received: boolean;
 }
 export interface IOrderResponse extends IResponseFields {
-  order: IOrderFromResponse;
+  Order: IOrderFromResponse;
 }
 
 export interface IOrderHistoryResponse extends IResponseFields {
@@ -91,4 +91,9 @@ export interface ICommentData {
   commentText: string;
   commentator: string;
   createdOn: string;
+}
+
+export interface IOrderRequest {
+  customer: string;
+  products: string[];
 }

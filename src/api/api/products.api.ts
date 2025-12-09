@@ -8,8 +8,8 @@ export class ProductsApi {
 
   async create(product: IProduct, token: string) {
     const options: IRequestOptions = {
-      baseURL: apiConfig.baseURL, //backend url
-      url: apiConfig.endpoints.products, //endpoint address
+      baseURL: apiConfig.baseURL,
+      url: apiConfig.endpoints.products,
       method: "post",
       headers: {
         "content-type": "application/json",
