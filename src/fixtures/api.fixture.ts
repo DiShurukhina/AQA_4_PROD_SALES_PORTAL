@@ -21,6 +21,13 @@ export interface IApi {
   loginApiService: LoginService;
   customersApiService: CustomersApiService;
   ordersApiService: OrdersApiService;
+
+  // utils
+  cleanup: {
+    addOrder: (id: string) => void;
+    addProduct: (id: string) => void;
+    addCustomer: (id: string) => void;
+  };
 }
 
 const test = base.extend<IApi>({
@@ -42,6 +49,7 @@ const test = base.extend<IApi>({
     const api = new CustomersApi(apiClient);
     await use(api);
   },
+
   ordersApi: async ({ request }, use) => {
     const apiClient = new RequestApi(request);
     const api = new OrdersApi(apiClient);
@@ -60,6 +68,33 @@ const test = base.extend<IApi>({
   },
   ordersApiService: async ({ ordersApi }, use) => {
     await use(new OrdersApiService(ordersApi));
+  },
+
+  // per-test cleanup registry with automatic teardown
+  cleanup: async ({ loginApiService, ordersApiService, productsApiService, customersApiService }, use) => {
+    const state = {
+      orders: new Set<string>(),
+      products: new Set<string>(),
+      customers: new Set<string>(),
+    };
+
+    await use({
+      addOrder: (id: string) => state.orders.add(id),
+      addProduct: (id: string) => state.products.add(id),
+      addCustomer: (id: string) => state.customers.add(id),
+    });
+
+    const token = await loginApiService.loginAsAdmin();
+    // Delete in dependency-safe order
+    for (const id of state.orders) {
+      await ordersApiService.delete(token, id);
+    }
+    for (const id of state.products) {
+      await productsApiService.delete(token, id);
+    }
+    for (const id of state.customers) {
+      await customersApiService.delete(token, id);
+    }
   },
 });
 

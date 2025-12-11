@@ -92,3 +92,8 @@ export interface ICommentData {
   commentator: string;
   createdOn: string;
 }
+
+export type IOrderUpdateBody = {
+  customer?: string;
+  products?: string[];
+};

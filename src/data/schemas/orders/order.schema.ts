@@ -1,16 +1,20 @@
 import { productSchema } from "../products/product.schema";
 import { customerSchema } from "../customers/customer.schema";
-import { userSchema } from "../users/user.schema";
 import { deliveryInfoSchema } from "../delivery/delivery.schema";
 import { ORDER_STATUS, ORDER_HISTORY_ACTIONS } from "data/salesPortal/order-status";
 
 export const orderProductSchema = {
   type: "object",
   properties: {
-    ...productSchema.properties,
+    _id: productSchema.properties._id,
+    name: productSchema.properties.name,
+    amount: productSchema.properties.amount,
+    price: productSchema.properties.price,
+    notes: productSchema.properties.notes,
+    manufacturer: productSchema.properties.manufacturer,
     received: { type: "boolean" },
   },
-  required: [...productSchema.required, "received"],
+  required: ["_id", "name", "amount", "price", "manufacturer", "received"],
   additionalProperties: false,
 };
 
@@ -41,29 +45,19 @@ export const orderHistorySchema = {
     delivery: {
       anyOf: [deliveryInfoSchema, { type: "null" }],
     },
+    assignedManager: {
+      anyOf: [{ type: "string" }, { type: "null" }],
+    },
     changedOn: { type: "string" },
     action: {
       type: "string",
       enum: Object.values(ORDER_HISTORY_ACTIONS),
     },
     performer: {
-      anyOf: [userSchema, { type: "null" }],
-    },
-    assignedManager: {
-      anyOf: [{ type: "string" }, { type: "null" }],
+      anyOf: [{ type: "object", additionalProperties: true }, { type: "null" }],
     },
   },
-  required: [
-    "status",
-    "customer",
-    "products",
-    "total_price",
-    "delivery",
-    "changedOn",
-    "action",
-    "performer",
-    "assignedManager",
-  ],
+  required: ["status", "customer", "products", "total_price", "delivery", "assignedManager", "changedOn", "action"],
   additionalProperties: false,
 };
 
