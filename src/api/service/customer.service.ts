@@ -60,7 +60,7 @@ export class CustomersApiService {
       status: STATUS_CODES.OK,
       IsSuccess: true,
       ErrorMessage: null,
-      schema: getListCustomersSchema
+      schema: getListCustomersSchema,
     });
 
     return response.body;

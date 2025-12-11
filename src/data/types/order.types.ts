@@ -10,7 +10,7 @@ export interface IOrderProduct extends IProduct {
   received: boolean;
 }
 export interface IOrderResponse extends IResponseFields {
-  order: IOrderFromResponse;
+  Order: IOrderFromResponse;
 }
 
 export interface IOrderHistoryResponse extends IResponseFields {
