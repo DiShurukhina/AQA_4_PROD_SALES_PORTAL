@@ -1,12 +1,12 @@
 import { IApiClient } from "api/apiClients/types";
 import { apiConfig } from "config/apiConfig";
 import { IRequestOptions } from "data/types/core.types";
-import { IOrderRequest, IOrderResponse } from "data/types/order.types";
+import { IOrderCreateBody, IOrderResponse } from "data/types/order.types";
 
 export class OrdersApi {
   constructor(private apiClinet: IApiClient) {}
 
-  async create(token: string, payload: IOrderRequest) {
+  async create(token: string, payload: IOrderCreateBody) {
     const options: IRequestOptions = {
       baseURL: apiConfig.baseURL,
       url: apiConfig.endpoints.orders,
