@@ -1,4 +1,4 @@
-import { test, expect } from "fixtures";
+import { test } from "fixtures";
 import { STATUS_CODES } from "data/statusCodes";
 import { validateResponse } from "utils/validation/validateResponse.utils";
 
@@ -18,7 +18,7 @@ test.describe("[API][Orders][Delete Order]", () => {
     const createdCustomer = await customersApiService.create(token);
     customerId = createdCustomer._id;
     //сreate order
-    const createOrderResponse = await ordersApiService.create(token, customerId, productId);
+    const createOrderResponse = await ordersApiService.create(token, customerId, [productId]);
     orderId = createOrderResponse._id;
   });
 
@@ -34,9 +34,8 @@ test.describe("[API][Orders][Delete Order]", () => {
   test("Delete order with product quantity = 1 (min)", async ({ ordersApi }) => {
     const deleteOrderResponse = await ordersApi.delete(token, orderId);
 
-    await validateResponse(deleteOrderResponse, {
+    validateResponse(deleteOrderResponse, {
       status: STATUS_CODES.DELETED,
     });
-    expect(deleteOrderResponse.status).toBe(STATUS_CODES.DELETED);
   });
 });

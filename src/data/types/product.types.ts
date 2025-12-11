@@ -1,7 +1,7 @@
 import { ICreatedOn } from "./core.types";
 import { MANUFACTURERS } from "data/salesPortal/products/manufacturers";
 import { ID, IResponseFields, SortOrder } from "./core.types";
-import { ICase } from "./core.types";
+import { ICaseApi } from "./core.types";
 
 export interface IProduct {
   name: string;
@@ -57,9 +57,7 @@ export interface IGetProductsParams {
 
 export type ProductsTableHeader = "Name" | "Price" | "Manufacturer" | "Created On";
 
-export interface ICreateProductCase extends ICase {
+export interface ICreateProductCase extends ICaseApi {
   id?: ID["_id"];
   productData?: Partial<IProduct>;
-  expectedStatusCode?: number;
-  expectedErrorMessage?: string;
 }

@@ -92,8 +92,3 @@ export interface ICommentData {
   commentator: string;
   createdOn: string;
 }
-
-export interface IOrderRequest {
-  customer: string;
-  products: string[];
-}

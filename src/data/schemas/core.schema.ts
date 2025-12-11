@@ -5,4 +5,4 @@ export const obligatoryFieldsSchema = {
   },
 };
 
-export const obligatoryRequredFields = ["IsSuccess", "ErrorMessage"];
+export const obligatoryRequiredFields = ["IsSuccess", "ErrorMessage"];

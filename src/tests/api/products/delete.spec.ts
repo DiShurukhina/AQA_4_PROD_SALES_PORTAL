@@ -1,12 +1,12 @@
-import { test, expect } from "fixtures/api.fixture";
-import { STATUS_CODES } from "data/statusCodes";
+import { test } from "fixtures/api.fixture";
 import {
   deleteProductPositiveCases,
   deleteProductNegativeCases,
 } from "data/salesPortal/products/deleteProductTestData";
 import { TAGS } from "data/tags";
+import { validateResponse } from "utils/validation/validateResponse.utils";
 
-test.describe("[API] [Sales Portal] [Products]", () => {
+test.describe("[API][Products]", () => {
   let id = "";
   let token = "";
 
@@ -23,7 +23,10 @@ test.describe("[API] [Sales Portal] [Products]", () => {
           const createdProduct = await productsApiService.create(token);
           id = createdProduct._id;
           const response = await productsApi.delete(id, token);
-          expect.soft(response.status).toBe(testCase.expectedStatus || STATUS_CODES.DELETED);
+          validateResponse(response, {
+            status: testCase.expectedStatus,
+            ErrorMessage: testCase.expectedErrorMessage,
+          });
         },
       );
     }
@@ -34,7 +37,10 @@ test.describe("[API] [Sales Portal] [Products]", () => {
       test(`${testCase.title}`, { tag: [TAGS.REGRESSION, TAGS.API, TAGS.PRODUCTS] }, async ({ productsApi }) => {
         id = testCase.id as string;
         const response = await productsApi.delete(id, token);
-        expect.soft(response.status).toBe(testCase.expectedStatus || STATUS_CODES.NOT_FOUND);
+        validateResponse(response, {
+          status: testCase.expectedStatus,
+          ErrorMessage: testCase.expectedErrorMessage,
+        });
       });
     }
   });

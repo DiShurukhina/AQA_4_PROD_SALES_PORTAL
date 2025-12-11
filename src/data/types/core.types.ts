@@ -31,6 +31,10 @@ export type SortOrder = "asc" | "desc";
 
 export interface ICase {
   title: string;
-  expectedStatus?: STATUS_CODES;
-  expectedErrorMessage?: string;
+}
+export interface ICaseApi extends ICase {
+  title: string;
+  expectedStatus: STATUS_CODES;
+  expectedErrorMessage: string | null;
+  isSuccess?: boolean;
 }

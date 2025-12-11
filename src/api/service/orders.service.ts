@@ -1,15 +1,15 @@
 import { OrdersApi } from "api/api/orders.api";
 import { STATUS_CODES } from "data/statusCodes";
-import { IOrderFromResponse, IOrderRequest } from "data/types/order.types";
+import { IOrderCreateBody, IOrderFromResponse } from "data/types/order.types";
 import { validateResponse } from "utils/validation/validateResponse.utils";
 
 export class OrdersApiService {
   constructor(private ordersApi: OrdersApi) {}
 
-  async create(token: string, customerId: string, productId: string): Promise<IOrderFromResponse> {
-    const payload: IOrderRequest = {
+  async create(token: string, customerId: string, productId: string[]): Promise<IOrderFromResponse> {
+    const payload: IOrderCreateBody = {
       customer: customerId,
-      products: [productId],
+      products: productId,
     };
 
     const response = await this.ordersApi.create(token, payload);

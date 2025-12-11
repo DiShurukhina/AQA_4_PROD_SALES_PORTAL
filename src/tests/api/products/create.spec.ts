@@ -12,7 +12,7 @@ import {
 } from "data/salesPortal/products/createProductTestData";
 import { TAGS } from "data/tags";
 
-test.describe("[API][Sales Portal][Products]", () => {
+test.describe("[API][Products]", () => {
   let id = "";
   let token = "";
 
@@ -32,10 +32,10 @@ test.describe("[API][Sales Portal][Products]", () => {
         async ({ productsApi }) => {
           const createdProduct = await productsApi.create(positiveCase.productData as IProduct, token);
           validateResponse(createdProduct, {
-            status: positiveCase.expectedStatus || STATUS_CODES.CREATED,
+            status: positiveCase.expectedStatus,
             schema: createProductSchema,
-            IsSuccess: true,
-            ErrorMessage: null,
+            IsSuccess: positiveCase.isSuccess as boolean,
+            ErrorMessage: positiveCase.expectedErrorMessage,
           });
 
           id = createdProduct.body.Product._id;
@@ -52,9 +52,9 @@ test.describe("[API][Sales Portal][Products]", () => {
       test(`${negativeCase.title}`, { tag: [TAGS.REGRESSION, TAGS.API, TAGS.PRODUCTS] }, async ({ productsApi }) => {
         const createdProduct = await productsApi.create(negativeCase.productData as IProduct, token);
         validateResponse(createdProduct, {
-          status: negativeCase.expectedStatus || STATUS_CODES.BAD_REQUEST,
-          IsSuccess: false,
-          ErrorMessage: "Incorrect request body",
+          status: negativeCase.expectedStatus,
+          IsSuccess: negativeCase.isSuccess as boolean,
+          ErrorMessage: negativeCase.expectedErrorMessage,
         });
       });
     }
