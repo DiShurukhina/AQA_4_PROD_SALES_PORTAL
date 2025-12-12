@@ -1,4 +1,5 @@
 import { OrdersApi } from "api/api/orders.api";
+import { orderFromResponseSchema } from "data/schemas/orders/order.schema";
 import { STATUS_CODES } from "data/statusCodes";
 import { IOrderCreateBody, IOrderFromResponse } from "data/types/order.types";
 import { validateResponse } from "utils/validation/validateResponse.utils";
@@ -27,5 +28,23 @@ export class OrdersApiService {
   async delete(token: string, id: string) {
     const res = await this.ordersApi.delete(token, id);
     validateResponse(res, { status: STATUS_CODES.DELETED });
+  }
+
+  async addComment(token: string, orderId: string, text: string) {
+    const response = await this.ordersApi.addComment(token, orderId, { text });
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: orderFromResponseSchema,
+    });
+    return response.body.Order;
+  }
+
+  async deleteComment(token: string, orderId: string, commentId: string) {
+    const response = await this.ordersApi.deleteComment(token, orderId, commentId);
+    validateResponse(response, {
+      status: STATUS_CODES.DELETED,
+    });
   }
 }
