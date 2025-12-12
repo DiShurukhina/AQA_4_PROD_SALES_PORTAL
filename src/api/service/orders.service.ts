@@ -1,6 +1,6 @@
 import { OrdersApi } from "api/api/orders.api";
 import { STATUS_CODES } from "data/statusCodes";
-import { IOrderCreateBody, IOrderFromResponse } from "data/types/order.types";
+import { IOrderCreateBody, IOrderFromResponse, IOrderUpdateBody } from "data/types/order.types";
 import { validateResponse } from "utils/validation/validateResponse.utils";
 
 export class OrdersApiService {
@@ -27,5 +27,11 @@ export class OrdersApiService {
   async delete(token: string, id: string) {
     const res = await this.ordersApi.delete(token, id);
     validateResponse(res, { status: STATUS_CODES.DELETED });
+  }
+
+  async update(token: string, id: string, payload: IOrderUpdateBody): Promise<IOrderFromResponse> {
+    const res = await this.ordersApi.update(token, id, payload);
+    validateResponse(res, { status: STATUS_CODES.OK });
+    return res.body.Order;
   }
 }

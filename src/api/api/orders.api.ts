@@ -1,7 +1,7 @@
 import { IApiClient } from "api/apiClients/types";
 import { apiConfig } from "config/apiConfig";
 import { IRequestOptions } from "data/types/core.types";
-import { IOrderCreateBody, IOrderResponse } from "data/types/order.types";
+import { IOrderCreateBody, IOrderResponse, IOrderUpdateBody } from "data/types/order.types";
 
 export class OrdersApi {
   constructor(private apiClinet: IApiClient) {}
@@ -31,5 +31,19 @@ export class OrdersApi {
       },
     };
     return await this.apiClinet.send<null>(options);
+  }
+
+  async update(token: string, _id: string, payload: IOrderUpdateBody) {
+    const options: IRequestOptions = {
+      baseURL: apiConfig.baseURL,
+      url: apiConfig.endpoints.orderById(_id),
+      method: "put",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      data: payload,
+    };
+    return await this.apiClinet.send<IOrderResponse>(options);
   }
 }
