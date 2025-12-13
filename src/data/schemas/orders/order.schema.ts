@@ -1,4 +1,3 @@
-import { productSchema } from "../products/product.schema";
 import { customerSchema } from "../customers/customer.schema";
 import { deliveryInfoSchema } from "../delivery/delivery.schema";
 import { ORDER_STATUS, ORDER_HISTORY_ACTIONS } from "data/salesPortal/order-status";
@@ -6,15 +5,15 @@ import { ORDER_STATUS, ORDER_HISTORY_ACTIONS } from "data/salesPortal/order-stat
 export const orderProductSchema = {
   type: "object",
   properties: {
-    _id: productSchema.properties._id,
-    name: productSchema.properties.name,
-    amount: productSchema.properties.amount,
-    price: productSchema.properties.price,
-    notes: productSchema.properties.notes,
-    manufacturer: productSchema.properties.manufacturer,
+    _id: { type: "string" },
+    name: { type: "string" },
+    amount: { type: "number" },
+    price: { type: "number" },
+    manufacturer: { type: "string" },
+    notes: { type: "string" },
     received: { type: "boolean" },
   },
-  required: ["_id", "name", "amount", "price", "manufacturer", "received"],
+  required: ["_id", "name", "amount", "price", "manufacturer", "notes", "received"],
   additionalProperties: false,
 };
 
@@ -26,6 +25,23 @@ export const commentSchema = {
     createdOn: { type: "string" },
   },
   required: ["_id", "text", "createdOn"],
+  additionalProperties: false,
+};
+
+export const performerSchema = {
+  type: "object",
+  properties: {
+    _id: { type: "string" },
+    username: { type: "string" },
+    firstName: { type: "string" },
+    lastName: { type: "string" },
+    roles: {
+      type: "array",
+      items: { type: "string" },
+    },
+    createdOn: { type: "string" },
+  },
+  required: ["_id", "username", "firstName", "lastName", "roles", "createdOn"],
   additionalProperties: false,
 };
 
@@ -53,11 +69,19 @@ export const orderHistorySchema = {
       type: "string",
       enum: Object.values(ORDER_HISTORY_ACTIONS),
     },
-    performer: {
-      anyOf: [{ type: "object", additionalProperties: true }, { type: "null" }],
-    },
+    performer: performerSchema,
   },
-  required: ["status", "customer", "products", "total_price", "delivery", "assignedManager", "changedOn", "action"],
+  required: [
+    "status",
+    "customer",
+    "products",
+    "total_price",
+    "delivery",
+    "assignedManager",
+    "changedOn",
+    "action",
+    "performer",
+  ],
   additionalProperties: false,
 };
 
