@@ -6,10 +6,10 @@ import { validateResponse } from "utils/validation/validateResponse.utils";
 export class OrdersApiService {
   constructor(private ordersApi: OrdersApi) {}
 
-  async create(token: string, customerId: string, productId: string[]): Promise<IOrderFromResponse> {
+  async create(token: string, customerId: string, productIds: string[]): Promise<IOrderFromResponse> {
     const payload: IOrderCreateBody = {
       customer: customerId,
-      products: productId,
+      products: productIds,
     };
 
     const response = await this.ordersApi.create(token, payload);
