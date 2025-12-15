@@ -30,10 +30,6 @@ test.describe("[API][Orders]", () => {
     "ORD-PUT-001: Successful products update recalculates total_price",
     { tag: [TAGS.SMOKE, TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] },
     async ({ ordersApiService, productsApiService }) => {
-      test.skip(
-        process.env.SALES_PORTAL_API_URL?.includes("aqa-course-project.app") ?? false,
-        "Known prod limitation: backend does not support updating product prices in existing orders via PUT /orders/{id}",
-      );
       const original: IOrderFromResponse = orderObj!;
 
       expect.soft(original.products.length).toBeGreaterThan(0);
@@ -102,10 +98,6 @@ test.describe("[API][Orders]", () => {
     "ORD-PUT-004: History entry recorded when order composition changes",
     { tag: [TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] },
     async ({ ordersApiService, productsApiService }) => {
-      test.skip(
-        process.env.SALES_PORTAL_API_URL?.includes("aqa-course-project.app") ?? false,
-        "Known prod limitation: backend does not support adding products to existing orders via PUT /orders/{id}",
-      );
       const before: IOrderFromResponse = orderObj!;
       const beforeHistoryLen = before.history.length;
 
