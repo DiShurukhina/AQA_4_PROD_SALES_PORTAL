@@ -111,8 +111,12 @@ export class OrdersApiService {
     const customerId = order.customer._id;
     const productIds = order.products.map((product) => product._id);
     await this.delete(token, orderId);
-    await this.customersApiService.delete(token, customerId);
-    await this.productsApiService.deleteProducts(token, productIds);
+    if (customerId) {
+      await this.customersApiService.delete(token, customerId);
+    }
+    if (productIds.length > 0) {
+      await this.productsApiService.deleteProducts(token, productIds);
+    }
   }
 
   async addComment(token: string, orderId: string, text: string) {
