@@ -1,9 +1,10 @@
-import { ID, ICreatedOn, IResponseFields, SortOrder } from "./core.types";
+import { ID, ICreatedOn, IResponseFields, SortOrder, ICaseApi } from "./core.types";
 import { ICustomerFromResponse } from "./customer.types";
 import { IOrderProductFromResponse, IProduct } from "./product.types";
 import { ORDER_STATUS, ORDER_HISTORY_ACTIONS } from "../salesPortal/order-status";
 import { IDeliveryInfo } from "../salesPortal/delivery-status";
 import { IUser } from "./user.types";
+import { STATUS_CODES } from "data/statusCodes";
 
 export interface IOrderProduct extends IProduct {
   _id: string;
@@ -90,4 +91,10 @@ export interface ICommentData {
   commentText: string;
   commentator: string;
   createdOn: string;
+}
+
+export interface ICreateDeliveryCase extends ICaseApi {
+  //orderData: Partial<IOrderCreateBody>;
+  deliveryData: Partial<IDeliveryInfo>;
+  expectedStatus: STATUS_CODES;
 }
