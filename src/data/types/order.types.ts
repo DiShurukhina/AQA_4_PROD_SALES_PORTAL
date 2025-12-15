@@ -92,6 +92,11 @@ export interface ICommentData {
   createdOn: string;
 }
 
+export type IOrderUpdateBody = {
+  customer?: string;
+  products?: string[];
+};
+
 export interface ICreateOrderCase extends ICaseApi {
   productsCount: number;
 }
