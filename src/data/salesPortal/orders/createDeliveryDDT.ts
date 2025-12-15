@@ -40,7 +40,7 @@ export const CREATE_DELIVERY_POSITIVE_CASES: ICreateDeliveryCase[] = [
   },
   {
     title: "Successfully update with future date",
-    deliveryData: generateDelivery({ finalDate: "2025-12-31" }),
+    deliveryData: generateDelivery({ finalDate: "2025/12/31" }),
     expectedStatus: STATUS_CODES.OK,
     expectedErrorMessage: null,
   },
@@ -50,7 +50,6 @@ const MISSING_FIELDS_CASES: ICreateDeliveryCase[] = [
   {
     title: "Missing finalDate field",
     deliveryData: _.omit(generateDelivery(), "finalDate"),
-    //deliveryData: {...deliveryObj, address: _.omit(deliveryObj.address, "finalDate")},
     expectedStatus: STATUS_CODES.BAD_REQUEST,
     expectedErrorMessage: RESPONSE_ERRORS.BAD_REQUEST,
   },

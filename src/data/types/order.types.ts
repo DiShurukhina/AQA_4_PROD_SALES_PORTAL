@@ -12,6 +12,7 @@ export interface IOrderProduct extends IProduct {
 }
 export interface IOrderResponse extends IResponseFields {
   Order: IOrderFromResponse;
+  DeliveryInfo: IDeliveryInfo;
 }
 
 export interface IOrderHistoryResponse extends IResponseFields {
