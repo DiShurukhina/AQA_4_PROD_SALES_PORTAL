@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:52 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "345",
+    "etag": "W/\"159-OrUFLxf0yiUZwNA1UbGQUZBZKcU\"",
+    "keep-alive": "timeout=5, max=90",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Rodrick_Pacocha@gmail.com",
+      "name": "Austen Ortiz",
+      "country": "USA",
+      "city": "Fort Aliyahshire",
+      "street": "Mitchel Orchard 29",
+      "house": 102,
+      "flat": 1217,
+      "phone": "+469048713165031",
+      "createdOn": "2025-12-15T10:50:52.000Z",
+      "notes": "vzSJgYIScr2vNOLjAunfOA3cArlROX",
+      "_id": "693fe80c1c508c5d5ec942d8"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

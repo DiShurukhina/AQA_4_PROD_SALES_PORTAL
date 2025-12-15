@@ -1,0 +1,18 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "email": "Janet83@yahoo.com",
+    "name": "Kelsi Cruickshank",
+    "country": "Belarus",
+    "city": "West Braedenfort",
+    "street": "Old Lane 99",
+    "house": 372,
+    "flat": 7787,
+    "phone": "+807937251235402",
+    "notes": "N24X7zzLN1ArOJ3YJCVjzeZaTmKQdc"
+  }
+}

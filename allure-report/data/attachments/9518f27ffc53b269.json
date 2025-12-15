@@ -1,0 +1,83 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:55 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "1323",
+    "etag": "W/\"52b-o3GrNK6qJUVmCFoA9KqWX+OhmHU\"",
+    "keep-alive": "timeout=5, max=81",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customers": [
+      {
+        "_id": "693fe80e1c508c5d5ec9435a",
+        "email": "Alia_Swift70@yahoo.com",
+        "name": "Vernie Romaguera",
+        "country": "France",
+        "city": "Albaville",
+        "street": "Westgate 84",
+        "house": 457,
+        "flat": 7061,
+        "phone": "+078041381520511",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "t8aPipiyXmIDtYpOwPMz6tyZ059NAZ"
+      },
+      {
+        "_id": "693fe80d1c508c5d5ec94340",
+        "email": "Amir.Emmerich-Muller@yahoo.com",
+        "name": "Abby Lockman",
+        "country": "France",
+        "city": "New Durwardstad",
+        "street": "Cemetery Road 7",
+        "house": 742,
+        "flat": 6020,
+        "phone": "+959901371731334",
+        "createdOn": "2025-12-15T10:50:53.000Z",
+        "notes": "vDCmxs8McSfleyu5UAmfHczsZj8hmj"
+      },
+      {
+        "_id": "693fe80e1c508c5d5ec9435d",
+        "email": "Evans24@yahoo.com",
+        "name": "Laney Robel",
+        "country": "France",
+        "city": "Great Falls",
+        "street": "German Keys 35",
+        "house": 998,
+        "flat": 3222,
+        "phone": "+161983695441066",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "u5V4KT3YucjwVPhNXYPKZCXr3gV08X"
+      },
+      {
+        "_id": "693fe80e1c508c5d5ec94358",
+        "email": "Kareem_Klein42@gmail.com",
+        "name": "Reuben Wuckert",
+        "country": "France",
+        "city": "West Scarlett",
+        "street": "High Road 63",
+        "house": 717,
+        "flat": 9248,
+        "phone": "+969053514742494",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "lfG8GL3wvr8DYbvM3XVCLojLlcvtAm"
+      }
+    ],
+    "total": 4,
+    "page": 1,
+    "limit": 10,
+    "search": "",
+    "country": [
+      "France"
+    ],
+    "sorting": {
+      "sortField": "email",
+      "sortOrder": "asc"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

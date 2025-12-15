@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:54 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "355",
+    "etag": "W/\"163-W7MH1cIdBjR45s3JBDDln6HZ8P4\"",
+    "keep-alive": "timeout=5, max=86",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Garnet.Ondricka24@gmail.com",
+      "name": "Ladarius Flatley Abbott",
+      "country": "Ukraine",
+      "city": "Zoiestead",
+      "street": "Alexandre Unions 73",
+      "house": 48,
+      "flat": 9200,
+      "phone": "+076136537443236",
+      "createdOn": "2025-12-15T10:50:54.000Z",
+      "notes": "TDvi0avPlC1qxiAil7K2jNt7x6eINY",
+      "_id": "693fe80e1c508c5d5ec94346"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

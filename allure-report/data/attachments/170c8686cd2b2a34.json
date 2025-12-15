@@ -1,0 +1,83 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:55 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "1337",
+    "etag": "W/\"539-VUkC+PcGfEZF76g7R4RLoRAuxdk\"",
+    "keep-alive": "timeout=5, max=81",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customers": [
+      {
+        "_id": "693fe80e1c508c5d5ec94382",
+        "email": "Buster66@gmail.com",
+        "name": "Vergie Monahan",
+        "country": "Russia",
+        "city": "Labadiechester",
+        "street": "Clay Lane 84",
+        "house": 651,
+        "flat": 6418,
+        "phone": "+510480195306208",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "bDhjYcZirl2W2GejVw4vYo7vGAw2tk"
+      },
+      {
+        "_id": "693fe80e1c508c5d5ec9436c",
+        "email": "Leone_Durgan@yahoo.com",
+        "name": "Kristofer Schimmel",
+        "country": "Russia",
+        "city": "Vanton",
+        "street": "E Elm Street 6",
+        "house": 559,
+        "flat": 5909,
+        "phone": "+278787856745037",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "JRt37gw5I61mZsl5l8xZaGqQhBBFvA"
+      },
+      {
+        "_id": "693fe80e1c508c5d5ec94380",
+        "email": "Mackenzie22@hotmail.com",
+        "name": "Kristina Grimes Parisian",
+        "country": "Russia",
+        "city": "New Johnathonside",
+        "street": "Antoinette Grove 48",
+        "house": 27,
+        "flat": 5081,
+        "phone": "+007548617532881",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "n0XaO3ch98putvBQslT4JXbRJox4kg"
+      },
+      {
+        "_id": "693fe80e1c508c5d5ec94384",
+        "email": "Megane.Wolf91@yahoo.com",
+        "name": "Sandy McClure",
+        "country": "Russia",
+        "city": "Effertzland",
+        "street": "3rd Street 37",
+        "house": 852,
+        "flat": 7128,
+        "phone": "+015183946248364",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "fu55EY1vqv8V9nTJ0eb3ymdnOfS6B2"
+      }
+    ],
+    "total": 4,
+    "page": 1,
+    "limit": 10,
+    "search": "",
+    "country": [
+      "Russia"
+    ],
+    "sorting": {
+      "sortField": "email",
+      "sortOrder": "asc"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:04 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "453",
+    "etag": "W/\"1c5-+BB0ukN/Ncr8L9pCwPKhbmXDmDE\"",
+    "keep-alive": "timeout=5, max=53",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Chair17268",
+      "amount": 448,
+      "price": 59591,
+      "manufacturer": "Apple",
+      "createdOn": "2025-12-15T10:51:04.000Z",
+      "notes": "BPGC373xej5ersJZovTk0ogSgcqKj2f40B18W5MVQmAddS5H5xawze1pA4MxV1wCPSjdWyHediHWvklm3ANC1pExzEDF1hQD6UN3iieG6gSBQ5Fjsd4NDafwKGvFFRm1ZG4VHkhm0fO6dKV0tUkKGx7boj8YO4m21OmNgCRyMNCHGQH42UtlPA9tygAMCGtazYs84bautLCnrC8jRDrdWrzHyBQfeFsB6iaSuD7SVTifYH2NIsmKcvw6SS",
+      "_id": "693fe8181c508c5d5ec9465c"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

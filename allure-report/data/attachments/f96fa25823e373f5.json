@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Hat97550",
+    "manufacturer": "Sony",
+    "price": 91351,
+    "amount": 371,
+    "notes": "vnSkTs8Xpk6nNucU18MnJjxAWEsBTG5dSY5is6lFfXMv8CRG5FdyrS3xVYP4D7tY8IQengLy2AnJatil9N0BuDZZVGUIS9eZ1cqEbZywrX7fAsBofe8GcK5PKgDxTQGW1LEAs9p9QsodRgvnaJW541ZHIJRw4gkvK0RPJ9PGf86gMbebfsTG46To9skl7OLg7l4CdbwHwRq05PISgfVtlLM5VflgaGI47Ug9tCK3bItCghOLjKntlD2S8Z"
+  }
+}

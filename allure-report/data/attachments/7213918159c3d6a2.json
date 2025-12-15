@@ -1,0 +1,96 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:54 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "1831",
+    "etag": "W/\"727-gOo2NIlh5bd1d0c0E9Mwz00w1lg\"",
+    "keep-alive": "timeout=5, max=82",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customers": [
+      {
+        "_id": "693fe80c1c508c5d5ec942c4",
+        "email": "Martine_Wolf85@gmail.com",
+        "name": "Dean Yundt",
+        "country": "USA",
+        "city": "West Jordanetown",
+        "street": "Feest Plains 36",
+        "house": 645,
+        "flat": 6793,
+        "phone": "+209251796047171",
+        "createdOn": "2025-12-15T10:50:52.000Z",
+        "notes": "fGsLgTtM2xutiypzWdYPmQtmLy4xQH"
+      },
+      {
+        "_id": "693f87561c508c5d5ec92bb3",
+        "email": "Narciso.Carroll@yahoo.com",
+        "name": "Brown Cremin",
+        "country": "USA",
+        "city": "Marcelofort",
+        "street": "W Broadway Street",
+        "house": 41,
+        "flat": 115,
+        "phone": "+17363125137",
+        "createdOn": "2025-12-15T03:58:14.000Z",
+        "notes": "H5l2auV6Rm2ggWGyXbTfeL0UNHS52QHNfDXHG5IHjbaKiW0UWaPgFbLy6Vh4qSZ1nQ1dDOEedQyPa73YTDFLsnxrHiQrrcaIX3UhJ20xx65Ss6wlkNpHsr52Xd4M5b7W30qEX2YZD8NHYtgtyp0Oz1vQVMNrHoIp91cPG95QJPHPN0fxEu6x32eQRCUaMLxCavjHPcnoRAv5vtSd9nZLgfFGMaaZSY79QBgcZBMvk24n49gq9RNnWmzKx6"
+      },
+      {
+        "_id": "693fe80c1c508c5d5ec942dc",
+        "email": "Ocie.Klocko77@gmail.com",
+        "name": "Rolando McCullough",
+        "country": "USA",
+        "city": "Laynetown",
+        "street": "N Bridge Street 50",
+        "house": 777,
+        "flat": 5703,
+        "phone": "+315736961659307",
+        "createdOn": "2025-12-15T10:50:52.000Z",
+        "notes": "alHCuy6bejfzug1mCRCveiGj7sseTa"
+      },
+      {
+        "_id": "693fe80d1c508c5d5ec942e2",
+        "email": "Pete.Rogahn@hotmail.com",
+        "name": "Shannon Erdman",
+        "country": "USA",
+        "city": "Ileneworth",
+        "street": "Chesley View 14",
+        "house": 241,
+        "flat": 134,
+        "phone": "+735235700937169",
+        "createdOn": "2025-12-15T10:50:53.000Z",
+        "notes": "YslTPtteeEfthS3ZbrrQbEs3zHLtkl"
+      },
+      {
+        "_id": "693fe80c1c508c5d5ec942d8",
+        "email": "Rodrick_Pacocha@gmail.com",
+        "name": "Austen Ortiz",
+        "country": "USA",
+        "city": "Fort Aliyahshire",
+        "street": "Mitchel Orchard 29",
+        "house": 102,
+        "flat": 1217,
+        "phone": "+469048713165031",
+        "createdOn": "2025-12-15T10:50:52.000Z",
+        "notes": "vzSJgYIScr2vNOLjAunfOA3cArlROX"
+      }
+    ],
+    "total": 5,
+    "page": 1,
+    "limit": 10,
+    "search": "",
+    "country": [
+      "USA"
+    ],
+    "sorting": {
+      "sortField": "email",
+      "sortOrder": "asc"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

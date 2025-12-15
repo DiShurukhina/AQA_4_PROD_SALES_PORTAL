@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:57 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "344",
+    "etag": "W/\"158-F6MSVNKvGmJQ1wLkpgLn+/OH66k\"",
+    "keep-alive": "timeout=5, max=71",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Melisa_Herzog65@yahoo.com",
+      "name": "Hermann West",
+      "country": "Germany",
+      "city": "New Dustinfurt",
+      "street": "Crist Circle 47",
+      "house": 460,
+      "flat": 9938,
+      "phone": "+619215437623490",
+      "createdOn": "2025-12-15T10:50:57.000Z",
+      "notes": "zwOyvRw8e5F6Cmz3gKzBy9T1q5WlBF",
+      "_id": "693fe8111c508c5d5ec9447e"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

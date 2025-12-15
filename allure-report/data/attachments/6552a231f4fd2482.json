@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:51 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "347",
+    "etag": "W/\"15b-v0f9GYQcnq+/x1kS3TjFhNJw9u0\"",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Hildegard_Kulas63@gmail.com",
+      "name": "STESHA",
+      "country": "Great Britain",
+      "city": "West Devante",
+      "street": "Russel Mountain 21",
+      "house": 149,
+      "flat": 1058,
+      "phone": "+334662742322061",
+      "createdOn": "2025-12-15T10:50:51.000Z",
+      "notes": "Fg5SK6ms8tHrecgZUaqb8ZFkPiWYAh",
+      "_id": "693fe80b1c508c5d5ec94251"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

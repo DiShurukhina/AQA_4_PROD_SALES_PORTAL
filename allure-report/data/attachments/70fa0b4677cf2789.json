@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:08 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "451",
+    "etag": "W/\"1c3-ywk3EavgJrCB/CJGjxB+rBKH9vY\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Ball85581",
+      "amount": 933,
+      "price": 80658,
+      "manufacturer": "Sony",
+      "createdOn": "2025-12-15T10:51:08.000Z",
+      "notes": "JI56MktmFp0DTi1ooCEkUgkV5edJN6aP3P3b20IVrnVXYRXl0yQVC6XUyRN1aJxZw0wqPb2jVT7GYCgvW9Q8rzYwxGpMcs5JMXpGGrnTqBdKve5b1gzwx21oLmoMQr9qlkYg8MWHgfPsypBoWNsGCnXBNbuDoaf6gPZhNRbFyblrftDQvqcX6eIQoSyX7LKD1mEKJtRzB6u6uQ10IJJDdDizCU6Rz8QYY0RhlgrqMvYO2n5Hk2qe5vR8qa",
+      "_id": "693fe81c1c508c5d5ec9473f"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

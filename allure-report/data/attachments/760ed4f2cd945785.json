@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:11 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "458",
+    "etag": "W/\"1ca-JcJZ0SCJi3YuLwKmCTDgDwGbX2A\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Computer10169",
+      "amount": 387,
+      "price": 71371,
+      "manufacturer": "Samsung",
+      "createdOn": "2025-12-15T10:51:11.000Z",
+      "notes": "OF7GvABEJVW4HciTXGU7hdnucS7eABY0wRydmS9SHTGOVNist9hwMfGvd1UA1kVT8SlwC04rPIQMf5t2bsFDPCHDlMDIZFykolgXx1i1xuWTYBaZcevHgLQ97QhSNvfRMWswXJQ6s4xa1hFj2N9HArHLJHyShZPLu36UHmWNB44tHsLEPE4Fj0X6SCifl2Vid8BwIwV1o4UKASYeFvZtf4aMvX4Jj3S6HvuPjmA2eMslhtL3B11HJi7PqY",
+      "_id": "693fe81f1c508c5d5ec9479f"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

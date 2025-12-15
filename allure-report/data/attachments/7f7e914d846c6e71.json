@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:52 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "343",
+    "etag": "W/\"157-9WwWTjxa3XFBolCt/pAG0QIOi0A\"",
+    "keep-alive": "timeout=5, max=93",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Ferne.Steuber@hotmail.com",
+      "name": "Maryse Reilly",
+      "country": "USA",
+      "city": "East Flaviobury",
+      "street": "Walsh Islands 32",
+      "house": 999,
+      "flat": 9345,
+      "phone": "+928453724248956",
+      "createdOn": "2025-12-15T10:50:52.000Z",
+      "notes": "c6Z5GcJWkhWcD47uEaruitH3Sg7Jly",
+      "_id": "693fe80c1c508c5d5ec942a2"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:57 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "453",
+    "etag": "W/\"1c5-0Eoi9Etk0levyhU+cjGJ8Gh3RRg\"",
+    "keep-alive": "timeout=5, max=90",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Bacon2169",
+      "amount": 987,
+      "price": 56251,
+      "manufacturer": "Amazon",
+      "createdOn": "2025-12-15T10:50:57.000Z",
+      "notes": "4N5KOGKs6HXvxScDhlf6H93awJreMX4yx3G76kw7x3Z4IOywSAKxQaEg5zo8DF8zmGpkor8kjrWoQD6q0MjKGO8EMVsjs2arc9EDGDBz6aQf9BnDd253brls2oh94EWz1nVbbMt79xDaykjScLg35AlqUsln3g1TgjR2KE3t4L1JeKC8YDg2JcFDY07dB0oIvIg6IZSjZmtictz8gmKY4YPweJcENkmPzmuvom23IQz9GOL8ePyjpW7b9u",
+      "_id": "693fe8111c508c5d5ec94498"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

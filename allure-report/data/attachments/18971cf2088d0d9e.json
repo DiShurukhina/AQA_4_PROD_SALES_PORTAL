@@ -1,0 +1,83 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:55 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "1347",
+    "etag": "W/\"543-S5pYk6POSrC3q194ZhLHACirTIk\"",
+    "keep-alive": "timeout=5, max=82",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customers": [
+      {
+        "_id": "693fe80d1c508c5d5ec9430d",
+        "email": "Cesar_Gislason17@gmail.com",
+        "name": "Jarod Lang",
+        "country": "Belarus",
+        "city": "Sunrise",
+        "street": "S Church Street 53",
+        "house": 774,
+        "flat": 1501,
+        "phone": "+298123230430534",
+        "createdOn": "2025-12-15T10:50:53.000Z",
+        "notes": "9HE8e626Pusm36xyMcnnyxGudXHf9Z"
+      },
+      {
+        "_id": "693fe80d1c508c5d5ec9430b",
+        "email": "Crawford20@yahoo.com",
+        "name": "Juvenal Tromp",
+        "country": "Belarus",
+        "city": "Heidenreichfield",
+        "street": "14th Street 36",
+        "house": 890,
+        "flat": 2771,
+        "phone": "+274575069807437",
+        "createdOn": "2025-12-15T10:50:53.000Z",
+        "notes": "6VvP3vvsQZ0NddCuhzb9oD5s1Q8NXB"
+      },
+      {
+        "_id": "693fe80d1c508c5d5ec942f2",
+        "email": "Erwin98@gmail.com",
+        "name": "Trenton Larson",
+        "country": "Belarus",
+        "city": "East Georgianafort",
+        "street": "Larkin Gateway 66",
+        "house": 212,
+        "flat": 8563,
+        "phone": "+050912964863018",
+        "createdOn": "2025-12-15T10:50:53.000Z",
+        "notes": "x3ThI41KgQLeiiLqCRq0yvYshRgiis"
+      },
+      {
+        "_id": "693fe80d1c508c5d5ec94311",
+        "email": "Milford.Crooks@gmail.com",
+        "name": "Colt Harber",
+        "country": "Belarus",
+        "city": "Lake Dylanbury",
+        "street": "Martin Luther King Drive 94",
+        "house": 349,
+        "flat": 488,
+        "phone": "+871352105898235",
+        "createdOn": "2025-12-15T10:50:53.000Z",
+        "notes": "rxXSqHlBSaO14XaAavzcCNsCg5bmen"
+      }
+    ],
+    "total": 4,
+    "page": 1,
+    "limit": 10,
+    "search": "",
+    "country": [
+      "Belarus"
+    ],
+    "sorting": {
+      "sortField": "email",
+      "sortOrder": "asc"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

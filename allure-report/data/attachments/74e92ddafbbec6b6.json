@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:07 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "451",
+    "etag": "W/\"1c3-35KX7CFlO8bSxnhG2so90jN4fz0\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Hat56591",
+      "amount": 205,
+      "price": 23855,
+      "manufacturer": "Apple",
+      "createdOn": "2025-12-15T10:51:07.000Z",
+      "notes": "DxqL37NlhrRWwHRonKFPQulhLbh4NM2COKA2MnMujxLyB6oawrDyAr5AUefAz0LuBj2l5ofN9wGXUqKKwdOutMOak9sjE5RhP8uLKUyx9tPK0CSvqAGKiE4Syhv55dNMnElcxIDD4vJjfWX9Pd7BVeUeuEZcjqEL9qnJPzcHu9h7tolabU9oPGpIPFx4OcrI0OVFpN5t6idqgb2jIkVl1XYLxVKDpbRiZEF8qC46a1fqPJgFsfIA82jNQ2",
+      "_id": "693fe81b1c508c5d5ec94712"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

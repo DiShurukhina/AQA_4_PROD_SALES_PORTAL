@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:51 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "357",
+    "etag": "W/\"165-logtFi52MCZO9QPTRMBDdKtHkG0\"",
+    "keep-alive": "timeout=5, max=97",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Beau.Bergstrom@gmail.com",
+      "name": "Ahmed Schamberger",
+      "country": "Canada",
+      "city": "Nolagthiosd Ghdipiso",
+      "street": "O Conner Prairie 34",
+      "house": 355,
+      "flat": 8612,
+      "phone": "+191886862893242",
+      "createdOn": "2025-12-15T10:50:51.000Z",
+      "notes": "ES58qlwCCVxjBamy11sFp3PQ2Xr2Ar",
+      "_id": "693fe80b1c508c5d5ec94234"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

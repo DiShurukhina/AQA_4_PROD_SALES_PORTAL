@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:58 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "456",
+    "etag": "W/\"1c8-DnZiQNRuSuGkUEbcOcfBNrSpsgM\"",
+    "keep-alive": "timeout=5, max=67",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Ball58209",
+      "amount": 989,
+      "price": 96857,
+      "manufacturer": "Microsoft",
+      "createdOn": "2025-12-15T10:50:58.000Z",
+      "notes": "3zi2RijhZHV2rJ2xo2zpKrM1WArlnxBAx5mHbYcuLPxk8ycrlUIak8Rq9hDXvc2DtLrZz39p78IoZ1IKAjUISZrPk86P2msSPt0njwCVRT3hAvY5MO56fE417XarLXYZbNC7EFBjQ3uJXNpsbnMpuYMbXVEsJL8YQzum3jVmgzIoQmcSPniHYy25jBgPOqKpYNY7GQH9qTHKFA5TCfNAG7fCsl71y1ngw7CHdUYAE6zP6WwEyfHuCzcal5",
+      "_id": "693fe8121c508c5d5ec944f8"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

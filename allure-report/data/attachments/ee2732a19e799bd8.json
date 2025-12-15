@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Ball85581",
+    "manufacturer": "Sony",
+    "price": 80658,
+    "amount": 933,
+    "notes": "JI56MktmFp0DTi1ooCEkUgkV5edJN6aP3P3b20IVrnVXYRXl0yQVC6XUyRN1aJxZw0wqPb2jVT7GYCgvW9Q8rzYwxGpMcs5JMXpGGrnTqBdKve5b1gzwx21oLmoMQr9qlkYg8MWHgfPsypBoWNsGCnXBNbuDoaf6gPZhNRbFyblrftDQvqcX6eIQoSyX7LKD1mEKJtRzB6u6uQ10IJJDdDizCU6Rz8QYY0RhlgrqMvYO2n5Hk2qe5vR8qa"
+  }
+}

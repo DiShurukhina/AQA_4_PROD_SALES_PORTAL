@@ -1,0 +1,83 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:55 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "1366",
+    "etag": "W/\"556-+DrizspNiPnLW0eZ6DuEgFRBcXw\"",
+    "keep-alive": "timeout=5, max=82",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customers": [
+      {
+        "_id": "693fe80e1c508c5d5ec94372",
+        "email": "Bobby48@hotmail.com",
+        "name": "Reyna Pagac",
+        "country": "Great Britain",
+        "city": "Council Bluffs",
+        "street": "Crist Wall 80",
+        "house": 428,
+        "flat": 1596,
+        "phone": "+481746532539724",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "XR3IFgKGuX8J1Rbavlurj0zke0FSwb"
+      },
+      {
+        "_id": "693fe80e1c508c5d5ec9436e",
+        "email": "Drake_Bradtke@yahoo.com",
+        "name": "D angelo Kuhic",
+        "country": "Great Britain",
+        "city": "East Lynnberg",
+        "street": "Bernardo Squares 14",
+        "house": 730,
+        "flat": 8610,
+        "phone": "+158122627447179",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "aN0kG7dM2xpHlPv5YZTbEq8i6t7eoM"
+      },
+      {
+        "_id": "693fe80e1c508c5d5ec94356",
+        "email": "Elda_Pollich16@hotmail.com",
+        "name": "Abby Schowalter",
+        "country": "Great Britain",
+        "city": "East Donside",
+        "street": "Third Avenue 10",
+        "house": 156,
+        "flat": 876,
+        "phone": "+325098647829484",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "Bw6JOVqCHZcTVYjroJdCYjXzoRxOzW"
+      },
+      {
+        "_id": "693fe80e1c508c5d5ec94370",
+        "email": "Evert.Raynor@gmail.com",
+        "name": "Cleve Jaskolski",
+        "country": "Great Britain",
+        "city": "Friesenfort",
+        "street": "Grady Mills 28",
+        "house": 79,
+        "flat": 8957,
+        "phone": "+198575082564874",
+        "createdOn": "2025-12-15T10:50:54.000Z",
+        "notes": "MxrPsNIUX5pOb0Zd05SPmAChkR0VTC"
+      }
+    ],
+    "total": 4,
+    "page": 1,
+    "limit": 10,
+    "search": "",
+    "country": [
+      "Great Britain"
+    ],
+    "sorting": {
+      "sortField": "email",
+      "sortOrder": "asc"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

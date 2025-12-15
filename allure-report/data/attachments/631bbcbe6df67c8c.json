@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:06 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "452",
+    "etag": "W/\"1c4-804+hpc0Jjg6BTY7HE0qgqPPt3s\"",
+    "keep-alive": "timeout=5, max=43",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "_id": "693fe81a1c508c5d5ec946d9",
+      "name": "Fish80204",
+      "amount": 524,
+      "price": 61434,
+      "manufacturer": "Apple",
+      "createdOn": "2025-12-15T10:51:06.000Z",
+      "notes": "sSC7AjjA4hGM1Q8c1hLIRYBxJ8jTPFkTqntYeETV9EV6Psao5eym7UYMXxHAMuqGod4ESjIy8Ph62lBXLoW4Zp57VdN0Y8O8S5ofzLVpjCgVugja8jWAjkIYYroXM81LHVsOVmTb68U2aIAv4ZfEKTxLi6uZ6zwW4XCOCAmHWfz8SxOaSYiJSWytuAnb7055ZVTREmM0VARRjkEjtQEg4I6GJ8RNmipP3hUj6SAJyKlanui0dtTsQ7qWSf"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

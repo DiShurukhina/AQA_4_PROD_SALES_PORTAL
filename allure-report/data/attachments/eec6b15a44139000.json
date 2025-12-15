@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "email": "Camron.Marvin@hotmail.com",
+    "name": "Greyson Mayer",
+    "country": "Belarus",
+    "city": "Salliehaven",
+    "street": "Goldner Flats 7",
+    "house": 154,
+    "flat": 6220,
+    "phone": "+12345678901234567890",
+    "notes": "Yh7TCFZke8bwX0yzj3p1Kjmkq4ToDT"
+  }
+}

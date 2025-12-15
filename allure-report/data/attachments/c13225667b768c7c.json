@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "email": "Berry_Schuppe@yahoo.com",
+    "name": "Mckayla Parisian Hoeger",
+    "country": "Ukraine",
+    "city": "Christboro",
+    "street": "Spring Street 3",
+    "house": 904,
+    "flat": 7805,
+    "phone": "+481008085973564",
+    "notes": "yTl523ZYsqZW8V6DyLcVsGiN9DRQ9F"
+  }
+}

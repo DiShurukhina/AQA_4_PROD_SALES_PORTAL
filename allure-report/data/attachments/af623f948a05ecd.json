@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "qN",
+    "amount": 594,
+    "price": 41831,
+    "manufacturer": "Google",
+    "createdOn": "2025-12-15T10:51:07.000Z",
+    "notes": "b9CNWOZOGzAYH4ni1ucPbweAmLtAPU4Tcc3wg8sbxLaISWYqbZjafQqjia2CaibcOVuvtkJr5z2bk4n5rMnFhlgsNPDUxSwfWntP8cM65Hg1fC2IaQ6Etyf9UnFytyhfqfAKf90rWFRb9042eqTHSEZCikVDE8pGGETfelAA0KP2rZlqmrhEQdvdPb07MlmsJufoJIPFUwRkVdJcjwavCt20HZ7xPyrBwjFLDu8lciPrpTyzoKTUxmgcFx",
+    "_id": "693fe81b1c508c5d5ec94705"
+  }
+}

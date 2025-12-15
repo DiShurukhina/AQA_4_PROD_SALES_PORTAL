@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:50 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "330",
+    "etag": "W/\"14a-Z6thf+8u41TLRsyLlql/Brn3bjE\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Rick_Ortiz51@gmail.com",
+      "name": "Clifford Zulauf",
+      "country": "Canada",
+      "city": "M",
+      "street": "Ariane Coves 15",
+      "house": 444,
+      "flat": 1117,
+      "phone": "+998162666824714",
+      "createdOn": "2025-12-15T10:50:50.000Z",
+      "notes": "wa33of5aupp7zSChbXyqd1II23iViZ",
+      "_id": "693fe80a1c508c5d5ec94208"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

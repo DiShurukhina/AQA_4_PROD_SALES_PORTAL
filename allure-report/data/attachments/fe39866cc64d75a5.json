@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:59 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "450",
+    "etag": "W/\"1c2-WWaQhSEhU1RD/HZWR102UjTm+14\"",
+    "keep-alive": "timeout=5, max=65",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Fish37416",
+      "amount": 508,
+      "price": 1,
+      "manufacturer": "Samsung",
+      "createdOn": "2025-12-15T10:50:59.000Z",
+      "notes": "lOeB9cE5U6SbRrX6WoNY0ODr0nxNTDF4wj0yfc5OIXY70CXu0D8YFhofei0poRNKvcdjnyU4pbfk0EUrNbCCJvK2BGhMvh44izemkPIh6388a0fFcmqZrXOAloW5DgbnIq1dAr4fjLLUtzKvhjJKJWhkgrCGPbkMGGmkML4YwldB4qOB9LMmQD9HWkfQf4u8fILhQeqa3MCATAsJVKT7g9VdDlcgNCylRUvDZJD7cfnpnCZ1joRZABN6sp",
+      "_id": "693fe8131c508c5d5ec9453d"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "email": "Arvel75@yahoo.com",
+    "name": "Pauline Homenick",
+    "country": "Canada",
+    "city": "Kendrickview",
+    "street": "Huels Landing 17",
+    "house": 44,
+    "flat": 3509,
+    "phone": "+075055313431998",
+    "notes": "H3SFM6aiMvR5A3Y3X3b4xGAs4wHUsw"
+  }
+}

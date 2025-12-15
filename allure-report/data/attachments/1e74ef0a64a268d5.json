@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:54 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "341",
+    "etag": "W/\"155-WI2SRPrQlOVUCUvgqEw+qx4qsUI\"",
+    "keep-alive": "timeout=5, max=84",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Bobby48@hotmail.com",
+      "name": "Reyna Pagac",
+      "country": "Great Britain",
+      "city": "Council Bluffs",
+      "street": "Crist Wall 80",
+      "house": 428,
+      "flat": 1596,
+      "phone": "+481746532539724",
+      "createdOn": "2025-12-15T10:50:54.000Z",
+      "notes": "XR3IFgKGuX8J1Rbavlurj0zke0FSwb",
+      "_id": "693fe80e1c508c5d5ec94372"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

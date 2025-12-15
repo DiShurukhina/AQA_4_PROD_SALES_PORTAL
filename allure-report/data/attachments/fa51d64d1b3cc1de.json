@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:59 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "456",
+    "etag": "W/\"1c8-TxnmQQrnhUAYS+qq3eF0/tNVRTY\"",
+    "keep-alive": "timeout=5, max=63",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Ball98755",
+      "amount": 989,
+      "price": 99999,
+      "manufacturer": "Microsoft",
+      "createdOn": "2025-12-15T10:50:59.000Z",
+      "notes": "sP8WApAqoEGMcoCoLbBXYVFK4MkJB1tKHhlGVjgzrpJyD0rgWK6aWGN1v5qtzkrgqR6yVzlFmBCG6lcTUwbdqLldMUw1Kun77bTLnIZQO7RdX99Reee4pp7tEVqduvHGwXFQJfSXtC1Ex1ZacNeXnq9hFihNm0O1uftsxCE6gInLHXl1iyDMbUtcfbj45T0wojAfCUCpfQR7rT4GMh7yZrnsCntY8cZ3kl2A5Z4GyGYlyEFfHyTy9kp8wQ",
+      "_id": "693fe8131c508c5d5ec9456e"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

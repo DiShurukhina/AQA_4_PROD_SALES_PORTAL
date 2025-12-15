@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "cBeNXAAcd25uTpmggOnFlrAInV5bs36jKrH7ldAiX",
+    "amount": 526,
+    "price": 33650,
+    "manufacturer": "Google",
+    "createdOn": "2025-12-15T10:51:04.000Z",
+    "notes": "W7eDjmoh9UZJNsKlkZPmjqzmZCq69oScts6f6BBdVkt5ODO0ZwcldASBd41w14zsCiB7g7R9siMWLFUl4RTOHSuRkR27xZ3jWV0ucb1rO6A3bZ5ZHnRiz0KN252WnSVzhWNF4b31PzsilZESXGPJFuKowUzc9YYKkkkqkRfMys516plo9AqSukuYWQ6vPgG0DBn98FwiVIbJhCaHoukDlGizGdkmAr95vCKfRBbeNndfcZkSkqRQFKyHCD",
+    "_id": "693fe8181c508c5d5ec94658"
+  }
+}

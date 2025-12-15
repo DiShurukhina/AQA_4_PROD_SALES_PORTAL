@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "email": "Rick_Ortiz51@gmail.com",
+    "name": "Clifford Zulauf",
+    "country": "Canada",
+    "city": "M",
+    "street": "Ariane Coves 15",
+    "house": 444,
+    "flat": 1117,
+    "phone": "+998162666824714",
+    "notes": "wa33of5aupp7zSChbXyqd1II23iViZ"
+  }
+}

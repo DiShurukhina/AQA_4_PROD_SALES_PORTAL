@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:08 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "455",
+    "etag": "W/\"1c7-WBzEovrD6wxHdedOsHz2WKUHdVE\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Chair567",
+      "amount": 645,
+      "price": 81962,
+      "manufacturer": "Microsoft",
+      "createdOn": "2025-12-15T10:51:08.000Z",
+      "notes": "jt5qZrEOd9UHhwbUlf2iYeVHpR5nX4E86ef75As00pXRnStzlFMSXznb8ZIX5seE1fF3N2DrWjIWwJc1QRIkLP6szqqFjvFPhkR4arbWLNeJR17xRvQNTuN7M5IG4dQL9sziQ0qPnHb0Pwckx3DX6KwRhmzHIOQ82v3BDbUYdjohBKZW9rVJDMb5VPqEM0LsAflwDOyKEr0f7U2dICuWP3sqUr1WYsXGob8heMjOV60o8dzj07sBj2x32y",
+      "_id": "693fe81c1c508c5d5ec94755"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

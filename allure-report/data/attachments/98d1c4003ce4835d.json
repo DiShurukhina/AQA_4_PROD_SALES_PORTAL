@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Car17685",
+    "amount": 205,
+    "price": -50,
+    "manufacturer": "Amazon",
+    "createdOn": "2025-12-15T10:51:09.000Z",
+    "notes": "0dLTyhKPVLdWNBpa3TMpc22kE6MzBzjO6hFXIOCvBcTvKODk8W5DiJjEIRJnixV2aMnPjJVVQWnvrYG6H7rzKt6TvnZ9I8tOYaWfwnUvCZHTPq0xjCGQT8cDFTXmzk6X5VlYRMLfLap4hgGZ8K5PxdB61DmuqZLyVDJsKgjots5o0UtXMHMsduRGxfCFif28QPflN7cHDXkttbmGfB5cvG8d08A4jN5sWlpwZdZWWy87esxnvX05pwJVxS",
+    "_id": "693fe81d1c508c5d5ec94769"
+  }
+}

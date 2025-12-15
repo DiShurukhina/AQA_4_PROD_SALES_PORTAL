@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Salad72311",
+    "manufacturer": "Sony",
+    "price": 0,
+    "amount": 505,
+    "notes": "NK9nb0QwU9Wztv4h0tcBBxpangfoWMDWoDmsweYhqj0JPdNaCmfzt5RUeiarO1cRClzycTUCXpq8QALUtBtXtebzrNTOxj6eRbxEINcFxNDDLIyzJQhfb0I7OI3BTHTh4zYyTX1NDv52eTfhEIo4AaVD3Ero5UakoYvOszblH5wTOoIKKGUNja1ZDqAuPcQ0pk8XbXl5BD1dy4QffNCbBJPNU4hEkxkorEmClKi4XorGNGGsLKUtif7EzX"
+  }
+}

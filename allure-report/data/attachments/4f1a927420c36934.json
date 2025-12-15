@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "email": "Madonna.Feest@hotmail.com",
+    "name": "Zora Stehr",
+    "country": "USA",
+    "city": "",
+    "street": "Hawthorn Close 33",
+    "house": 470,
+    "flat": 5608,
+    "phone": "+294292540774700",
+    "notes": "K22iKa9nKG7iF1Vkeb8Ks8RacfPATK"
+  }
+}

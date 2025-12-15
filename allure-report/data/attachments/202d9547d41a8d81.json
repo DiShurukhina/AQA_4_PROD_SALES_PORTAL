@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "email": "Furman95@hotmail.com",
+    "name": "",
+    "country": "Great Britain",
+    "city": "Bolingbrook",
+    "street": "Park Drive 92",
+    "house": 902,
+    "flat": 3101,
+    "phone": "+066453342922184",
+    "notes": "2uQ5wk0tIDhWen5nDGkXEcJyOdMxX9"
+  }
+}

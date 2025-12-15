@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:51 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "338",
+    "etag": "W/\"152-UAq367+jcepvasFdt4wc4xWwr4g\"",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Adeline8@gmail.com",
+      "name": "Nash Medhurst",
+      "country": "Russia",
+      "city": "North Hannaberg",
+      "street": "Washington Street 75",
+      "house": 424,
+      "flat": 4843,
+      "phone": "+1234567890",
+      "createdOn": "2025-12-15T10:50:51.000Z",
+      "notes": "W7dZadm7SmeXTxKVz7vqtleTAzs58X",
+      "_id": "693fe80b1c508c5d5ec94270"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

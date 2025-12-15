@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Computer84318",
+    "manufacturer": "Samsung",
+    "price": 45368,
+    "amount": 311,
+    "notes": "BI2jKpTD7QYnhlp3kpOPGa4he5nrARitRXLt3q3R0mSB5YFrRojqpn7UkIY3j0waawYZTNpkBpb9xlBJDeMdoh6gVv3rah6hhMjjwWOUZ86CiYg9AhKwGCUB76gsjqFCUxP1HnngJfmguq1s5FxGAoMKdrNjB8Bnx600RZV7PPpfT9WEmfXjQpdynyucn34IPfFqdDRW9lr76BgQxzVDIjMimghYsPWytpShIso1KMN1niZzNjVswn03Ga"
+  }
+}

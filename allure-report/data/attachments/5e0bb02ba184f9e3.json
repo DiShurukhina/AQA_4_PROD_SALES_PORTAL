@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:55 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "341",
+    "etag": "W/\"155-U8fliltmPk1YlGUvBQvlNyHI8r0\"",
+    "keep-alive": "timeout=5, max=98",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Sterling53@gmail.com",
+      "name": "Davion Lind",
+      "country": "Belarus",
+      "city": "North Jasperstad",
+      "street": "Bogisich Track 53",
+      "house": 867,
+      "flat": 847,
+      "phone": "+598004511387892",
+      "createdOn": "2025-12-15T10:50:55.000Z",
+      "notes": "TaeS4OUyLR093Hy8zjucKwu2dNDDHu",
+      "_id": "693fe80f1c508c5d5ec943b3"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

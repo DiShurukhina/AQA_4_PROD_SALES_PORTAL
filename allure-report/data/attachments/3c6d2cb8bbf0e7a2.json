@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Pizza4595",
+    "manufacturer": "Microsoft",
+    "price": 84534,
+    "amount": 771,
+    "notes": "D6FaHG1Ys9KdyS6VFBf6BvknO9moMmXE8ATXTintMoGMrVThfj7nFMxPqSrN52wMAwCYYL157CCK59xEqLlpRPaLdKX31kAQAkbePhrigPr9EMoFesGWFLxnFLqtQYUkefvEffVZkU15udjGh44maGCGaVakYlJxp81yzFzsRu6TjcSrVyFgRYUrJpwRzkEW9sq9jpQ36FXTXCNyGHInwAgubAsBX9fPeRlpRUs3D83lD3uJOv9bJ2cx6s"
+  }
+}

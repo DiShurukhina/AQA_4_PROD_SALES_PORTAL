@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:54 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "337",
+    "etag": "W/\"151-o5O2DhqBUGu2Qor27drrs4LAptY\"",
+    "keep-alive": "timeout=5, max=83",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Leone_Durgan@yahoo.com",
+      "name": "Kristofer Schimmel",
+      "country": "Russia",
+      "city": "Vanton",
+      "street": "E Elm Street 6",
+      "house": 559,
+      "flat": 5909,
+      "phone": "+278787856745037",
+      "createdOn": "2025-12-15T10:50:54.000Z",
+      "notes": "JRt37gw5I61mZsl5l8xZaGqQhBBFvA",
+      "_id": "693fe80e1c508c5d5ec9436c"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

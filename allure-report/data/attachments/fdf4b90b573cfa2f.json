@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:52 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "361",
+    "etag": "W/\"169-wmDyVAiGQugvPiYFy7RmZ6xhz6k\"",
+    "keep-alive": "timeout=5, max=89",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Brennan_McClure@hotmail.com",
+      "name": "Kassandra MacGyver Hilll",
+      "country": "Canada",
+      "city": "Quigleyborough",
+      "street": "Vernie Junctions 92",
+      "house": 344,
+      "flat": 4732,
+      "phone": "+965096360442701",
+      "createdOn": "2025-12-15T10:50:52.000Z",
+      "notes": "KNo1RsLnfg1EOj2pHnRtb01LbApgMS",
+      "_id": "693fe80c1c508c5d5ec942da"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

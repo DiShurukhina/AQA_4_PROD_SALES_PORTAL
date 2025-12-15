@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:53 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "344",
+    "etag": "W/\"158-CR+QgYw0PhF/TPUoBoXeZOv971w\"",
+    "keep-alive": "timeout=5, max=88",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Erwin98@gmail.com",
+      "name": "Trenton Larson",
+      "country": "Belarus",
+      "city": "East Georgianafort",
+      "street": "Larkin Gateway 66",
+      "house": 212,
+      "flat": 8563,
+      "phone": "+050912964863018",
+      "createdOn": "2025-12-15T10:50:53.000Z",
+      "notes": "x3ThI41KgQLeiiLqCRq0yvYshRgiis",
+      "_id": "693fe80d1c508c5d5ec942f2"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

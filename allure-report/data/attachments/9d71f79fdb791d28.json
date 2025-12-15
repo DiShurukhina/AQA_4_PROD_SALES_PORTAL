@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:53 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "328",
+    "etag": "W/\"148-oHT8XTBV15q8nOxQ2zvyAhLkbFY\"",
+    "keep-alive": "timeout=5, max=89",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Carolina80@gmail.com",
+      "name": "Merl Lemke",
+      "country": "Canada",
+      "city": "Swiftberg",
+      "street": "Elm Close 56",
+      "house": 679,
+      "flat": 1905,
+      "phone": "+905386497541484",
+      "createdOn": "2025-12-15T10:50:53.000Z",
+      "notes": "RiXpXgZA6eXW6hFfuygAbykJ3tSVDf",
+      "_id": "693fe80d1c508c5d5ec942fc"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

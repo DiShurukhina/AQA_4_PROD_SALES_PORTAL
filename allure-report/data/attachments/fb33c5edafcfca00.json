@@ -1,0 +1,83 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:58 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "1664",
+    "etag": "W/\"680-gIhsKJOTU0u5oXGlLHqi+6BGa2Y\"",
+    "keep-alive": "timeout=5, max=89",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Order": {
+      "status": "Draft",
+      "customer": {
+        "_id": "693fe8111c508c5d5ec94480",
+        "email": "Ludie_Mertz31@yahoo.com",
+        "name": "Jermaine Spinka",
+        "country": "USA",
+        "city": "North Aric",
+        "street": "Post Road 6",
+        "house": 372,
+        "flat": 2788,
+        "phone": "+335877298688291",
+        "createdOn": "2025-12-15T10:50:57.000Z",
+        "notes": "GeXIsEmqtOyxdDpU6eApn5qKEDdDnY"
+      },
+      "products": [
+        {
+          "_id": "693fe8111c508c5d5ec94498",
+          "name": "Bacon2169",
+          "amount": 987,
+          "price": 56251,
+          "manufacturer": "Amazon",
+          "notes": "4N5KOGKs6HXvxScDhlf6H93awJreMX4yx3G76kw7x3Z4IOywSAKxQaEg5zo8DF8zmGpkor8kjrWoQD6q0MjKGO8EMVsjs2arc9EDGDBz6aQf9BnDd253brls2oh94EWz1nVbbMt79xDaykjScLg35AlqUsln3g1TgjR2KE3t4L1JeKC8YDg2JcFDY07dB0oIvIg6IZSjZmtictz8gmKY4YPweJcENkmPzmuvom23IQz9GOL8ePyjpW7b9u",
+          "received": false
+        }
+      ],
+      "delivery": null,
+      "total_price": 56251,
+      "createdOn": "2025-12-15T10:50:58.000Z",
+      "comments": [],
+      "history": [
+        {
+          "status": "Draft",
+          "customer": "693fe8111c508c5d5ec94480",
+          "products": [
+            {
+              "_id": "693fe8111c508c5d5ec94498",
+              "name": "Bacon2169",
+              "amount": 987,
+              "price": 56251,
+              "manufacturer": "Amazon",
+              "notes": "4N5KOGKs6HXvxScDhlf6H93awJreMX4yx3G76kw7x3Z4IOywSAKxQaEg5zo8DF8zmGpkor8kjrWoQD6q0MjKGO8EMVsjs2arc9EDGDBz6aQf9BnDd253brls2oh94EWz1nVbbMt79xDaykjScLg35AlqUsln3g1TgjR2KE3t4L1JeKC8YDg2JcFDY07dB0oIvIg6IZSjZmtictz8gmKY4YPweJcENkmPzmuvom23IQz9GOL8ePyjpW7b9u",
+              "received": false
+            }
+          ],
+          "total_price": 56251,
+          "delivery": null,
+          "changedOn": "2025-12-15T10:50:58.000Z",
+          "action": "Order created",
+          "performer": {
+            "_id": "692337ce1c508c5d5e953357",
+            "username": "student13@gmail.com",
+            "firstName": "Isabelle",
+            "lastName": "Mueller",
+            "roles": [
+              "USER"
+            ],
+            "createdOn": "2025/11/23 16:35:26"
+          },
+          "assignedManager": null
+        }
+      ],
+      "assignedManager": null,
+      "_id": "693fe8121c508c5d5ec944b4"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

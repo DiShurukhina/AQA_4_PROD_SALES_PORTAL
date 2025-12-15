@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:52 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "336",
+    "etag": "W/\"150-xJjY7Kol59OMNGgf3JIooVeTdf8\"",
+    "keep-alive": "timeout=5, max=93",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Makayla_Dickinson69@hotmail.com",
+      "name": "Dayton Rutherford",
+      "country": "Ukraine",
+      "city": "Maudshire",
+      "street": "J",
+      "house": 415,
+      "flat": 2080,
+      "phone": "+494841393811699",
+      "createdOn": "2025-12-15T10:50:52.000Z",
+      "notes": "ppRzfVvS7DpPWN5fwUyEKesWJz0tYR",
+      "_id": "693fe80c1c508c5d5ec94290"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

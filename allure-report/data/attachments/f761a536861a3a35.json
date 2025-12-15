@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:15 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "453",
+    "etag": "W/\"1c5-OHuat8SzqvmH8JKnafBSGrnRYFA\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Ball88626",
+      "amount": 187,
+      "price": 46376,
+      "manufacturer": "Xiaomi",
+      "createdOn": "2025-12-15T10:51:15.000Z",
+      "notes": "5mKDfotfxUnYhFJKcJPDyOvbO5qt8P19rdJm6PxNbApV1RLg0IP3K0SDRQNEi9EiIFqLwZBdhHI22yFhKaALjQFvhDrlsL8pCXRuDQtaBskj2mX98GsMFjN6WT2hUY4AU9pcAXqMBU9rg0qNKju2wk8wMb4yeHf5XLGUWqtCNcGs8hZAcqHt6OdwcZsGVRIL2DwAupDLbv0u8jKg3lbkns6QwsT9KAaPxrwA71Hv042joofE7kAwGZ9vVK",
+      "_id": "693fe8231c508c5d5ec947cd"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

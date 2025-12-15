@@ -1,0 +1,83 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:56 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "1668",
+    "etag": "W/\"684-rVgUen+j4AmyAOSuWlVNhc1DBdY\"",
+    "keep-alive": "timeout=5, max=96",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Order": {
+      "status": "Draft",
+      "customer": {
+        "_id": "693fe80f1c508c5d5ec943b3",
+        "email": "Sterling53@gmail.com",
+        "name": "Davion Lind",
+        "country": "Belarus",
+        "city": "North Jasperstad",
+        "street": "Bogisich Track 53",
+        "house": 867,
+        "flat": 847,
+        "phone": "+598004511387892",
+        "createdOn": "2025-12-15T10:50:55.000Z",
+        "notes": "TaeS4OUyLR093Hy8zjucKwu2dNDDHu"
+      },
+      "products": [
+        {
+          "_id": "693fe80f1c508c5d5ec943cc",
+          "name": "Bike44495",
+          "amount": 856,
+          "price": 68921,
+          "manufacturer": "Sony",
+          "notes": "DV0vhcRd8fB8d0BJzNbKdeBSanET90auKkfNy6Ne2pbJVzLGcoRdFpRnhPvgf69ner4VAmQoqP3I2ainFDXBAKNz5U2Kg4cPdfT2YwlVI0OrmmB7TQZ5c7EaAFAYYVli13fcVvH5TIkVysdrr0415gcEp03whp6PShd21dehp2Z4lqwisRzuVftCNueOl3Dd893TwqtBWHygsmxIWUv0fYGVUp9oPR5gOxYAKyjwuLAS1Sg1LL6mg5uhSc",
+          "received": false
+        }
+      ],
+      "delivery": null,
+      "total_price": 68921,
+      "createdOn": "2025-12-15T10:50:56.000Z",
+      "comments": [],
+      "history": [
+        {
+          "status": "Draft",
+          "customer": "693fe80f1c508c5d5ec943b3",
+          "products": [
+            {
+              "_id": "693fe80f1c508c5d5ec943cc",
+              "name": "Bike44495",
+              "amount": 856,
+              "price": 68921,
+              "manufacturer": "Sony",
+              "notes": "DV0vhcRd8fB8d0BJzNbKdeBSanET90auKkfNy6Ne2pbJVzLGcoRdFpRnhPvgf69ner4VAmQoqP3I2ainFDXBAKNz5U2Kg4cPdfT2YwlVI0OrmmB7TQZ5c7EaAFAYYVli13fcVvH5TIkVysdrr0415gcEp03whp6PShd21dehp2Z4lqwisRzuVftCNueOl3Dd893TwqtBWHygsmxIWUv0fYGVUp9oPR5gOxYAKyjwuLAS1Sg1LL6mg5uhSc",
+              "received": false
+            }
+          ],
+          "total_price": 68921,
+          "delivery": null,
+          "changedOn": "2025-12-15T10:50:56.000Z",
+          "action": "Order created",
+          "performer": {
+            "_id": "692337ce1c508c5d5e953357",
+            "username": "student13@gmail.com",
+            "firstName": "Isabelle",
+            "lastName": "Mueller",
+            "roles": [
+              "USER"
+            ],
+            "createdOn": "2025/11/23 16:35:26"
+          },
+          "assignedManager": null
+        }
+      ],
+      "assignedManager": null,
+      "_id": "693fe8101c508c5d5ec943ee"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

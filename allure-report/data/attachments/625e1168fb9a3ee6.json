@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:53 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "335",
+    "etag": "W/\"14f-3oJFaDIKH3t4CgdmEeMt2S3WvW0\"",
+    "keep-alive": "timeout=5, max=90",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Pete.Rogahn@hotmail.com",
+      "name": "Shannon Erdman",
+      "country": "USA",
+      "city": "Ileneworth",
+      "street": "Chesley View 14",
+      "house": 241,
+      "flat": 134,
+      "phone": "+735235700937169",
+      "createdOn": "2025-12-15T10:50:53.000Z",
+      "notes": "YslTPtteeEfthS3ZbrrQbEs3zHLtkl",
+      "_id": "693fe80d1c508c5d5ec942e2"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

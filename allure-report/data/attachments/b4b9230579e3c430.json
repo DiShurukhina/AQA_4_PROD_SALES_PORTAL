@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:51 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "336",
+    "etag": "W/\"150-HlnmBT2+CWHnk7EFcvN1kxroW+A\"",
+    "keep-alive": "timeout=5, max=97",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Antwan_Huel40@gmail.com",
+      "name": "Wyman Cruickshank",
+      "country": "Russia",
+      "city": "New Jana",
+      "street": "SAINT JAMES",
+      "house": 384,
+      "flat": 9142,
+      "phone": "+606447363619692",
+      "createdOn": "2025-12-15T10:50:51.000Z",
+      "notes": "dVgeeUilp0UG5UKN7HOmaMZcrpkGKg",
+      "_id": "693fe80b1c508c5d5ec9423e"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

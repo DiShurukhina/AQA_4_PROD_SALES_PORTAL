@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:01 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "451",
+    "etag": "W/\"1c3-KMNxAUqI1Rj56lot1Gpc970/Tvg\"",
+    "keep-alive": "timeout=5, max=58",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Hat6700",
+      "amount": 883,
+      "price": 31384,
+      "manufacturer": "Amazon",
+      "createdOn": "2025-12-15T10:51:01.000Z",
+      "notes": "jIzKjUwewWYz51211uC0hGt33bPOEd5cywo1K6slIibQ3C8OOAiCUAkLMjDTTc3y2BtUDQ5sZGZUCW0kHBYbMmfzKyoEynqxDEXDU5DLT3K9beLWS0dd0gity54ychlRc4gO5h4ipB1dllg6tizHRehoCzrLFd2Cx4YYrtV9GKYTqneqhLB5duJBTxutUxBfRaqlIZsqPSImSmHlqulZI4ZTysHYE3nWl5vtyQpP7ayf8owHZatBCXb8jo",
+      "_id": "693fe8151c508c5d5ec945d5"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

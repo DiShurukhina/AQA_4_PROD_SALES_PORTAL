@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:54 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "345",
+    "etag": "W/\"159-GDyXkMp8PF8d4WOTssM9HGo6RnI\"",
+    "keep-alive": "timeout=5, max=84",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Evert.Raynor@gmail.com",
+      "name": "Cleve Jaskolski",
+      "country": "Great Britain",
+      "city": "Friesenfort",
+      "street": "Grady Mills 28",
+      "house": 79,
+      "flat": 8957,
+      "phone": "+198575082564874",
+      "createdOn": "2025-12-15T10:50:54.000Z",
+      "notes": "MxrPsNIUX5pOb0Zd05SPmAChkR0VTC",
+      "_id": "693fe80e1c508c5d5ec94370"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

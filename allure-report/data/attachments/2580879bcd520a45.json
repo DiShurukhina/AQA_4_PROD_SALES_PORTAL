@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Chair17268",
+    "amount": 448,
+    "price": 59591,
+    "manufacturer": "Apple",
+    "createdOn": "2025-12-15T10:51:04.000Z",
+    "notes": "zmUfjoA8w6NpbwR34WBD8eAKZkTunWuxrEWJ4YjUHKD3JYlguNW8yGAfJeDzcKpsRpRzBAGTqHhIOeymvqaO49mtw7q734fiIqAnLeGeYNCOR1ahJBRZUSrwb6i9rUhl8RGb7Mx7btkD8iZ6EXmcAdpJYdqdck1jY3kdk70APe1bfByvg6cx7PlJMNNdvCyO9pi6zIu3YQFcuDMYibY7OTPMU0J5UtDXNMsWjUyfM83Xcc9YeDgfnIKKmW",
+    "_id": "693fe8181c508c5d5ec9465c"
+  }
+}

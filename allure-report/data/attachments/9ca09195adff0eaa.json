@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Car29266",
+    "manufacturer": "Samsung",
+    "price": 72113,
+    "amount": 1000,
+    "notes": "gsBdeLqvXIh8gMVGZuigiiexKKXj3WfKdjt7ctMjfwpfESLazs7YAiBASY6tpkmv20whB5FGTaj8gaDDrpDllziuAbwkpWieVcMpQn83XUVWusVqru04NcEMmeMhtHwL4CZM9jBKOpJOUSfVhWOUDobeXSMEyOvxdEAl7ND1D17jcLfGJFX3nkX42mUmjW70QoShjCywQHHwdXY2CzdClcOOMgbOuzAhIWzlM2CWXdSRjBhuc7ydzV0xdI"
+  }
+}

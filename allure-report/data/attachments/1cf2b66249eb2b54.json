@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:54 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "359",
+    "etag": "W/\"167-WGqNLjAFTg6upKirfBmx1vvYHg0\"",
+    "keep-alive": "timeout=5, max=83",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Mackenzie22@hotmail.com",
+      "name": "Kristina Grimes Parisian",
+      "country": "Russia",
+      "city": "New Johnathonside",
+      "street": "Antoinette Grove 48",
+      "house": 27,
+      "flat": 5081,
+      "phone": "+007548617532881",
+      "createdOn": "2025-12-15T10:50:54.000Z",
+      "notes": "n0XaO3ch98putvBQslT4JXbRJox4kg",
+      "_id": "693fe80e1c508c5d5ec94380"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

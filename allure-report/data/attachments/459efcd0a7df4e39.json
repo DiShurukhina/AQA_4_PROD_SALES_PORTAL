@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Sausages43084",
+    "manufacturer": "Tesla",
+    "price": 26689,
+    "amount": 220,
+    "notes": "ljPBK5O54fCmRY7r1w3XmoGJQNTHOdrwV9OhKshloh9r1YtZlEYG3VNOqsY8BhTiXfJU3xtb8UsR5LQQmAGfcDLTu63zx64Z9pUae6SMykzp45fE2b2DV3GayJKiseJJNbtuW8duEGub7ie8cxBPWbCJ0Iwt7U7lGiONSJAJjjFmSNOXJIo3h9szcnippyLWNdlK0ust1eTb1eUmapmrnsShobhtdTKuT7S2HcBLjRbr7HD4YVx283xilW"
+  }
+}

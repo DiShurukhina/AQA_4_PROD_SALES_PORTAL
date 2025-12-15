@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:51:06 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "457",
+    "etag": "W/\"1c9-eVs2yqGlm1e1qACONYcgOhTpxso\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Product": {
+      "name": "Sausages5384",
+      "amount": 129,
+      "price": 84991,
+      "manufacturer": "Samsung",
+      "createdOn": "2025-12-15T10:51:06.000Z",
+      "notes": "AqM3d1AkMQs4syANNxgU7KKTvRtGXQBjF9q6okeilQddUBzQMeITtPcAEF58HtxRk3l6b5PugPoo4RpTEfFm7z71Qmb1DNTd2kNzZ0Je0WIpC53CcMzLwPbSd0SMSBtbHoA0OpF60DoUEklRKIFbvg2nO7wBtlBIwp3pTDq1TC5HbHGzka7QVHHXkKKSLD9aArZi4UNtvjDim7uKvCw2h9E7uiYLk5JQYA13QXPWxMzPg3bNGYIjnixCI1",
+      "_id": "693fe81a1c508c5d5ec946d2"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}

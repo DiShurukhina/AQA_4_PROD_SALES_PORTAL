@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "content-type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjMzN2NlMWM1MDhjNWQ1ZTk1MzM1NyIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNzY1Nzk1ODQ4LCJleHAiOjE3NjU4ODIyNDh9.tQeeTXINWP-gmPhSuDt03ArKilnRYK7XwygQe4kaqxQ"
+  },
+  "body": {
+    "name": "Ball99538",
+    "manufacturer": "Amazon",
+    "price": 28745,
+    "amount": 520,
+    "notes": "imAVpFK2TdEm3BRRGNkaKkOze0ZjZv5EUG1kVky0tA0phbf0TQPb1NTNTLlnuNslnmRDf70ll9XmgrbiaANw7c1LAqq0wbN6q0UnhdtK12UtgryfDk8zk5FoX9aGKOkIzMuXsE9ajkML2jli2KKfOHSCxNkeizKSIMaLvAa0vsFVUycIKnD7fhkuxMYliqrhkTv6UbtMxvKE0hMadKJtBaOJUmYqDQswwHhvFfHzEoXm20xrlG95WBPCRC"
+  }
+}

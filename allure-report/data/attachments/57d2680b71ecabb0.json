@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "date": "Mon, 15 Dec 2025 10:50:48 GMT",
+    "server": "Apache",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Authorization,X-User-Name",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "343",
+    "etag": "W/\"157-4Tydfkck4QSRIrvmQJU0BrKbe3w\"",
+    "keep-alive": "timeout=5, max=99",
+    "connection": "Keep-Alive"
+  },
+  "body": {
+    "Customer": {
+      "email": "Marcos7@hotmail.com",
+      "name": "Fausto Konopelski",
+      "country": "Ukraine",
+      "city": "Wisozkboro",
+      "street": "O Conner Corners 87",
+      "house": 263,
+      "flat": 5543,
+      "phone": "+967879706214407",
+      "createdOn": "2025-12-15T10:50:48.000Z",
+      "notes": "WjFGRXpffMnOmM0pXevFClaN8NH4i0",
+      "_id": "693fe8081c508c5d5ec941b3"
+    },
+    "IsSuccess": true,
+    "ErrorMessage": null
+  }
+}
