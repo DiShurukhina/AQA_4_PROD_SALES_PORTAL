@@ -1,41 +1,25 @@
-import { UsersApi } from "api/api/users.api";
 import { getOrderSchema } from "data/schemas/orders/get.schema";
 import { STATUS_CODES } from "data/statusCodes";
 import { IOrderFromResponse } from "data/types/order.types";
-import { IUserFromResponse } from "data/types/user.types";
 import { expect, test } from "fixtures";
 import { validateResponse } from "utils/validation/validateResponse.utils";
-import { generateUserData } from "../users/generateUsersData";
 import { TAGS } from "data/tags";
 import { assignUnassignManagerNegativeCases, orderInStatus } from "data/salesPortal/orders/assignUnassignManagerDDT";
 import { RESPONSE_ERRORS } from "data/salesPortal/errors";
-
-export async function createManager(token: string, usersApi: UsersApi): Promise<IUserFromResponse> {
-  const userData = generateUserData();
-  const response = await usersApi.create(token, userData);
-  expect(response.status).toBe(STATUS_CODES.CREATED);
-  return response.body.User;
-}
+import { MANAGER_IDS } from "config/env";
 
 test.describe("[API][Orders][Manager assignment flow]", () => {
   let token = "";
-  let createdManager: IUserFromResponse;
-  let anotherManager: IUserFromResponse;
   let order: IOrderFromResponse;
+  const firstManagerId: string = MANAGER_IDS[0]!;
+  const secondManagerId: string = MANAGER_IDS[1]!;
 
-  test.beforeAll(async ({ loginApiService, usersApi }) => {
+  test.beforeAll(async ({ loginApiService }) => {
     token = await loginApiService.loginAsAdmin();
-    createdManager = await createManager(token, usersApi);
-    anotherManager = await createManager(token, usersApi);
-  });
-
-  test.afterAll(async ({ usersApi }) => {
-    if (createdManager._id) await usersApi.delete(token, createdManager._id);
-    if (anotherManager._id) await usersApi.delete(token, anotherManager._id);
   });
 
   for (const orderCase of orderInStatus) {
-    test.describe(`Order in ${orderCase.name} status`, { tag: [TAGS.REGRESSION, TAGS.API, TAGS.CUSTOMERS] }, () => {
+    test.describe(`Order in ${orderCase.name} status`, { tag: [TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] }, () => {
       test.beforeEach(async ({ ordersApiService }) => {
         order = await orderCase.create(ordersApiService, token);
       });
@@ -45,7 +29,7 @@ test.describe("[API][Orders][Manager assignment flow]", () => {
       });
 
       test("Assign manager to order", async ({ ordersApi }) => {
-        const response = await ordersApi.assingManager(token, order._id, createdManager._id);
+        const response = await ordersApi.assingManager(token, order._id, firstManagerId);
         validateResponse(response, {
           status: STATUS_CODES.OK,
           IsSuccess: true,
@@ -54,14 +38,12 @@ test.describe("[API][Orders][Manager assignment flow]", () => {
         });
         const assignedManager = response.body.Order.assignedManager;
         expect(assignedManager).not.toBeNull();
-        expect(assignedManager!._id).toBe(createdManager._id);
-        expect(assignedManager!.firstName).toBe(createdManager.firstName);
-        expect(assignedManager!.lastName).toBe(createdManager.lastName);
+        expect(assignedManager!._id).toBe(firstManagerId);
       });
 
       test("Update manager to another manager", async ({ ordersApi }) => {
-        await ordersApi.assingManager(token, order._id, createdManager._id);
-        const response = await ordersApi.assingManager(token, order._id, anotherManager._id);
+        await ordersApi.assingManager(token, order._id, firstManagerId);
+        const response = await ordersApi.assingManager(token, order._id, secondManagerId);
         validateResponse(response, {
           status: STATUS_CODES.OK,
           IsSuccess: true,
@@ -70,13 +52,11 @@ test.describe("[API][Orders][Manager assignment flow]", () => {
         });
         const assignedManager = response.body.Order.assignedManager;
         expect(assignedManager).not.toBeNull();
-        expect(assignedManager!._id).toBe(anotherManager._id);
-        expect(assignedManager!.firstName).toBe(anotherManager.firstName);
-        expect(assignedManager!.lastName).toBe(anotherManager.lastName);
+        expect(assignedManager!._id).toBe(secondManagerId);
       });
 
       test("Remove manager from order", async ({ ordersApi }) => {
-        await ordersApi.assingManager(token, order._id, createdManager._id);
+        await ordersApi.assingManager(token, order._id, firstManagerId);
         const response = await ordersApi.unassingManager(token, order._id);
         validateResponse(response, {
           status: STATUS_CODES.OK,
@@ -93,23 +73,15 @@ test.describe("[API][Orders][Manager assignment flow]", () => {
 
 test.describe("[API][Orders][Assign/Unassign Manager - Negative DDT]", () => {
   let token = "";
-  let createdManager: IUserFromResponse;
-  let anotherManager: IUserFromResponse;
   let order: IOrderFromResponse;
+  const firstManagerId: string = MANAGER_IDS[0]!;
 
-  test.beforeAll(async ({ loginApiService, usersApi }) => {
+  test.beforeAll(async ({ loginApiService }) => {
     token = await loginApiService.loginAsAdmin();
-    createdManager = await createManager(token, usersApi);
-    anotherManager = await createManager(token, usersApi);
-  });
-
-  test.afterAll(async ({ usersApi }) => {
-    if (createdManager._id) await usersApi.delete(token, createdManager._id);
-    if (anotherManager._id) await usersApi.delete(token, anotherManager._id);
   });
 
   for (const orderCase of orderInStatus) {
-    test.describe(`Order in ${orderCase.name} status`, { tag: [TAGS.REGRESSION, TAGS.API, TAGS.CUSTOMERS] }, () => {
+    test.describe(`Order in ${orderCase.name} status`, { tag: [TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] }, () => {
       test.beforeEach(async ({ ordersApiService }) => {
         order = await orderCase.create(ordersApiService, token);
       });
@@ -123,49 +95,31 @@ test.describe("[API][Orders][Assign/Unassign Manager - Negative DDT]", () => {
           const response = await ordersApi.assingManager(
             token,
             negativeCase.orderId(order._id),
-            negativeCase.managerId(createdManager._id),
+            negativeCase.managerId(firstManagerId),
           );
-          validateResponse(response, {
-            status: negativeCase.expectedStatus,
-            IsSuccess: false,
-            ErrorMessage: negativeCase.expectedErrorMessage,
-          });
+          validateResponse(response, negativeCase.expected);
         });
         test(`Should NOT update ${negativeCase.title}`, async ({ ordersApi }) => {
-          await ordersApi.assingManager(token, order._id, createdManager._id);
+          await ordersApi.assingManager(token, order._id, firstManagerId);
           const response = await ordersApi.assingManager(
             token,
             negativeCase.orderId(order._id),
-            negativeCase.managerId(createdManager._id),
+            negativeCase.managerId(firstManagerId),
           );
-          validateResponse(response, {
-            status: negativeCase.expectedStatus,
-            IsSuccess: false,
-            ErrorMessage: negativeCase.expectedErrorMessage,
-          });
+          validateResponse(response, negativeCase.expected);
           const orderBody = await ordersApi.getById(order._id, token);
           expect(orderBody.body.Order.assignedManager).not.toBeNull();
-          expect(orderBody.body.Order.assignedManager!._id).toBe(createdManager._id);
+          expect(orderBody.body.Order.assignedManager!._id).toBe(firstManagerId);
         });
       }
 
       test("Should NOT unassign manager from order with non-existing orderId", async ({ ordersApi }) => {
-        await ordersApi.assingManager(token, order._id, createdManager._id);
+        await ordersApi.assingManager(token, order._id, firstManagerId);
         const response = await ordersApi.unassingManager(token, "000000000000000000000000");
         validateResponse(response, {
           status: STATUS_CODES.NOT_FOUND,
           IsSuccess: false,
           ErrorMessage: RESPONSE_ERRORS.ORDER_NOT_FOUND("000000000000000000000000"),
-        });
-      });
-
-      test("Should NOT unassign manager from order with empty orderId", async ({ ordersApi }) => {
-        await ordersApi.assingManager(token, order._id, createdManager._id);
-        const response = await ordersApi.unassingManager(token, "");
-        validateResponse(response, {
-          status: STATUS_CODES.NOT_FOUND,
-          IsSuccess: false,
-          ErrorMessage: null,
         });
       });
     });

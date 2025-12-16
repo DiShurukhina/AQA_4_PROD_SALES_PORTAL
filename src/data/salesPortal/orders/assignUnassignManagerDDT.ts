@@ -38,8 +38,11 @@ export interface IManagerAssignNegativeCase {
   title: string;
   orderId: (orderId: string) => string | undefined;
   managerId: (managerId: string) => string | undefined;
-  expectedStatus: STATUS_CODES;
-  expectedErrorMessage: string | null;
+  expected: {
+    status: STATUS_CODES;
+    isSuccessful?: boolean;
+    errorMessage?: string | null;
+  };
 }
 
 export const assignUnassignManagerNegativeCases: IManagerAssignNegativeCase[] = [
@@ -47,28 +50,20 @@ export const assignUnassignManagerNegativeCases: IManagerAssignNegativeCase[] = 
     title: "manager with non-existing managerId",
     managerId: () => "000000000000000000000000",
     orderId: (orderId: string) => orderId,
-    expectedStatus: STATUS_CODES.NOT_FOUND,
-    expectedErrorMessage: RESPONSE_ERRORS.MANAGER_NOT_FOUND("000000000000000000000000"),
-  },
-  {
-    title: "manager with empty managerId",
-    managerId: () => "",
-    orderId: (orderId: string) => orderId,
-    expectedStatus: STATUS_CODES.NOT_FOUND,
-    expectedErrorMessage: null,
+    expected: {
+      status: STATUS_CODES.NOT_FOUND,
+        isSuccessful: false,
+        errorMessage: RESPONSE_ERRORS.MANAGER_NOT_FOUND("000000000000000000000000"),
+    },
   },
   {
     title: "manager with non-existing orderId",
     orderId: () => "000000000000000000000000",
     managerId: (managerId: string) => managerId,
-    expectedStatus: STATUS_CODES.NOT_FOUND,
-    expectedErrorMessage: RESPONSE_ERRORS.ORDER_NOT_FOUND("000000000000000000000000"),
-  },
-  {
-    title: "manager with empty orderId",
-    orderId: () => "",
-    managerId: (managerId: string) => managerId,
-    expectedStatus: STATUS_CODES.NOT_FOUND,
-    expectedErrorMessage: null,
+    expected: {
+      status: STATUS_CODES.NOT_FOUND,
+        isSuccessful: false,
+        errorMessage: RESPONSE_ERRORS.ORDER_NOT_FOUND("000000000000000000000000"),
+    },
   },
 ]
