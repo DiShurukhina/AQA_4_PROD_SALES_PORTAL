@@ -21,7 +21,7 @@ test.describe("[API][Orders][Create Order]", () => {
   test.describe("Positive DDT", () => {
     for (const positiveCase of CREATE_ORDER_POSITIVE_CASES) {
       test(
-        `${positiveCase.title}`,
+        positiveCase.title,
         { tag: [TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] },
         async ({ ordersApi, ordersApiService }) => {
           const { customerId, productIds } = await ordersApiService.createCustomerAndProducts(
@@ -53,14 +53,12 @@ test.describe("[API][Orders][Create Order]", () => {
           token,
           negativeCase.productsCount,
         );
-        const basePayload: IOrderCreateBody = {
+        const payload: IOrderCreateBody = {
           customer: customerId,
           products: productIds,
-        };
-        const payload: IOrderCreateBody = {
-          ...basePayload,
           ...negativeCase.orderData,
         };
+
         const createOrderResponse = await ordersApi.create(token, payload);
         const orderId = createOrderResponse.body?.Order?._id ?? "";
         if (orderId) ordersApiService.trackOrderId(orderId);
