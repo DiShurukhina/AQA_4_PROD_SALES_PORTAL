@@ -157,9 +157,9 @@ export class OrdersApiService {
     const customers = this.entitiesStore.getCustomerIds();
     const products = this.entitiesStore.getProductIds();
 
-    await Promise.allSettled(orders.map((orderId) => this.delete(token, orderId)));
-    await Promise.allSettled(customers.map((customerId) => this.customersApiService.delete(token, customerId)));
-    await Promise.allSettled(products.map((productId) => this.productsApiService.delete(token, productId)));
+    await Promise.all(orders.map((orderId) => this.delete(token, orderId)));
+    await Promise.all(customers.map((customerId) => this.customersApiService.delete(token, customerId)));
+    await Promise.all(products.map((productId) => this.productsApiService.delete(token, productId)));
 
     this.entitiesStore.clear();
   }
