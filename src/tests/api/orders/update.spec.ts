@@ -1,5 +1,6 @@
 import { test, expect } from "fixtures/api.fixture";
 import { TAGS } from "data/tags";
+import { STATUS_CODES } from "data/statusCodes";
 import { validateResponse } from "utils/validation/validateResponse.utils";
 import { IOrderFromResponse } from "data/types/order.types";
 import { ORDER_HISTORY_ACTIONS, ORDER_STATUS } from "data/salesPortal/order-status";
@@ -118,10 +119,10 @@ test.describe("[API][Orders]", () => {
       async ({ productsApi, customersApi }) => {
         const original: IOrderFromResponse = orderObj!;
         const deleteProductResponse = await productsApi.delete(original.products[0]!._id, token);
-        expect.soft(deleteProductResponse.status).toBe(400);
+        expect.soft(deleteProductResponse.status).toBe(STATUS_CODES.BAD_REQUEST);
 
         const deleteCustomerResponse = await customersApi.delete(token, original.customer._id);
-        expect.soft(deleteCustomerResponse.status).toBe(400);
+        expect.soft(deleteCustomerResponse.status).toBe(STATUS_CODES.BAD_REQUEST);
       },
     );
 
