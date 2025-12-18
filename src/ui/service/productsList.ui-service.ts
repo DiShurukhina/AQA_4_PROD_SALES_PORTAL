@@ -73,7 +73,7 @@ export class ProductsListUIService {
   }
 
   @logStep("CHECK PRODUCT EXISTS IN TABLE")
-  async assertProductInTable(productName: string, { visible }: { visible: boolean }) {
-    await expect(this.productsListPage.tableRowByName(productName)).toBeVisible({ visible });
+  async assertProductIsVisibleInTable(productName: string, isVisible = true) {
+    await expect(this.productsListPage.tableRowByName(productName)).toBeVisible({ visible: isVisible });
   }
 }
