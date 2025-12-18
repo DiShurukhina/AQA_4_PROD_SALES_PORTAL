@@ -182,4 +182,24 @@ export class OrdersApiService {
     });
     return response;
   }
+
+  async createCustomerAndProducts(
+    token: string,
+    productsCount: number,
+  ): Promise<{
+    customerId: string;
+    productIds: string[];
+  }> {
+    const customer = await this.customersApiService.create(token);
+    this.entitiesStore.trackCustomers(customer._id);
+
+    const productIds: string[] = [];
+    for (let i = 0; i < productsCount; i++) {
+      const product = await this.productsApiService.create(token);
+      productIds.push(product._id);
+    }
+    this.entitiesStore.trackProducts(productIds);
+
+    return { customerId: customer._id, productIds };
+  }
 }
