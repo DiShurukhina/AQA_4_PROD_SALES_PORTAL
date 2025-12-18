@@ -8,6 +8,7 @@ import {
   deleteOrderCommentPositiveCases,
   deleteOrderCommentNegativeCases,
 } from "data/salesPortal/orders/commentOrderTestData";
+import { TAGS } from "data/tags";
 
 test.describe("[API][Orders][Comment]", () => {
   let token = "";
@@ -26,7 +27,7 @@ test.describe("[API][Orders][Comment]", () => {
 
   test.describe("Create", () => {
     for (const testCase of commentOrderPositiveCases) {
-      test(testCase.title, async ({ ordersApi }) => {
+      test(testCase.title, { tag: [TAGS.SMOKE, TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] }, async ({ ordersApi }) => {
         const response = await ordersApi.addComment(token, order._id, testCase.text!);
         validateResponse(response, {
           status: testCase.expectedStatus,
@@ -42,7 +43,7 @@ test.describe("[API][Orders][Comment]", () => {
 
   test.describe("Not create", () => {
     for (const testCase of commentOrderNegativeCases) {
-      test(testCase.title, async ({ ordersApi }) => {
+      test(testCase.title, { tag: [TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] }, async ({ ordersApi }) => {
         const response = await ordersApi.addComment(token, order._id, testCase.text!);
         validateResponse(response, {
           status: testCase.expectedStatus,
@@ -54,19 +55,23 @@ test.describe("[API][Orders][Comment]", () => {
 
   test.describe("Delete", () => {
     for (const testCase of deleteOrderCommentPositiveCases) {
-      test(testCase.title, async ({ ordersApi, ordersApiService }) => {
-        const comment = await ordersApiService.addComment(token, order._id);
-        const response = await ordersApi.deleteComment(token, order._id, comment!._id);
-        validateResponse(response, {
-          status: testCase.expectedStatus,
-        });
-      });
+      test(
+        testCase.title,
+        { tag: [TAGS.SMOKE, TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] },
+        async ({ ordersApi, ordersApiService }) => {
+          const comment = await ordersApiService.addComment(token, order._id);
+          const response = await ordersApi.deleteComment(token, order._id, comment!._id);
+          validateResponse(response, {
+            status: testCase.expectedStatus,
+          });
+        },
+      );
     }
   });
 
   test.describe("Not delete", () => {
     for (const testCase of deleteOrderCommentNegativeCases) {
-      test(testCase.title, async ({ ordersApi }) => {
+      test(testCase.title, { tag: [TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] }, async ({ ordersApi }) => {
         const response = await ordersApi.deleteComment(token, order._id, testCase._id!);
         validateResponse(response, {
           status: testCase.expectedStatus,
