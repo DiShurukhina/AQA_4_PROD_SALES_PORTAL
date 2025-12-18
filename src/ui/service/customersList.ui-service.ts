@@ -70,7 +70,7 @@ export class CustomersListUIService {
   }
 
   @logStep("CHECK CUSTOMER EXISTS IN TABLE")
-  async assertCustomerInTable(customerEmail: string, { visible }: { visible: boolean }) {
-    await expect(this.customersListPage.tableRowByEmail(customerEmail)).toBeVisible({ visible });
+  async assertCustomerIsVisibleInTable(customerEmail: string, isVisible = true) {
+    await expect(this.customersListPage.tableRowByEmail(customerEmail)).toBeVisible({ visible: isVisible });
   }
 }
