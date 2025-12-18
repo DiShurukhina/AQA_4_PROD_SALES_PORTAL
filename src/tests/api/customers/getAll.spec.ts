@@ -1,5 +1,7 @@
-import { test, expect } from "fixtures/api.fixture";
+import { test } from "fixtures/api.fixture";
 import { TAGS } from "data/tags";
+import { validateJsonSchema } from "utils/validation/validateSchema.utils";
+import { getAllCustomersSchema } from "data/schemas/customers/getAllCustomers.schema";
 
 test.describe("CST-010 Get ALL customers (Technical endpoint)", () => {
   test(
@@ -10,7 +12,7 @@ test.describe("CST-010 Get ALL customers (Technical endpoint)", () => {
 
       const customers = await customersApiService.getAll(token);
 
-      expect(Array.isArray(customers)).toBe(true);
+      validateJsonSchema(customers, getAllCustomersSchema);
     },
   );
 });

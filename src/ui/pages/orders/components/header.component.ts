@@ -1,5 +1,6 @@
 import { expect, Page } from "@playwright/test";
 import { logStep } from "utils/report/logStep.utils.js";
+import { TIMEOUT_10_S, TIMEOUT_15_S, TIMEOUT_30_S } from "data/salesPortal/constants";
 import { BasePage } from "../../base.page";
 
 /**
@@ -12,7 +13,7 @@ export class OrderDetailsHeader extends BasePage {
   }
 
   // Containers
-  readonly root = this.page.locator("#order-info-container");
+  readonly uniqueElement = this.page.locator("#order-info-container");
   readonly assignedManagerContainer = this.page.locator("#assigned-manager-container");
   readonly statusBarContainer = this.page.locator("#order-status-bar-container");
 
@@ -46,31 +47,31 @@ export class OrderDetailsHeader extends BasePage {
 
   @logStep("HEADER: CLICK PROCESS ORDER")
   async processOrder() {
-    await expect(this.processButton).toBeVisible({ timeout: 10000 });
-    // FE uses delegated click handlers based on e.target.id; ensure the click targets the actual button.
-    await this.page.evaluate(() => document.getElementById("process-order")?.click());
+    // Click auto-waits for visibility/stability
+    await this.processButton.click();
 
+    // Modal is a NEW element, needs explicit wait
     const confirmationModal = this.page.locator(
       '[name="confirmation-modal"].modal.show, [name="confirmation-modal"].modal.fade.show',
     );
-    await expect(confirmationModal.first()).toBeVisible({ timeout: 10000 });
+    await expect(confirmationModal.first()).toBeVisible({ timeout: TIMEOUT_10_S });
 
+    // Confirm button is inside modal, auto-wait works after modal is visible
     const confirmBtn = confirmationModal
       .locator(".modal-footer button.btn-primary, .modal-footer button.btn-danger, .modal-footer button.btn-success")
       .first();
-    await expect(confirmBtn).toBeVisible({ timeout: 10000 });
     await confirmBtn.click();
 
-    // After confirm, FE re-renders Order Details; wait for a stable state using IDs (avoid text/status business-logic).
-    await expect(this.page.locator(".spinner-border")).toHaveCount(0, { timeout: 30000 });
-    await expect(this.processButton).toBeHidden({ timeout: 30000 });
-    await expect(this.root).toBeVisible({ timeout: 15000 });
+    // After confirm, FE re-renders the entire page; wait for spinners to clear and stable state
+    await expect(this.page.locator(".spinner-border")).toHaveCount(0, { timeout: TIMEOUT_30_S });
+    await expect(this.processButton).toBeHidden({ timeout: TIMEOUT_30_S });
+    await expect(this.uniqueElement).toBeVisible({ timeout: TIMEOUT_15_S });
   }
 
   @logStep("HEADER: OPEN ASSIGN MANAGER MODAL")
   async openAssignManagerModal() {
     // Deterministic trigger within #assigned-manager-container (no text selectors).
-    await expect(this.assignedManagerContainer).toBeVisible({ timeout: 10000 });
+    await expect(this.assignedManagerContainer).toBeVisible({ timeout: TIMEOUT_10_S });
     await this.assignManagerTrigger.click();
   }
 

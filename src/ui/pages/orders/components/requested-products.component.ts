@@ -1,5 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { logStep } from "utils/report/logStep.utils.js";
+import { TIMEOUT_10_S, TIMEOUT_15_S } from "data/salesPortal/constants";
 import { BasePage } from "../../base.page";
 
 /**
@@ -10,25 +11,21 @@ export class OrderDetailsRequestedProducts extends BasePage {
     super(page);
   }
 
-  readonly root = this.page
-    .locator("#products-section")
-    .or(this.page.locator("#products-accordion-section").locator("xpath=ancestor::*[self::section or self::div][1]"))
-    .or(this.page.locator("#edit-products-pencil").locator("xpath=ancestor::*[self::section or self::div][1]"))
-    .or(this.page.locator("#selectAll").locator("xpath=ancestor::*[self::section or self::div][1]"))
-    .first();
+  // Rely on frontend to render `#products-section`; `uniqueElement` is the component marker.
+  readonly uniqueElement = this.page.locator("#products-section").first();
 
   readonly accordionRoot = this.page.locator("#products-accordion-section");
 
   readonly editButton = this.page.locator("#edit-products-pencil");
 
   // Receiving controls
-  readonly startReceivingButton = this.root.locator("#start-receiving-products, #start-receiving").first();
+  readonly startReceivingButton = this.uniqueElement.locator("#start-receiving-products, #start-receiving").first();
   // Be flexible across FE variants
-  readonly saveReceivingButton = this.root
+  readonly saveReceivingButton = this.uniqueElement
     .locator("#save-received-products, #save-receiving, button#save-received-products")
     .first();
-  readonly cancelReceivingButton = this.root.locator("#cancel-receiving").first();
-  readonly selectAllCheckbox = this.root.locator("#selectAll");
+  readonly cancelReceivingButton = this.uniqueElement.locator("#cancel-receiving").first();
+  readonly selectAllCheckbox = this.uniqueElement.locator("#selectAll");
   readonly productCheckboxes = this.page.locator('input[name="product"]');
 
   // Per-product helpers
@@ -47,7 +44,7 @@ export class OrderDetailsRequestedProducts extends BasePage {
   productItemByName(name: string) {
     // Product name itself is stable (not localized). Different UI modes render different wrappers,
     // so anchor on the product button text.
-    return this.root.locator("button", { hasText: name }).first();
+    return this.uniqueElement.locator("button", { hasText: name }).first();
   }
 
   receivedLabelWithin(item: Locator) {
@@ -66,7 +63,7 @@ export class OrderDetailsRequestedProducts extends BasePage {
 
   @logStep("PRODUCTS: SAVE RECEIVING")
   async saveReceiving() {
-    await expect(this.saveReceivingButton).toBeEnabled({ timeout: 10000 });
+    await expect(this.saveReceivingButton).toBeEnabled({ timeout: TIMEOUT_10_S });
     await this.saveReceivingButton.click();
   }
 
@@ -93,7 +90,7 @@ export class OrderDetailsRequestedProducts extends BasePage {
 
   @logStep("PRODUCTS: EXPECT LOADED")
   async expectLoaded() {
-    await expect(this.root).toBeVisible();
+    await expect(this.uniqueElement).toBeVisible();
     // Not all UI states render the accordion (e.g. after fully received).
     if (await this.accordionRoot.first().isVisible()) {
       await expect(this.accordionRoot.first()).toBeVisible();
@@ -152,21 +149,51 @@ export class OrderDetailsRequestedProducts extends BasePage {
   }
 
   @logStep("PRODUCTS: WAIT FOR RECEIVING CONTROLS")
-  async waitForReceivingControls(timeoutMs: number = 15000) {
+  async waitForReceivingControls(timeoutMs: number = TIMEOUT_15_S) {
     await expect(this.cancelReceivingButton).toBeVisible({ timeout: timeoutMs });
     await expect(this.saveReceivingButton).toBeVisible({ timeout: timeoutMs });
   }
 
   @logStep("PRODUCTS: WAIT FOR RECEIVING READY")
-  async waitForReceivingReady(timeoutMs: number = 15000) {
-    const deadline = Date.now() + timeoutMs;
-    while (Date.now() < deadline) {
-      if (await this.isStartReceivingVisible()) return;
-      const saveVisible = await this.isSaveReceivingVisible();
-      const cancelVisible = await this.isCancelReceivingVisible();
-      if (saveVisible && cancelVisible) return;
-      await this.page.waitForTimeout(250);
+  async waitForStartReceiving(timeoutMs: number = TIMEOUT_15_S) {
+    const startLocator = this.uniqueElement.locator("#start-receiving-products, #start-receiving").first();
+    await startLocator.waitFor({ state: "visible", timeout: timeoutMs });
+  }
+
+  async waitForSaveCancel(timeoutMs: number = TIMEOUT_15_S) {
+    const save = this.uniqueElement
+      .locator("#save-received-products, #save-receiving, button#save-received-products")
+      .first();
+    const cancel = this.uniqueElement.locator("#cancel-receiving").first();
+    await Promise.all([
+      save.waitFor({ state: "visible", timeout: timeoutMs }),
+      cancel.waitFor({ state: "visible", timeout: timeoutMs }),
+    ]);
+  }
+
+  async waitForReceivingReady(timeoutMs: number = TIMEOUT_15_S) {
+    const startPromise = this.uniqueElement
+      .locator("#start-receiving-products, #start-receiving")
+      .first()
+      .waitFor({ state: "visible", timeout: timeoutMs });
+
+    const save = this.uniqueElement
+      .locator("#save-received-products, #save-receiving, button#save-received-products")
+      .first();
+    const cancel = this.uniqueElement.locator("#cancel-receiving").first();
+    const saveCancelPromise = Promise.all([
+      save.waitFor({ state: "visible", timeout: timeoutMs }),
+      cancel.waitFor({ state: "visible", timeout: timeoutMs }),
+    ]);
+
+    try {
+      // Resolve when either start becomes visible OR both save+cancel become visible
+      // `Promise.any` returns on first fulfilled promise; if all reject, it throws.
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore - `Promise.any` is supported in runtime
+      await Promise.any([startPromise, saveCancelPromise]);
+    } catch {
+      throw new Error("Receiving controls not ready within timeout");
     }
-    throw new Error("Receiving controls not ready within timeout");
   }
 }
