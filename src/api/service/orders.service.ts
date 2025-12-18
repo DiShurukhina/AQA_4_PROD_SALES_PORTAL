@@ -1,5 +1,4 @@
 import { OrdersApi } from "api/api/orders.api";
-import { orderFromResponseSchema } from "data/schemas/orders/order.schema";
 import { ORDER_STATUS } from "data/salesPortal/order-status";
 import { STATUS_CODES } from "data/statusCodes";
 import { IOrderCreateBody, IOrderFromResponse, IOrderUpdateBody } from "data/types/order.types";
@@ -9,6 +8,7 @@ import { validateResponse } from "utils/validation/validateResponse.utils";
 import { generateDelivery } from "data/salesPortal/orders/generateDeliveryData";
 import { getOrderSchema } from "data/schemas/orders/get.schema";
 import { EntitiesStore } from "api/service/stores/entities.store";
+import { faker } from "@faker-js/faker";
 
 export class OrdersApiService {
   constructor(
@@ -185,15 +185,15 @@ export class OrdersApiService {
     this.entitiesStore.clear();
   }
 
-  async addComment(token: string, orderId: string, text: string) {
-    const response = await this.ordersApi.addComment(token, orderId, { text });
+  async addComment(token: string, orderId: string, text?: string) {
+    const response = await this.ordersApi.addComment(token, orderId, text || faker.lorem.sentence(5));
     validateResponse(response, {
       status: STATUS_CODES.OK,
       IsSuccess: true,
       ErrorMessage: null,
-      schema: orderFromResponseSchema,
+      schema: getOrderSchema,
     });
-    return response.body.Order;
+    return response.body.Order.comments[response.body.Order.comments.length - 1];
   }
 
   async deleteComment(token: string, orderId: string, commentId: string) {

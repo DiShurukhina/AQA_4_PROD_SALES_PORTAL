@@ -108,6 +108,10 @@ export interface ICreateOrderCase extends ICaseApi {
   productsCount: number;
 }
 
+export interface ICommentOrderCase extends ICaseApi {
+  text?: string;
+}
+
 export interface ICreateOrderNegativeCase extends ICaseApi {
   productsCount: number;
   orderData: Partial<IOrderCreateBody>;
