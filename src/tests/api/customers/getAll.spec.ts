@@ -21,8 +21,6 @@ test.describe("CST-010 Get ALL customers (Technical endpoint)", () => {
       expect(response.body.ErrorMessage).toBeNull();
 
       validateJsonSchema(response.body, getAllCustomersSchema);
-
-      expect(Array.isArray(response.body.Customers)).toBe(true);
     },
   );
 });

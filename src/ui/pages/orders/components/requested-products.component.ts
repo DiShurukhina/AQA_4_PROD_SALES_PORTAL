@@ -1,5 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { logStep } from "utils/report/logStep.utils.js";
+import { TIMEOUT_10_S, TIMEOUT_15_S } from "data/salesPortal/constants";
 import { BasePage } from "../../base.page";
 
 /**
@@ -66,7 +67,7 @@ export class OrderDetailsRequestedProducts extends BasePage {
 
   @logStep("PRODUCTS: SAVE RECEIVING")
   async saveReceiving() {
-    await expect(this.saveReceivingButton).toBeEnabled({ timeout: 10000 });
+    await expect(this.saveReceivingButton).toBeEnabled({ timeout: TIMEOUT_10_S });
     await this.saveReceivingButton.click();
   }
 
@@ -152,13 +153,13 @@ export class OrderDetailsRequestedProducts extends BasePage {
   }
 
   @logStep("PRODUCTS: WAIT FOR RECEIVING CONTROLS")
-  async waitForReceivingControls(timeoutMs: number = 15000) {
+  async waitForReceivingControls(timeoutMs: number = TIMEOUT_15_S) {
     await expect(this.cancelReceivingButton).toBeVisible({ timeout: timeoutMs });
     await expect(this.saveReceivingButton).toBeVisible({ timeout: timeoutMs });
   }
 
   @logStep("PRODUCTS: WAIT FOR RECEIVING READY")
-  async waitForReceivingReady(timeoutMs: number = 15000) {
+  async waitForReceivingReady(timeoutMs: number = TIMEOUT_15_S) {
     const deadline = Date.now() + timeoutMs;
     while (Date.now() < deadline) {
       if (await this.isStartReceivingVisible()) return;
