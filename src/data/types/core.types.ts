@@ -33,7 +33,7 @@ export interface ICase {
   title: string;
 }
 export interface ICaseApi extends ICase {
-  title: string;
+  _id?: string;
   expectedStatus: STATUS_CODES;
   expectedErrorMessage: string | null;
   isSuccess?: boolean;
