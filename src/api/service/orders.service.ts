@@ -224,18 +224,22 @@ export class OrdersApiService {
     productsCount: number,
   ): Promise<{
     customerId: string;
-    productIds: string[];
+    customerName: string
+    productIds: string[]
+    productNames: string[];
   }> {
     const customer = await this.customersApiService.create(token);
     this.entitiesStore.trackCustomers(customer._id);
 
     const productIds: string[] = [];
+    const productNames: string[] = [];
     for (let i = 0; i < productsCount; i++) {
       const product = await this.productsApiService.create(token);
       productIds.push(product._id);
+      productNames.push(product.name);
     }
     this.entitiesStore.trackProducts(productIds);
 
-    return { customerId: customer._id, productIds };
+    return { customerId: customer._id, productIds, customerName: customer.name, productNames};
   }
 }
