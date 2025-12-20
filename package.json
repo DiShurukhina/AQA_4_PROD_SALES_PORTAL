@@ -32,7 +32,7 @@
     "allure-report": "allure generate allure-results -o allure-report --clean",
     "allure-report-open": "npm run allure-report && allure open allure-report",
     "lint": "eslint .",
-    "lint:fix": "eslint ./src/* --fix",
+    "lint:fix": "eslint ./src --fix",
     "prettier": "prettier --config .prettierrc src/**/*.ts --check src/",
     "prettier:fix": "prettier --config .prettierrc src/**/*.ts --write src/",
     "format": " npm run prettier && npm run lint",
