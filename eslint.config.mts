@@ -9,7 +9,15 @@ export default [
   {
     files: ["src/**/*.{js,mjs,cjs,ts}"]
   },
-  { languageOptions: { globals: globals.node } },
+  { 
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: {
+      createDefaultProgram: true,
+      project: './tsconfig.json',
+    },
+    },
+  },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   prettierConfig,
@@ -21,10 +29,11 @@ export default [
       "@typescript-eslint/no-explicit-any": "off",
       "no-empty-pattern": "off",
       "no-useless-escape": "off",
-      eqeqeq: "error" // Enforce strict equality (=== instead of ==)
+      eqeqeq: "error", // Enforce strict equality (=== instead of ==)
+      "@typescript-eslint/no-floating-promises": "error"
     }
   },
   {
-    ignores: ["**/node_modules/**", "**/dist/**", "eslint.config.mts"]
+    ignores: ["**/node_modules/**", "**/dist/**", "eslint.config.mts", "lint-staged.config.js"]
   }
 ];
