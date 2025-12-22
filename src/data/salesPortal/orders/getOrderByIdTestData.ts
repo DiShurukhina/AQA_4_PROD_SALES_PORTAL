@@ -15,7 +15,7 @@ export const getOrderByIdPositiveCases: ICaseApi[] = [
 ];
 
 const notFoundId = new ObjectId().toHexString();
-export const getOrderByIdNegativeCases: ICaseApi[] = [
+export const getOrderByIdNegativeCases: Partial<ICaseApi>[] = [
   {
     title: "404 returned for empty id",
     _id: "",

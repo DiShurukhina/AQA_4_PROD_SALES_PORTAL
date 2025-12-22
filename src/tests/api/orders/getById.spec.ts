@@ -6,6 +6,8 @@ import {
 import { getOrderSchema } from "data/schemas/orders/get.schema";
 import { validateResponse } from "utils/validation/validateResponse.utils";
 import { TAGS } from "data/tags";
+import { STATUS_CODES } from "data/statusCodes";
+
 
 test.describe("[API] [Sales Portal] [Orders] [Get By Id]", () => {
   let token = "";
@@ -45,7 +47,7 @@ test.describe("[API] [Sales Portal] [Orders] [Get By Id]", () => {
   test.describe("[Negative]", () => {
     for (const testCase of getOrderByIdNegativeCases) {
       test(
-        testCase.title,
+        testCase.title ?? "No title",
         { tag: [TAGS.REGRESSION, TAGS.API, TAGS.ORDERS] },
         async ({ ordersApi }) => {
           const response = await ordersApi.getById(
@@ -54,7 +56,7 @@ test.describe("[API] [Sales Portal] [Orders] [Get By Id]", () => {
           );
 
           validateResponse(response, {
-            status: testCase.expectedStatus,
+            status: testCase.expectedStatus ?? STATUS_CODES.NOT_FOUND,
             ...(typeof testCase.isSuccess !== "undefined" && { IsSuccess: testCase.isSuccess }),
             ...(typeof testCase.expectedErrorMessage !== "undefined" && { ErrorMessage: testCase.expectedErrorMessage }),
           });
