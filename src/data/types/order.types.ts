@@ -66,6 +66,14 @@ export interface IOrder {
   assignedManager: IUser | null;
 }
 
+export interface IOrderInTable extends ICreatedOn {
+  orderId: string;
+  email: string;
+  price: number;
+  delivery: string;
+  assignedManager: string
+}
+
 export interface IOrdersResponse extends IResponseFields {
   orders: IOrderFromResponse[];
   limit: number;

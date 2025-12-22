@@ -14,6 +14,7 @@ import { AddNewCustomerPage } from "ui/pages/customers";
 import { AddNewCustomerUIService } from "ui/service/addNewCustomer.ui-service";
 import { CustomersListUIService } from "ui/service/customersList.ui-service";
 import { CustomersListPage } from "ui/pages/customers/customersList.page";
+import { OrdersListPage } from "ui/pages/orders/ordersList.page";
 
 export interface IPages {
   //pages
@@ -25,6 +26,7 @@ export interface IPages {
   productDeleteModal: ProductDeleteModal;
   addNewCustomerPage: AddNewCustomerPage;
   customersListPage: CustomersListPage;
+  ordersListPage: OrdersListPage
   //ui-services
   homeUIService: HomeUIService;
   productsListUIService: ProductsListUIService;
@@ -59,6 +61,9 @@ export const test = base.extend<IPages>({
 
   addNewCustomerPage: async ({ page }, use) => {
     await use(new AddNewCustomerPage(page));
+  },
+  ordersListPage: async ({ page }, use) => {
+    await use(new OrdersListPage(page));
   },
 
   //ui-services
