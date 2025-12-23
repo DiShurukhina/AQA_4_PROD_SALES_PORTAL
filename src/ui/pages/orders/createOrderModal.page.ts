@@ -24,7 +24,7 @@ export class CreateOrderModal extends SalesPortalPage {
   }
 
   async addProduct() {
-    expect(this.addProductButton).toBeVisible();
+    await expect(this.addProductButton).toBeVisible();
     await this.addProductButton.click();
     const dropdownsCount = await this.selectProductsDropdown.count();
     await expect(this.selectProductsDropdown).toHaveCount(dropdownsCount);
