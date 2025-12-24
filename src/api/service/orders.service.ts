@@ -1,5 +1,4 @@
 import { OrdersApi } from "api/api/orders.api";
-import { orderFromResponseSchema } from "data/schemas/orders/order.schema";
 import { ORDER_STATUS } from "data/salesPortal/order-status";
 import { STATUS_CODES } from "data/statusCodes";
 import { IOrderCreateBody, IOrderFromResponse, IOrderUpdateBody } from "data/types/order.types";
@@ -9,6 +8,8 @@ import { validateResponse } from "utils/validation/validateResponse.utils";
 import { generateDelivery } from "data/salesPortal/orders/generateDeliveryData";
 import { getOrderSchema } from "data/schemas/orders/get.schema";
 import { EntitiesStore } from "api/service/stores/entities.store";
+import { faker } from "@faker-js/faker";
+import { logStep } from "utils/report/logStep.utils.js";
 
 export class OrdersApiService {
   constructor(
@@ -30,6 +31,7 @@ export class OrdersApiService {
     this.entitiesStore.trackProducts(ids);
   }
 
+  @logStep("CREATE ORDER - API")
   async create(token: string, customerId: string, productIds: string[]): Promise<IOrderFromResponse> {
     const payload: IOrderCreateBody = {
       customer: customerId,
@@ -48,6 +50,7 @@ export class OrdersApiService {
     return response.body.Order;
   }
 
+  @logStep("CREATE ORDER AND ENTITIES - API")
   async createOrderAndEntities(token: string, numberOfProducts: number): Promise<IOrderFromResponse> {
     const customersService = this.customersApiService;
     const productsService = this.productsApiService;
@@ -74,55 +77,95 @@ export class OrdersApiService {
     return order;
   }
 
+  @logStep("CREATE ORDER WITH DELIVERY - API")
   async createOrderWithDelivery(token: string, numberOfProducts: number) {
     const createdOrder = await this.createOrderAndEntities(token, numberOfProducts);
     const orderWithDelivery = await this.ordersApi.addDelivery(token, createdOrder._id, generateDelivery());
-    return orderWithDelivery;
+    validateResponse(orderWithDelivery, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+    });
+    return orderWithDelivery.body.Order;
   }
 
+  @logStep("CREATE ORDER IN PROCESS - API")
   async createOrderInProcess(token: string, numberOfProducts: number) {
     const createdOrder = await this.createOrderWithDelivery(token, numberOfProducts);
-    const order = await this.ordersApi.updateStatus(createdOrder.body.Order._id, ORDER_STATUS.PROCESSING, token);
-    return order;
+    const order = await this.ordersApi.updateStatus(createdOrder._id, ORDER_STATUS.PROCESSING, token);
+    validateResponse(order, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+    });
+    return order.body.Order;
   }
 
+  @logStep("UPDATE ORDER STATUS - API")
+  async updateStatus(token: string, orderId: string, status: ORDER_STATUS) {
+    const response = await this.ordersApi.updateStatus(orderId, status, token);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+    });
+    return response.body.Order;
+  }
+
+  @logStep("CREATE CANCELED ORDER - API")
   async createCanceledOrder(token: string, numberOfProducts: number) {
     const createdOrder = await this.createOrderWithDelivery(token, numberOfProducts);
-    const order = await this.ordersApi.updateStatus(createdOrder.body.Order._id, ORDER_STATUS.CANCELED, token);
-    return order;
+    const order = await this.ordersApi.updateStatus(createdOrder._id, ORDER_STATUS.CANCELED, token);
+    validateResponse(order, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+    });
+    return order.body.Order;
   }
 
+  @logStep("CREATE PARTIALLY RECEIVED ORDER - API")
   async createPartiallyReceivedOrder(token: string, numberOfProducts: number) {
     const createdOrder = await this.createOrderInProcess(token, numberOfProducts);
-    const order = await this.ordersApi.receiveProducts(
-      createdOrder.body.Order._id,
-      [createdOrder.body.Order.products[0]!._id],
-      token,
-    );
-    return order;
+    const order = await this.ordersApi.receiveProducts(createdOrder._id, [createdOrder.products[0]!._id], token);
+    validateResponse(order, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+    });
+    return order.body.Order;
   }
 
+  @logStep("CREATE RECEIVED ORDER - API")
   async createReceivedOrder(token: string, numberOfProducts: number) {
     const createdOrder = await this.createOrderInProcess(token, numberOfProducts);
     const order = await this.ordersApi.receiveProducts(
-      createdOrder.body.Order._id,
-      createdOrder.body.Order.products.map((product) => product._id),
+      createdOrder._id,
+      createdOrder.products.map((product) => product._id),
       token,
     );
-    return order;
+    validateResponse(order, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+    });
+    return order.body.Order;
   }
 
+  @logStep("DELETE ORDER - API")
   async delete(token: string, id: string) {
     const res = await this.ordersApi.delete(token, id);
     validateResponse(res, { status: STATUS_CODES.DELETED });
   }
 
+  @logStep("UPDATE ORDER - API")
   async update(token: string, id: string, payload: IOrderUpdateBody): Promise<IOrderFromResponse> {
     const res = await this.ordersApi.update(token, id, payload);
     validateResponse(res, { status: STATUS_CODES.OK });
     return res.body.Order;
   }
 
+  @logStep("DELETE ORDER AND ENTITIES - API")
   async deleteOrderAndEntities(token: string, orderId: string): Promise<void> {
     // Backward-compatible cleanup by specific orderId
     const response = await this.ordersApi.getById(orderId, token);
@@ -152,6 +195,7 @@ export class OrdersApiService {
   }
 
   // New: full cleanup by using only token (for after hooks)
+  @logStep("FULL DELETE ORDERS AND ENTITIES - API")
   async fullDelete(token: string): Promise<void> {
     const orders = this.entitiesStore.getOrderIds();
     const customers = this.entitiesStore.getCustomerIds();
@@ -164,17 +208,19 @@ export class OrdersApiService {
     this.entitiesStore.clear();
   }
 
-  async addComment(token: string, orderId: string, text: string) {
-    const response = await this.ordersApi.addComment(token, orderId, { text });
+  @logStep("ADD COMMENT - API")
+  async addComment(token: string, orderId: string, text?: string) {
+    const response = await this.ordersApi.addComment(token, orderId, text || faker.lorem.sentence(5));
     validateResponse(response, {
       status: STATUS_CODES.OK,
       IsSuccess: true,
       ErrorMessage: null,
-      schema: orderFromResponseSchema,
+      schema: getOrderSchema,
     });
-    return response.body.Order;
+    return response.body.Order.comments[response.body.Order.comments.length - 1];
   }
 
+  @logStep("DELETE COMMENT - API")
   async deleteComment(token: string, orderId: string, commentId: string) {
     const response = await this.ordersApi.deleteComment(token, orderId, commentId);
     validateResponse(response, {
@@ -183,6 +229,7 @@ export class OrdersApiService {
     return response;
   }
 
+  @logStep("CREATE CUSTOMER AND PRODUCTS - API")
   async createCustomerAndProducts(
     token: string,
     productsCount: number,

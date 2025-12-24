@@ -2,6 +2,8 @@ import { test, expect } from "fixtures/api.fixture";
 import { COUNTRY } from "data/salesPortal/country";
 import { TAGS } from "data/tags";
 import { generateCustomerData } from "data/salesPortal/customers/generateCustomerData";
+import { validateJsonSchema } from "utils/validation/validateSchema.utils";
+import { getListCustomersSchema } from "data/schemas/customers/getList.schema";
 
 test.describe("CST-003 Get customers list (Filter by Country)", () => {
   const ids: string[] = [];
@@ -39,7 +41,7 @@ test.describe("CST-003 Get customers list (Filter by Country)", () => {
           limit: 10,
         });
 
-        expect(Array.isArray(response.Customers)).toBe(true);
+        validateJsonSchema(response, getListCustomersSchema);
         expect(response.Customers.length).toBeGreaterThan(0);
 
         for (const customer of response.Customers) {
