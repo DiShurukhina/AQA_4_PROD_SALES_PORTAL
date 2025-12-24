@@ -15,7 +15,6 @@ dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
-
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -62,7 +61,7 @@ export default defineConfig({
       name: "setup",
       use: { ...devices["Desktop Chrome"] },
       testDir: "src/tests/ui",
-      testMatch: /\.setup\.ts/,
+      testMatch: /auth\.setup\.ts/,
     },
     {
       name: "sales-portal-ui",
