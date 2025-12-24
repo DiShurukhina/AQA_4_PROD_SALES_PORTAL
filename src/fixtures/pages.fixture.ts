@@ -14,12 +14,7 @@ import { AddNewCustomerPage } from "ui/pages/customers";
 import { AddNewCustomerUIService } from "ui/service/addNewCustomer.ui-service";
 import { CustomersListUIService } from "ui/service/customersList.ui-service";
 import { CustomersListPage } from "ui/pages/customers/customersList.page";
-import { OrderDetailsPage } from "ui/pages";
-import { OrdersListPage } from "ui/pages/orders/orderList.page";
-import { DeliveryTab } from "ui/pages/orders/components/delivery/delivery.tab.page";
-import { ScheduleDeliveryPage } from "ui/pages/orders/components/delivery/scheduleDelivery.page";
-import { OrderHistoryTab } from "ui/pages/orders/components/delivery/orderHistory.tab.page";
-import { CommentsTab } from "ui/pages/orders/components/delivery/comments.tab.page";
+import { OrdersListPage } from "ui/pages/orders/ordersList.page";
 
 export interface IPages {
   //pages
@@ -31,13 +26,7 @@ export interface IPages {
   productDeleteModal: ProductDeleteModal;
   addNewCustomerPage: AddNewCustomerPage;
   customersListPage: CustomersListPage;
-  orderDetailsPage: OrderDetailsPage;
-  ordersListPage: OrdersListPage;
-  deliveryTab: DeliveryTab;
-  scheduleDeliveryPage: ScheduleDeliveryPage;
-  orderHistoryTab: OrderHistoryTab;
-  commentsTab: CommentsTab;
-
+  ordersListPage: OrdersListPage
   //ui-services
   homeUIService: HomeUIService;
   productsListUIService: ProductsListUIService;
@@ -73,23 +62,8 @@ export const test = base.extend<IPages>({
   addNewCustomerPage: async ({ page }, use) => {
     await use(new AddNewCustomerPage(page));
   },
-  orderDetailsPage: async ({ page }, use) => {
-    await use(new OrderDetailsPage(page));
-  },
   ordersListPage: async ({ page }, use) => {
     await use(new OrdersListPage(page));
-  },
-  deliveryTab: async ({ page }, use) => {
-    await use(new DeliveryTab(page));
-  },
-  scheduleDeliveryPage: async ({ page }, use) => {
-    await use(new ScheduleDeliveryPage(page));
-  },
-  orderHistoryTab: async ({ page }, use) => {
-    await use(new OrderHistoryTab(page));
-  },
-  commentsTab: async ({ page }, use) => {
-    await use(new CommentsTab(page));
   },
 
   //ui-services
