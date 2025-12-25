@@ -4,8 +4,6 @@ import { OrdersListPage } from "ui/pages/orders/ordersList.page";
 import { parseDownloadedExport } from "utils/files/exportFile.utils";
 import { TAGS } from "data/tags";
 
-const EXCLUDED_POSITIVE_TITLES = new Set<string>(["Sorted table => the same sorting in the file", "With empty table"]);
-
 test.describe("[UI][Orders][Export]", () => {
   let token = "";
 
@@ -22,8 +20,7 @@ test.describe("[UI][Orders][Export]", () => {
   });
 
   test.describe("[Positive][Export orders]", () => {
-    const positiveCases = EXPORT_ORDERS_POSITIVE_CASES.filter((c) => !EXCLUDED_POSITIVE_TITLES.has(c.title));
-    for (const testCase of positiveCases) {
+    for (const testCase of EXPORT_ORDERS_POSITIVE_CASES) {
       test(testCase.title, { tag: [TAGS.UI, TAGS.ORDERS] }, async ({ ordersApiService, page }, testInfo) => {
         if (testCase.tableState !== "empty") {
           // Create a few orders to have stable export content.
