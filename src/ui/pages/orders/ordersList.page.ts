@@ -2,9 +2,24 @@ import { SalesPortalPage } from "../salesPortal.page";
 import { logStep } from "utils/report/logStep.utils.js";
 import { IOrderInTable, OrdersTableHeader } from "data/types/order.types";
 import { CreateOrderModal } from "./createOrderModal.page";
+import { ExportModal, ordersFieldNamesMapper } from "../export.modal";
 
 export class OrdersListPage extends SalesPortalPage {
+  private readonly headerText = (name: OrdersTableHeader): string => {
+    const map: Record<OrdersTableHeader, string> = {
+      orderNumber: "Order Number",
+      email: "Email",
+      price: "Total Price",
+      delivery: "Delivery",
+      status: "Status",
+      assignedManager: "Assigned Manager",
+      createdOn: "Created On",
+    };
+    return map[name];
+  };
+
   readonly createOrderModal = new CreateOrderModal(this.page);
+  readonly exportModal = new ExportModal(this.page, ordersFieldNamesMapper);
   readonly title = this.page.locator("h2.fw-bold");
   readonly createOrderButton = this.page.locator('[name="add-button"]');
   readonly tableRow = this.page.locator("tbody tr");
@@ -21,24 +36,25 @@ export class OrdersListPage extends SalesPortalPage {
     typeof nameOrIndex === "string"
       ? this.tableRowByName(nameOrIndex).locator("td").nth(3)
       : this.tableRowByIndex(nameOrIndex).locator("td").nth(3);
-  readonly tableHeader = this.page.locator("thead th div[current]");
-  readonly tableHeaderNamed = (name: OrdersTableHeader) => this.tableHeader.filter({ hasText: name });
+  readonly tableHeader = this.page.locator('thead th div[onclick*="sortOrdersInTable"]');
+  readonly tableHeaderNamed = (name: OrdersTableHeader) => this.tableHeader.filter({ hasText: this.headerText(name) });
   readonly tableHeaderArrow = (name: OrdersTableHeader, { direction }: { direction: "asc" | "desc" }) =>
     this.page
-      .locator("thead th", { has: this.page.locator("div[current]", { hasText: name }) })
+      .locator("thead th", { has: this.page.locator("div", { hasText: this.headerText(name) }) })
       .locator(`i.${direction === "asc" ? "bi-arrow-down" : "bi-arrow-up"}`);
 
   readonly detailsButton = (orderNumber: string) => this.tableRowByName(orderNumber).getByTitle("Details");
   readonly uniqueElement = this.createOrderButton;
   readonly searchInput = this.page.locator("#search");
   readonly searchButton = this.page.locator("#search-orders");
+  readonly exportButton = this.page.locator("#export");
 
-  @logStep("Click Add New Order Button")
+  @logStep("CLICK ADD NEW ORDER BUTTON")
   async clickAddCustomerButton() {
     await this.createOrderButton.click();
   }
 
-  @logStep("Get row data from the Orders List by order number")
+  @logStep("GET ORDER'S DATA BY ORDER NUMBER")
   async getOrderData(orderNumber: string): Promise<IOrderInTable> {
     const [orderId, email, price, delivery, assignedManager, createdOn] = await this.tableRowByName(orderNumber)
       .locator("td")
@@ -53,6 +69,7 @@ export class OrdersListPage extends SalesPortalPage {
     };
   }
 
+  @logStep("GET ALL ORDERS' DATA IN TABLE")
   async getTableData(): Promise<IOrderInTable[]> {
     const data: IOrderInTable[] = [];
 
@@ -71,19 +88,65 @@ export class OrdersListPage extends SalesPortalPage {
     return data;
   }
 
+  @logStep("CLICK ACTION BUTTON ON ORDERS LIST PAGE")
   async clickAction(orderNumber: string, button: "details") {
     if (button === "details") await this.detailsButton(orderNumber).click();
   }
 
+  @logStep("CLICK TABLE HEADER ON ORDERS LIST PAGE")
   async clickTableHeader(name: OrdersTableHeader) {
     await this.tableHeaderNamed(name).click();
   }
 
+  @logStep("FILL SEARCH INPUT ON ORDERS LIST PAGE")
   async fillSearchInput(text: string) {
     await this.searchInput.fill(text);
   }
 
+  @logStep("CLICK SEARCH BUTTON ON ORDERS LIST PAGE")
   async clickSearch() {
     await this.searchButton.click();
+  }
+
+  @logStep("OPEN EXPORT MODAL ON ORDERS LIST PAGE")
+  async openExportModal() {
+    await this.exportButton.click();
+    await this.exportModal.waitForOpened();
+  }
+
+  @logStep("SORT ORDERS TABLE")
+  async sortBy(header: OrdersTableHeader, direction: "asc" | "desc") {
+    await this.clickTableHeader(header);
+    await this.waitForSpinners();
+
+    const arrow = this.tableHeaderArrow(header, { direction });
+    if (!(await arrow.isVisible())) {
+      await this.clickTableHeader(header);
+      await this.waitForSpinners();
+    }
+  }
+
+  @logStep("GET ORDERS TABLE AS RECORDS")
+  async getTableAsRecords(): Promise<Array<Record<string, string>>> {
+    const headerCells = await this.page.locator("table thead th").all();
+    const headers = await Promise.all(headerCells.map(async (cell) => (await cell.innerText()).trim()));
+
+    const rows = await this.page.locator("table tbody tr").all();
+    const data: Array<Record<string, string>> = [];
+
+    for (const row of rows) {
+      const values = await row.locator("td").allInnerTexts();
+      const record: Record<string, string> = {};
+
+      for (let i = 0; i < Math.min(headers.length, values.length); i++) {
+        const header = headers[i];
+        if (!header) continue;
+        record[header] = values[i]?.trim() ?? "";
+      }
+
+      data.push(record);
+    }
+
+    return data;
   }
 }
