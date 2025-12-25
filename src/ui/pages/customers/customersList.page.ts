@@ -3,11 +3,13 @@ import { ConfirmationModal } from "../confirmation.modal";
 import { CustomerDetailsModal } from "./details.modal";
 import { CustomerTableHeader, ICustomerInTable } from "data/types/customer.types";
 import { COUNTRY } from "data/salesPortal/country";
+import { ExportModal, customersFieldNamesMapper } from "../export.modal";
 import { logStep } from "utils/report/logStep.utils.js";
 
 export class CustomersListPage extends SalesPortalPage {
   readonly detailsModal = new CustomerDetailsModal(this.page);
   readonly deleteModal = new ConfirmationModal(this.page);
+  readonly exportModal = new ExportModal(this.page, customersFieldNamesMapper);
 
   readonly customersPageTitle = this.page.locator("h2.fw-bold");
   readonly addNewCustomerButton = this.page.locator('[name="add-button"]');
@@ -55,7 +57,7 @@ export class CustomersListPage extends SalesPortalPage {
     };
   }
 
-  @logStep("GET CUSTOMER'S DATA IN TABLE")
+  @logStep("GET ALL CUSTOMERS' DATA IN TABLE")
   async getTableData(): Promise<ICustomerInTable[]> {
     const data: ICustomerInTable[] = [];
 
@@ -92,5 +94,12 @@ export class CustomersListPage extends SalesPortalPage {
   @logStep("CLICK SEARCH BUTTON ON CUSTOMER LIST PAGE")
   async clickSearch() {
     await this.searchButton.click();
+  }
+
+  @logStep("OPEN EXPORT MODAL ON CUSTOMER LIST PAGE")
+  async openExportModal() {
+    const exportButton = this.page.locator('button[name="export-button"]');
+    await exportButton.click();
+    await this.exportModal.checkFieldsBulk(["Email", "Name", "Country", "Created On"]);
   }
 }

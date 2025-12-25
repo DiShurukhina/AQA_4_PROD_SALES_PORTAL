@@ -4,10 +4,12 @@ import { MANUFACTURERS } from "data/salesPortal/products/manufacturers";
 import { ProductDetailsModal } from "./details.modal";
 import { ConfirmationModal } from "../confirmation.modal";
 import { logStep } from "utils/report/logStep.utils.js";
+import { ExportModal, productsFieldNamesMapper } from "../export.modal";
 
 export class ProductsListPage extends SalesPortalPage {
   readonly detailsModal = new ProductDetailsModal(this.page);
   readonly deleteModal = new ConfirmationModal(this.page);
+  readonly exportModal = new ExportModal(this.page, productsFieldNamesMapper);
   readonly productsPageTitle = this.page.locator("h2.fw-bold");
   readonly addNewProductButton = this.page.locator('[name="add-button"]');
   readonly tableRow = this.page.locator("tbody tr");
@@ -91,5 +93,12 @@ export class ProductsListPage extends SalesPortalPage {
   @logStep("CLICK SEARCH BUTTON ON PRODUCTS LIST PAGE")
   async clickSearch() {
     await this.searchButton.click();
+  }
+
+  @logStep("OPEN EXPORT MODAL ON PRODUCTS LIST PAGE")
+  async openExportModal() {
+    const exportButton = this.page.locator('button[name="export-button"]');
+    await exportButton.click();
+    await this.exportModal.checkFieldsBulk(["Name", "Price", "Manufacturer", "Amount", "Created On", "Notes"]);
   }
 }
