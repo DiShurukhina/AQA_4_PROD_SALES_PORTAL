@@ -15,10 +15,6 @@ test.describe("[UI][Orders][Export]", () => {
     if (token) await ordersApiService.fullDelete(token);
   });
 
-  test.beforeEach(async ({ cleanup }) => {
-    void cleanup;
-  });
-
   test.describe("[Positive][Export orders]", () => {
     for (const testCase of EXPORT_ORDERS_POSITIVE_CASES) {
       test(
@@ -32,9 +28,9 @@ test.describe("[UI][Orders][Export]", () => {
             await ordersApiService.createOrderAndEntities(token, 1);
           }
 
-        const ordersList = new OrdersListPage(page);
-        await ordersList.open("#/orders");
-        await ordersList.waitForOpened();
+          const ordersList = new OrdersListPage(page);
+          await ordersList.open("#/orders");
+          await ordersList.waitForOpened();
 
           if (testCase.sort) await ordersList.sortBy(testCase.sort.by, testCase.sort.direction);
 
