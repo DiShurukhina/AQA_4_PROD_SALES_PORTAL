@@ -14,7 +14,7 @@ test.describe("[UI][Orders][Modals]", () => {
 
   test(
     "Process order on Process Confirmation modal",
-    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.SMOKE] },
+    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
     async ({ ordersApiService, orderDetailsPage }) => {
       const order = await ordersApiService.createOrderWithDelivery(token, 1);
 
@@ -27,7 +27,7 @@ test.describe("[UI][Orders][Modals]", () => {
 
   test(
     "Cancel order on Cancel Confirmation modal",
-    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.SMOKE] },
+    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
     async ({ ordersApiService, orderDetailsPage }) => {
       const created = await ordersApiService.createOrderWithDelivery(token, 1);
       const orderId = created._id;
@@ -41,7 +41,7 @@ test.describe("[UI][Orders][Modals]", () => {
 
   test(
     "Reopen order on Reopen Confirmation modal",
-    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.SMOKE] },
+    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
     async ({ ordersApiService, orderDetailsPage }) => {
       const created = await ordersApiService.createCanceledOrder(token, 2);
       const orderId = created._id;
