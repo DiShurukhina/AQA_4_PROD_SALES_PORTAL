@@ -2,6 +2,7 @@ import { expect, Page } from "@playwright/test";
 import { SalesPortalPage } from "../salesPortal.page";
 import { logStep } from "utils/report/logStep.utils.js";
 import { OrderDetailsHeader, OrderDetailsCustomerDetails, OrderDetailsRequestedProducts } from "./components";
+import { CommentsTab } from "./components/delivery/comments.tab.page";
 import { TIMEOUT_30_S } from "data/salesPortal/constants";
 
 /**
@@ -28,12 +29,14 @@ export class OrderDetailsPage extends SalesPortalPage {
   readonly header: OrderDetailsHeader;
   readonly customerDetails: OrderDetailsCustomerDetails;
   readonly requestedProducts: OrderDetailsRequestedProducts;
+  readonly commentsTab: CommentsTab;
 
   constructor(page: Page) {
     super(page);
     this.header = new OrderDetailsHeader(page);
     this.customerDetails = new OrderDetailsCustomerDetails(page);
     this.requestedProducts = new OrderDetailsRequestedProducts(page);
+    this.commentsTab = new CommentsTab(page);
   }
 
   @logStep("OPEN ORDER DETAILS BY ROUTE")
