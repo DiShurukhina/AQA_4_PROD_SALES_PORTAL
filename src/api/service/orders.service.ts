@@ -124,6 +124,108 @@ export class OrdersApiService {
     return order.body.Order;
   }
 
+  @logStep("CREATE ORDER IN SPECIFIC STATUS - API")
+  async createOrderInStatus(
+    token: string,
+    numberOfProducts: number,
+    status: ORDER_STATUS,
+    managerId?: string,
+  ): Promise<IOrderFromResponse> {
+    const createdOrder = await this.createOrderWithDelivery(token, numberOfProducts);
+    managerId = managerId || process.env.CURRENT_ADMIN_ID || "";
+
+    const assignRes = await this.ordersApi.assingManager(token, createdOrder._id, managerId);
+    validateResponse(assignRes, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getOrderSchema,
+    });
+
+    switch (status) {
+      case ORDER_STATUS.DRAFT:
+        return createdOrder;
+
+      case ORDER_STATUS.CANCELED: {
+        const canceled = await this.ordersApi.updateStatus(createdOrder._id, ORDER_STATUS.CANCELED, token);
+        validateResponse(canceled, {
+          status: STATUS_CODES.OK,
+          IsSuccess: true,
+          ErrorMessage: null,
+          schema: getOrderSchema,
+        });
+        return canceled.body.Order;
+      }
+
+      case ORDER_STATUS.PROCESSING: {
+        const processing = await this.ordersApi.updateStatus(createdOrder._id, ORDER_STATUS.PROCESSING, token);
+        validateResponse(processing, {
+          status: STATUS_CODES.OK,
+          IsSuccess: true,
+          ErrorMessage: null,
+          schema: getOrderSchema,
+        });
+        return processing.body.Order;
+      }
+
+      case ORDER_STATUS.PARTIALLY_RECEIVED: {
+        if (!createdOrder.products || createdOrder.products.length < 2) {
+          throw new Error("Partial receive requires at least two products in the order.");
+        }
+        // Move to processing first
+        const toProcessing = await this.ordersApi.updateStatus(createdOrder._id, ORDER_STATUS.PROCESSING, token);
+        validateResponse(toProcessing, {
+          status: STATUS_CODES.OK,
+          IsSuccess: true,
+          ErrorMessage: null,
+          schema: getOrderSchema,
+        });
+        const processingOrder = toProcessing.body.Order;
+
+        const firstProductId = processingOrder.products[0]!._id;
+        const partial = await this.ordersApi.receiveProducts(processingOrder._id, [firstProductId], token);
+        validateResponse(partial, {
+          status: STATUS_CODES.OK,
+          IsSuccess: true,
+          ErrorMessage: null,
+          schema: getOrderSchema,
+        });
+        return partial.body.Order;
+      }
+
+      case ORDER_STATUS.RECEIVED: {
+        if (!createdOrder.products || createdOrder.products.length < 1) {
+          throw new Error("Received status requires at least one product in the order.");
+        }
+        const toProcessing = await this.ordersApi.updateStatus(createdOrder._id, ORDER_STATUS.PROCESSING, token);
+        const processingOrder = toProcessing.body.Order;
+        const received = await this.ordersApi.receiveProducts(
+          processingOrder._id,
+          processingOrder.products.map((p) => p._id),
+          token,
+        );
+        validateResponse(received, {
+          status: STATUS_CODES.OK,
+          IsSuccess: true,
+          ErrorMessage: null,
+          schema: getOrderSchema,
+        });
+        return received.body.Order;
+      }
+
+      default: {
+        const updated = await this.ordersApi.updateStatus(createdOrder._id, status, token);
+        validateResponse(updated, {
+          status: STATUS_CODES.OK,
+          IsSuccess: true,
+          ErrorMessage: null,
+          schema: getOrderSchema,
+        });
+        return updated.body.Order;
+      }
+    }
+  }
+
   @logStep("CREATE PARTIALLY RECEIVED ORDER - API")
   async createPartiallyReceivedOrder(token: string, numberOfProducts: number) {
     const createdOrder = await this.createOrderInProcess(token, numberOfProducts);
