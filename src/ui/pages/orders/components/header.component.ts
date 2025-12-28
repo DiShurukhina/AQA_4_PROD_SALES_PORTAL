@@ -35,6 +35,19 @@ export class OrderDetailsHeader extends BasePage {
     ".status-text, span.text-primary, span.text-danger, span.text-warning, span.text-success",
   );
 
+  @logStep("HEADER: GET ORDER STATUS TEXT")
+  async getStatusText() {
+    const status = this.statusText.first();
+    await expect(status).toBeVisible({ timeout: TIMEOUT_10_S });
+    return (await status.innerText()).trim();
+  }
+
+  @logStep("HEADER: EXPECT ORDER STATUS")
+  async expectStatus(status: string) {
+    const statusLabel = this.statusText.first();
+    await expect(statusLabel).toHaveText(status, { timeout: TIMEOUT_10_S });
+  }
+
   @logStep("HEADER: CLICK CANCEL ORDER")
   async cancelOrder() {
     await this.cancelButton.click();
