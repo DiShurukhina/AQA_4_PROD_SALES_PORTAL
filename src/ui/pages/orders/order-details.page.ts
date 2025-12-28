@@ -1,6 +1,7 @@
 import { expect, Page } from "@playwright/test";
 import { SalesPortalPage } from "../salesPortal.page";
 import { logStep } from "utils/report/logStep.utils.js";
+import { ConfirmationModal } from "../confirmation.modal";
 import { OrderDetailsHeader, OrderDetailsCustomerDetails, OrderDetailsRequestedProducts } from "./components";
 import { CommentsTab } from "./components/delivery/comments.tab.page";
 import { TIMEOUT_30_S } from "data/salesPortal/constants";
@@ -12,6 +13,10 @@ import { TIMEOUT_30_S } from "data/salesPortal/constants";
 export class OrderDetailsPage extends SalesPortalPage {
   readonly orderInfoContainer = this.page.locator("#order-info-container");
   readonly tabsContainer = this.page.locator("#order-details-tabs-section");
+  readonly processOrderButton = this.page.locator("#process-order");
+  readonly cancelOrderButton = this.page.locator("#cancel-order");
+  readonly reopenOrderButton = this.page.locator("#reopen-order");
+  readonly notificationToast = this.page.locator(".toast-body");
   // Be tolerant: different FE builds may render different anchors
   readonly uniqueElement = this.page.locator(
     [
@@ -38,6 +43,12 @@ export class OrderDetailsPage extends SalesPortalPage {
     this.requestedProducts = new OrderDetailsRequestedProducts(page);
     this.commentsTab = new CommentsTab(page);
   }
+
+  // Modals
+  readonly confirmationModal = new ConfirmationModal(this.page);
+  processModal = this.confirmationModal;
+  cancelModal = this.confirmationModal;
+  reopenModal = this.confirmationModal;
 
   @logStep("OPEN ORDER DETAILS BY ROUTE")
   async openByRoute(route: string) {
@@ -80,5 +91,22 @@ export class OrderDetailsPage extends SalesPortalPage {
   @logStep("SWITCH TO COMMENTS TAB")
   async openCommentsTab() {
     await this.tabs.comments.click();
+  }
+  @logStep("CLICK PROCESS ORDER BUTTON")
+  async clickProcess() {
+    await this.processOrderButton.click();
+    await this.processModal.waitForOpened();
+  }
+
+  @logStep("CLICK CANCEL ORDER BUTTON")
+  async clickCancel() {
+    await this.cancelOrderButton.click();
+    await this.cancelModal.waitForOpened();
+  }
+
+  @logStep("CLICK REOPEN ORDER BUTTON")
+  async clickReopen() {
+    await this.reopenOrderButton.click();
+    await this.reopenModal.waitForOpened();
   }
 }
