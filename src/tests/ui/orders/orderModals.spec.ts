@@ -7,6 +7,7 @@ import {
   REOPEN_ORDER_MODAL,
 } from "data/salesPortal/notifications";
 import { assertConfirmationModal } from "utils/assertions/confirmationModal.assert";
+import { ORDER_STATUS } from "data/salesPortal/order-status";
 
 test.describe("[UI][Orders][Modals]", () => {
   let token = "";
@@ -35,6 +36,7 @@ test.describe("[UI][Orders][Modals]", () => {
 
       await orderDetailsPage.processModal.clickConfirm();
       await expect(orderDetailsPage.notificationToast).toHaveText(NOTIFICATIONS.ORDER_PROCESSED);
+      await expect(orderDetailsPage.statusOrderLabel).toHaveText(ORDER_STATUS.PROCESSING);
     },
   );
 
@@ -55,6 +57,7 @@ test.describe("[UI][Orders][Modals]", () => {
 
       await orderDetailsPage.cancelModal.clickConfirm();
       await expect(orderDetailsPage.notificationToast).toHaveText(NOTIFICATIONS.ORDER_CANCELED);
+      await expect(orderDetailsPage.statusOrderLabel).toHaveText(ORDER_STATUS.CANCELED);
     },
   );
 
@@ -75,6 +78,7 @@ test.describe("[UI][Orders][Modals]", () => {
 
       await orderDetailsPage.reopenModal.clickConfirm();
       await expect(orderDetailsPage.notificationToast).toHaveText(NOTIFICATIONS.ORDER_REOPENED);
+      await expect(orderDetailsPage.statusOrderLabel).toHaveText(ORDER_STATUS.DRAFT);
     },
   );
 });
