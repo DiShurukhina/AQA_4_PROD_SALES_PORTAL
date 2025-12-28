@@ -1,5 +1,12 @@
 import { TAGS } from "data/tags";
-import { test } from "fixtures";
+import { test, expect } from "fixtures";
+import {
+  NOTIFICATIONS,
+  CANCEL_ORDER_MODAL,
+  PROCESS_ORDER_MODAL,
+  REOPEN_ORDER_MODAL,
+} from "data/salesPortal/notifications";
+import { assertConfirmationModal } from "utils/assertions/confirmationModal.assert";
 
 test.describe("[UI][Orders][Modals]", () => {
   let token = "";
@@ -21,7 +28,13 @@ test.describe("[UI][Orders][Modals]", () => {
       await orderDetailsPage.openByOrderId(order._id);
       await orderDetailsPage.waitForOpened();
 
-      await orderDetailsPage.processOrder();
+      await orderDetailsPage.clickProcess();
+      await orderDetailsPage.processModal.waitForOpened();
+
+      await assertConfirmationModal(orderDetailsPage.processModal, PROCESS_ORDER_MODAL);
+
+      await orderDetailsPage.processModal.clickConfirm();
+      await expect(orderDetailsPage.notificationToast).toHaveText(NOTIFICATIONS.ORDER_PROCESSED);
     },
   );
 
@@ -35,7 +48,13 @@ test.describe("[UI][Orders][Modals]", () => {
       await orderDetailsPage.openByOrderId(orderId);
       await orderDetailsPage.waitForOpened();
 
-      await orderDetailsPage.cancelOrder();
+      await orderDetailsPage.clickCancel();
+      await orderDetailsPage.cancelModal.waitForOpened();
+
+      await assertConfirmationModal(orderDetailsPage.cancelModal, CANCEL_ORDER_MODAL);
+
+      await orderDetailsPage.cancelModal.clickConfirm();
+      await expect(orderDetailsPage.notificationToast).toHaveText(NOTIFICATIONS.ORDER_CANCELED);
     },
   );
 
@@ -49,7 +68,13 @@ test.describe("[UI][Orders][Modals]", () => {
       await orderDetailsPage.openByOrderId(orderId);
       await orderDetailsPage.waitForOpened();
 
-      await orderDetailsPage.reopenOrder();
+      await orderDetailsPage.clickReopen();
+      await orderDetailsPage.reopenModal.waitForOpened();
+
+      await assertConfirmationModal(orderDetailsPage.reopenModal, REOPEN_ORDER_MODAL);
+
+      await orderDetailsPage.reopenModal.clickConfirm();
+      await expect(orderDetailsPage.notificationToast).toHaveText(NOTIFICATIONS.ORDER_REOPENED);
     },
   );
 });
