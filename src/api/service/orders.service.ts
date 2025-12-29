@@ -132,8 +132,9 @@ export class OrdersApiService {
     managerId?: string,
   ): Promise<IOrderFromResponse> {
     const createdOrder = await this.createOrderWithDelivery(token, numberOfProducts);
-    managerId = managerId || process.env.CURRENT_ADMIN_ID || "";
-
+    const managerIdsEnv = process.env.MANAGER_IDS;
+    const managerIds = managerIdsEnv ? (JSON.parse(managerIdsEnv) as string[]) : [];
+    managerId = managerId || managerIds[0] || "";
     const assignRes = await this.ordersApi.assingManager(token, createdOrder._id, managerId);
     validateResponse(assignRes, {
       status: STATUS_CODES.OK,
