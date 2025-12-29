@@ -38,7 +38,7 @@ export const openCreateOrderModalNegativeCases = [
         IsSuccess: true,
         ErrorMessage: null,
       }),
-    notification: NOTIFICATIONS.ORDER_UNABLE_TO_CRETE,
+    notification: NOTIFICATIONS.ORDER_UNABLE_TO_CREATE,
   },
   {
     title: "Should NOT open create order modal with no products",
@@ -72,7 +72,7 @@ export const openCreateOrderModalNegativeCases = [
         },
         STATUS_CODES.SERVER_ERROR,
       ),
-    notification: NOTIFICATIONS.ORDER_UNABLE_TO_CRETE,
+    notification: NOTIFICATIONS.ORDER_UNABLE_TO_CREATE,
   },
 ];
 
