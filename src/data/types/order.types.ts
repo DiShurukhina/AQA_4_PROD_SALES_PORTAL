@@ -71,7 +71,7 @@ export interface IOrderInTable extends ICreatedOn {
   email: string;
   price: number;
   delivery: string;
-  assignedManager: string
+  assignedManager: string;
 }
 
 export interface IOrdersResponse extends IResponseFields {
