@@ -84,4 +84,16 @@ export class CreateOrderModal extends BaseModal {
   async clickClose() {
     await this.closeButton.click();
   }
+
+  @logStep("GET CUSTOMERS DROPDOWN VALUES IN CREATE ORDER MODAL")
+  async getCustomersDropdownTexts(): Promise<string[]> {
+    const customersOptions = this.selectCustomersDropdown.locator("option");
+    return customersOptions.allTextContents();
+  }
+
+  @logStep("GET PRODUCTS DROPDOWN VALUES IN CREATE ORDER MODAL")
+  async getProductsDropdownTexts(): Promise<string[]> {
+    const productsOptions = this.selectProductsDropdown.locator("option");
+    return productsOptions.allTextContents();
+  }
 }
