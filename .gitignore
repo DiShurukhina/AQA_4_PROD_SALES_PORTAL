@@ -9,6 +9,7 @@ node_modules/
 .env
 .env.local
 .env.prod
+.env.dev
 /src/.auth/
 allure-results/
 allure-report/
