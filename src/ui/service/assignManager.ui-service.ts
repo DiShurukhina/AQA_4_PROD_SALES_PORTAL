@@ -3,10 +3,6 @@ import { OrderDetailsPage } from "ui/pages/orders";
 import { logStep } from "utils/report/logStep.utils.js";
 import { TIMEOUT_10_S } from "data/salesPortal/constants";
 
-/**
- * UI Service for managing order managers (assign/unassign).
- * Encapsulates manager assignment flows.
- */
 export class AssignManagerUIService {
   orderDetailsPage: OrderDetailsPage;
 
@@ -43,6 +39,19 @@ export class AssignManagerUIService {
     await this.orderDetailsPage.waitForSpinners();
   }
 
+  @logStep("ASSIGN FIRST AVAILABLE MANAGER")
+  async assignFirstAvailableManager(): Promise<string> {
+    await this.openAssignManagerModal();
+    const managers = await this.orderDetailsPage.assignManagerModal.getAvailableManagers();
+    await expect(managers.length).toBeGreaterThan(0);
+    const managerName = managers[0]!;
+    await this.orderDetailsPage.assignManagerModal.selectManager(managerName);
+    await this.orderDetailsPage.assignManagerModal.clickSave();
+    await this.orderDetailsPage.assignManagerModal.waitForClosed();
+    await this.orderDetailsPage.waitForSpinners();
+    return managerName;
+  }
+
   @logStep("GET AVAILABLE MANAGERS IN MODAL")
   async getAvailableManagers(): Promise<string[]> {
     await this.openAssignManagerModal();
@@ -63,7 +72,8 @@ export class AssignManagerUIService {
   async expectManagerAssigned(expectedManagerName: string) {
     // Manager info should be visible in the header's assigned manager container
     const assignedManagerContainer = this.page.locator("#assigned-manager-container");
-    await expect(assignedManagerContainer).toContainText(expectedManagerName, { timeout: TIMEOUT_10_S });
+    const expectedDisplayName = expectedManagerName.split("(")[0]!.trim();
+    await expect(assignedManagerContainer).toContainText(expectedDisplayName, { timeout: TIMEOUT_10_S });
   }
 
   @logStep("VERIFY NO MANAGER ASSIGNED")

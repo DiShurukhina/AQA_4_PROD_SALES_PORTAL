@@ -11,8 +11,6 @@ import { OrdersApiService } from "api/service/orders.service";
 import { EntitiesStore } from "api/service/stores/entities.store";
 import { OrdersFacadeService } from "api/facades/ordersFacade.service";
 import { NotificationsApi } from "api/api/notifications.api";
-import { UsersApi } from "api/api/users.api";
-import { UsersService } from "api/service/users.service";
 
 export interface IApi {
   // api
@@ -21,7 +19,6 @@ export interface IApi {
   customersApi: CustomersApi;
   ordersApi: OrdersApi;
   notificationsApi: NotificationsApi;
-  usersApi: UsersApi;
 
   // services
   productsApiService: ProductsApiService;
@@ -29,14 +26,12 @@ export interface IApi {
   customersApiService: CustomersApiService;
   ordersApiService: OrdersApiService;
   ordersFacadeService: OrdersFacadeService;
-  usersApiService: UsersService;
 
   // utils
   cleanup: {
     addOrder: (orderId: string) => void;
     addProduct: (id: string) => void;
     addCustomer: (id: string) => void;
-    addUser: (userId: string) => void;
   };
 }
 
@@ -71,12 +66,6 @@ const test = base.extend<IApi>({
     await use(api);
   },
 
-  usersApi: async ({ request }, use) => {
-    const apiClient = new RequestApi(request);
-    const api = new UsersApi(apiClient);
-    await use(api);
-  },
-
   //services
   productsApiService: async ({ productsApi }, use) => {
     await use(new ProductsApiService(productsApi));
@@ -95,33 +84,18 @@ const test = base.extend<IApi>({
   ordersFacadeService: async ({ ordersApi, customersApiService, productsApiService }, use) => {
     await use(new OrdersFacadeService(ordersApi, customersApiService, productsApiService));
   },
-  usersApiService: async ({ usersApi }, use) => {
-    await use(new UsersService(usersApi));
-  },
   // per-test cleanup registry with automatic teardown
-  cleanup: async ({ loginApiService, ordersApiService, usersApiService }, use) => {
-    const createdUserIds: string[] = [];
-
+  cleanup: async ({ loginApiService, ordersApiService }, use) => {
     await use({
       addOrder: (orderId: string) => ordersApiService.trackOrderId(orderId),
       addProduct: (id: string) => ordersApiService.trackProductIds([id]),
       addCustomer: (id: string) => ordersApiService.trackCustomerId(id),
-      addUser: (userId: string) => createdUserIds.push(userId),
     });
 
     const token = await loginApiService.loginAsAdmin();
 
     // Delete orders, products, customers
     await ordersApiService.fullDelete(token);
-
-    // Delete created users
-    for (const userId of createdUserIds) {
-      try {
-        await usersApiService.deleteUser(token, userId);
-      } catch (e) {
-        console.error(`Failed to delete user ${userId}:`, e);
-      }
-    }
   },
 });
 

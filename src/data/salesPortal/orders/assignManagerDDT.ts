@@ -1,32 +1,31 @@
-import { ORDER_STATUS } from "data/salesPortal/order-status";
+import type { OrdersApiService } from "api/service/orders.service";
 
 export interface IAssignManagerTestCase {
   title: string;
-  orderStatus: ORDER_STATUS;
+  createOrder: (ordersApiService: OrdersApiService, token: string) => Promise<{ _id: string }>;
+  isSmoke?: boolean;
 }
 
-/**
- * Test cases for assigning managers to orders in different statuses.
- */
 export const ASSIGN_MANAGER_ORDER_STATUS_CASES: IAssignManagerTestCase[] = [
   {
     title: "Assign manager to draft order",
-    orderStatus: ORDER_STATUS.DRAFT,
+    createOrder: (svc, token) => svc.createOrderAndEntities(token, 1),
+    isSmoke: true,
   },
   {
     title: "Assign manager to order in processing status",
-    orderStatus: ORDER_STATUS.PROCESSING,
+    createOrder: (svc, token) => svc.createOrderInProcess(token, 1),
   },
   {
     title: "Assign manager to partially received order",
-    orderStatus: ORDER_STATUS.PARTIALLY_RECEIVED,
+    createOrder: (svc, token) => svc.createPartiallyReceivedOrder(token, 2),
   },
   {
     title: "Assign manager to received order",
-    orderStatus: ORDER_STATUS.RECEIVED,
+    createOrder: (svc, token) => svc.createReceivedOrder(token, 1),
   },
   {
     title: "Assign manager to canceled order",
-    orderStatus: ORDER_STATUS.CANCELED,
+    createOrder: (svc, token) => svc.createCanceledOrder(token, 1),
   },
 ];
