@@ -54,6 +54,7 @@ export class OrdersListPage extends SalesPortalPage {
   @logStep("CLICK ADD NEW ORDER BUTTON")
   async clickCreateOrderButton() {
     await this.createOrderButton.click();
+    return this.createOrderModal;
   }
 
   @logStep("GET ORDER'S DATA BY ORDER NUMBER")
