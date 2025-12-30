@@ -10,4 +10,5 @@ export enum TAGS {
   PRODUCTS = "@products",
   CUSTOMERS = "@customers",
   ORDERS = "@orders",
+  MANAGERS = "@managers",
 }

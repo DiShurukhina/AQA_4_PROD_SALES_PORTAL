@@ -356,4 +356,38 @@ export class OrdersApiService {
 
     return { customerId: customer._id, productIds, customerName: customer.name, productNames };
   }
+
+  @logStep("ASSIGN MANAGER TO ORDER - API")
+  async assignManager(token: string, orderId: string, managerId: string): Promise<IOrderFromResponse> {
+    const response = await this.ordersApi.assingManager(token, orderId, managerId);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getOrderSchema,
+    });
+    return response.body.Order;
+  }
+
+  @logStep("UNASSIGN MANAGER FROM ORDER - API")
+  async unassignManager(token: string, orderId: string): Promise<IOrderFromResponse> {
+    const response = await this.ordersApi.unassingManager(token, orderId);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getOrderSchema,
+    });
+    return response.body.Order;
+  }
+
+  @logStep("GET AVAILABLE MANAGERS - API")
+  async getAvailableManagers(): Promise<string[]> {
+    // Get list of users (managers) from API
+    // This assumes there's a users endpoint that returns available managers
+    // For now, read from env var MANAGER_IDS
+    const managerIdsEnv = process.env.MANAGER_IDS;
+    const managerIds = managerIdsEnv ? (JSON.parse(managerIdsEnv) as string[]) : [];
+    return managerIds;
+  }
 }
