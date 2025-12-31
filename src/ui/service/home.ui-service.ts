@@ -19,7 +19,7 @@ export class HomeUIService {
   }
 
   public async open() {
-    await this.homePage.open("home");
+    await this.homePage.open("#/home");
   }
 
   @logStep("OPEN ${moduleName} MODULE ON HOME PAGE")

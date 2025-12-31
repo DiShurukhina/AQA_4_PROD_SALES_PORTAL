@@ -5,12 +5,14 @@ import { ConfirmationModal } from "../confirmation.modal";
 import { OrderDetailsHeader, OrderDetailsCustomerDetails, OrderDetailsRequestedProducts } from "./components";
 import { CommentsTab } from "./components/delivery/comments.tab.page";
 import { TIMEOUT_30_S } from "data/salesPortal/constants";
+import { NavBar } from "../navbar.component";
 
 /**
  * Order Details PageObject orchestrator.
  * Splits the page into components: Header, Customer Details, Requested Products.
  */
 export class OrderDetailsPage extends SalesPortalPage {
+  readonly navBar = new NavBar(this.page);
   readonly orderInfoContainer = this.page.locator("#order-info-container");
   readonly tabsContainer = this.page.locator("#order-details-tabs-section");
   readonly processOrderButton = this.page.locator("#process-order");
