@@ -10,12 +10,15 @@ import { OrdersApi } from "api/api/orders.api";
 import { OrdersApiService } from "api/service/orders.service";
 import { EntitiesStore } from "api/service/stores/entities.store";
 import { OrdersFacadeService } from "api/facades/ordersFacade.service";
+import { NotificationsApi } from "api/api/notifications.api";
+
 export interface IApi {
   // api
   productsApi: ProductsApi;
   loginApi: LoginApi;
   customersApi: CustomersApi;
   ordersApi: OrdersApi;
+  notificationsApi: NotificationsApi;
 
   // services
   productsApiService: ProductsApiService;
@@ -55,6 +58,11 @@ const test = base.extend<IApi>({
   ordersApi: async ({ request }, use) => {
     const apiClient = new RequestApi(request);
     const api = new OrdersApi(apiClient);
+    await use(api);
+  },
+  notificationsApi: async ({ request }, use) => {
+    const apiClient = new RequestApi(request);
+    const api = new NotificationsApi(apiClient);
     await use(api);
   },
 

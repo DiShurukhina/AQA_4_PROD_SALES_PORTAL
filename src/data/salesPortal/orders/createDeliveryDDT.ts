@@ -2,11 +2,18 @@ import { STATUS_CODES } from "data/statusCodes";
 import { RESPONSE_ERRORS } from "../errors";
 import { ICreateDeliveryCase } from "data/types/order.types";
 import { generateDelivery } from "data/salesPortal/orders/generateDeliveryData";
-import { IDeliveryInfo, DELIVERY_CONDITION, IDeliveryAddress } from "data/salesPortal/delivery-status";
+import {
+  IDeliveryInfo,
+  DELIVERY_CONDITION,
+  IDeliveryAddress,
+  DELIVERY_LOCATION,
+} from "data/salesPortal/delivery-status";
 import { COUNTRY } from "../country";
 import { getRandomEnumValue } from "utils/enum.utils";
 import { faker } from "@faker-js/faker";
 import _ from "lodash";
+import { ICase } from "data/types/core.types";
+import { ICreateDeliveryCaseUI, ICreatePickupDeliveryCaseUI } from "data/types/delivery.types";
 
 const createAddressVariation = (overrides: Partial<IDeliveryAddress>): IDeliveryAddress => ({
   country: getRandomEnumValue(COUNTRY),
@@ -181,4 +188,54 @@ export const CREATE_DELIVERY_NEGATIVE_CASES: ICreateDeliveryCase[] = [
   ...ADDRESS_VALIDATION_CASES,
   ...BOUNDARY_CASES,
   ...SPECIAL_CHARACTERS_CASES,
+];
+
+//DELIVERY UI
+export const DEFAULT_SCHEDULE_FORM_CASES: ICase[] = [
+  {
+    title: "Default Schedule Delivery: customer fields are prefilled",
+  },
+];
+
+export const CREATE_DELIVERY_POSITIVE_CASES_UI: ICreateDeliveryCaseUI[] = [
+  {
+    title: "Delivery + Other location",
+    deliveryType: DELIVERY_CONDITION.DELIVERY,
+    deliveryLocation: DELIVERY_LOCATION.OTHER,
+    deliveryData: generateDelivery(),
+    deliveryDateAction: async (schedulePage) => {
+      await schedulePage.dateInput.click();
+      return schedulePage.pickRandomAvailableDate();
+    },
+  },
+];
+
+export const CREATE_PICKUP_POSITIVE_CASES_UI: ICreatePickupDeliveryCaseUI[] = [
+  {
+    title: "Pickup: schedule with country = Canada",
+    deliveryType: DELIVERY_CONDITION.PICKUP,
+    country: COUNTRY.CANADA,
+    deliveryDateAction: (date) => date.pickRandomAvailableDate(),
+  },
+  {
+    title: "Pickup: schedule with country = Great Britain",
+    deliveryType: DELIVERY_CONDITION.PICKUP,
+    country: COUNTRY.GREAT_BRITAIN,
+    deliveryDateAction: (date) => date.pickRandomAvailableDate(),
+  },
+];
+
+export const EDIT_PICKUP_POSITIVE_CASES_UI: ICreatePickupDeliveryCaseUI[] = [
+  {
+    title: "Pickup: edit -> change country to Canada",
+    deliveryType: DELIVERY_CONDITION.PICKUP,
+    country: COUNTRY.CANADA,
+    deliveryDateAction: (date) => date.pickRandomAvailableDate(),
+  },
+  {
+    title: "Pickup: edit -> change country to Great Britain",
+    deliveryType: DELIVERY_CONDITION.PICKUP,
+    country: COUNTRY.GREAT_BRITAIN,
+    deliveryDateAction: (date) => date.pickRandomAvailableDate(),
+  },
 ];

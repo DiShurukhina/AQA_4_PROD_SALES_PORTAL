@@ -18,3 +18,8 @@ export interface IDeliveryInfo {
   condition: DELIVERY_CONDITION;
   finalDate: string;
 }
+
+export enum DELIVERY_LOCATION {
+  HOME = "Home",
+  OTHER = "Other",
+}

@@ -3,6 +3,7 @@ import { logStep } from "utils/report/logStep.utils.js";
 import { IOrderInTable, OrdersTableHeader } from "data/types/order.types";
 import { CreateOrderModal } from "./createOrderModal.page";
 import { ExportModal, ordersFieldNamesMapper } from "../export.modal";
+import { ORDER_STATUS } from "data/salesPortal/order-status";
 
 export class OrdersListPage extends SalesPortalPage {
   private readonly headerText = (name: OrdersTableHeader): string => {
@@ -44,19 +45,20 @@ export class OrdersListPage extends SalesPortalPage {
       .locator(`i.${direction === "asc" ? "bi-arrow-down" : "bi-arrow-up"}`);
 
   readonly detailsButton = (orderNumber: string) => this.tableRowByName(orderNumber).getByTitle("Details");
+  readonly reopenButton = (orderNumber: string) => this.tableRowByName(orderNumber).getByTitle("Reopen");
   readonly uniqueElement = this.createOrderButton;
   readonly searchInput = this.page.locator("#search");
   readonly searchButton = this.page.locator("#search-orders");
   readonly exportButton = this.page.locator("#export");
 
   @logStep("CLICK ADD NEW ORDER BUTTON")
-  async clickAddCustomerButton() {
+  async clickCreateOrderButton() {
     await this.createOrderButton.click();
   }
 
   @logStep("GET ORDER'S DATA BY ORDER NUMBER")
   async getOrderData(orderNumber: string): Promise<IOrderInTable> {
-    const [orderId, email, price, delivery, assignedManager, createdOn] = await this.tableRowByName(orderNumber)
+    const [orderId, email, price, delivery, status, assignedManager, createdOn] = await this.tableRowByName(orderNumber)
       .locator("td")
       .allInnerTexts();
     return {
@@ -64,6 +66,7 @@ export class OrdersListPage extends SalesPortalPage {
       email: email!,
       price: +price!.replace("$", ""),
       delivery: delivery!,
+      status: status! as ORDER_STATUS,
       assignedManager: assignedManager!,
       createdOn: createdOn!,
     };
@@ -75,12 +78,15 @@ export class OrdersListPage extends SalesPortalPage {
 
     const rows = await this.tableRow.all();
     for (const row of rows) {
-      const [orderId, email, price, delivery, assignedManager, createdOn] = await row.locator("td").allInnerTexts();
+      const [orderId, email, price, delivery, status, assignedManager, createdOn] = await row
+        .locator("td")
+        .allInnerTexts();
       data.push({
         orderId: orderId!,
         email: email!,
         price: +price!.replace("$", ""),
         delivery: delivery!,
+        status: status! as ORDER_STATUS,
         assignedManager: assignedManager!,
         createdOn: createdOn!,
       });
@@ -89,8 +95,9 @@ export class OrdersListPage extends SalesPortalPage {
   }
 
   @logStep("CLICK ACTION BUTTON ON ORDERS LIST PAGE")
-  async clickAction(orderNumber: string, button: "details") {
+  async clickAction(orderNumber: string, button: "details" | "reopen") {
     if (button === "details") await this.detailsButton(orderNumber).click();
+    if (button === "reopen") await this.reopenButton(orderNumber).click();
   }
 
   @logStep("CLICK TABLE HEADER ON ORDERS LIST PAGE")

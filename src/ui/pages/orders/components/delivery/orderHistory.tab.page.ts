@@ -11,14 +11,14 @@ import {
   ManagerField,
 } from "data/types/delivery.types";
 import { logStep } from "utils/report/logStep.utils";
-import { SalesPortalPage } from "ui/pages/salesPortal.page";
+import { BaseComponent } from "ui/pages/base.component";
 
-export class OrderHistoryTab extends SalesPortalPage {
-  readonly uniqueElement = this.page.locator("h4", { hasText: "Order History" });
-
-  readonly tab = this.page.locator('#history[role="tabpanel"]');
+export class OrderHistoryTab extends BaseComponent {
+  readonly tab = this.page.locator('#history.tab-pane.active.show[role="tabpanel"]');
+  readonly title = this.tab.locator("h4", { hasText: "Order History" });
   readonly body = this.tab.locator("#history-body");
 
+  readonly uniqueElement = this.tab;
   // top headers
   readonly topHeaderRow = this.tab.locator(":scope > div.his-header.py-3.fs-5");
   readonly headers = this.topHeaderRow.locator("span.his-col.fw-bold");

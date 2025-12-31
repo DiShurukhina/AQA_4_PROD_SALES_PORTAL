@@ -15,6 +15,14 @@ import { AddNewCustomerUIService } from "ui/service/addNewCustomer.ui-service";
 import { CustomersListUIService } from "ui/service/customersList.ui-service";
 import { CustomersListPage } from "ui/pages/customers/customersList.page";
 import { OrdersListPage } from "ui/pages/orders/ordersList.page";
+import { OrderDetailsPage } from "ui/pages/orders/order-details.page";
+import { CommentsUIService } from "ui/service/comments.ui-service";
+import { DeliveryTab } from "ui/pages/orders/components/delivery/delivery.tab.page";
+import { ScheduleDeliveryPage } from "ui/pages/orders/scheduleDelivery.page";
+import { DeliveryUIService } from "ui/service/delivery.ui-servise";
+import { ScheduleDeliveryUIService } from "ui/service/scheduleDelivery.ui-service";
+import { OrderHistoryTab } from "ui/pages/orders/components/delivery/orderHistory.tab.page";
+import { OrderHistoryUIService } from "ui/service/orderHistory.ui-service";
 
 export interface IPages {
   //pages
@@ -27,6 +35,11 @@ export interface IPages {
   addNewCustomerPage: AddNewCustomerPage;
   customersListPage: CustomersListPage;
   ordersListPage: OrdersListPage;
+  orderDetailsPage: OrderDetailsPage;
+  deliveryTab: DeliveryTab;
+  scheduleDeliveryPage: ScheduleDeliveryPage;
+  orderHistoryTab: OrderHistoryTab;
+
   //ui-services
   homeUIService: HomeUIService;
   productsListUIService: ProductsListUIService;
@@ -35,6 +48,10 @@ export interface IPages {
   loginUIService: LoginUIService;
   addNewCustomerUIService: AddNewCustomerUIService;
   customersListUIService: CustomersListUIService;
+  commentsUIService: CommentsUIService;
+  deliveryUIService: DeliveryUIService;
+  scheduleDeliveryUIService: ScheduleDeliveryUIService;
+  orderHistoryUIService: OrderHistoryUIService;
 }
 
 export const test = base.extend<IPages>({
@@ -65,6 +82,18 @@ export const test = base.extend<IPages>({
   ordersListPage: async ({ page }, use) => {
     await use(new OrdersListPage(page));
   },
+  orderDetailsPage: async ({ page }, use) => {
+    await use(new OrderDetailsPage(page));
+  },
+  deliveryTab: async ({ page }, use) => {
+    await use(new DeliveryTab(page));
+  },
+  scheduleDeliveryPage: async ({ page }, use) => {
+    await use(new ScheduleDeliveryPage(page));
+  },
+  orderHistoryTab: async ({ page }, use) => {
+    await use(new OrderHistoryTab(page));
+  },
 
   //ui-services
   homeUIService: async ({ page }, use) => {
@@ -93,6 +122,19 @@ export const test = base.extend<IPages>({
 
   loginUIService: async ({ page }, use) => {
     await use(new LoginUIService(page));
+  },
+
+  commentsUIService: async ({ page }, use) => {
+    await use(new CommentsUIService(page));
+  },
+  deliveryUIService: async ({ page }, use) => {
+    await use(new DeliveryUIService(page));
+  },
+  scheduleDeliveryUIService: async ({ page }, use) => {
+    await use(new ScheduleDeliveryUIService(page));
+  },
+  orderHistoryUIService: async ({ page }, use) => {
+    await use(new OrderHistoryUIService(page));
   },
 });
 

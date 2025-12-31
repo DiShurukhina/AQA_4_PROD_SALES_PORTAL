@@ -1,5 +1,22 @@
 export type CsvRecord = Record<string, string>;
 
+const stripBom = (value: string): string => value.replace(/^\uFEFF/, "");
+
+const normalizeHeaders = (rawHeaders: string[]): string[] => {
+  const seen = new Map<string, number>();
+
+  return rawHeaders.map((h, idx) => {
+    let base = stripBom(h).trim();
+    if (!base) base = `__col_${idx + 1}`;
+
+    const prev = seen.get(base) ?? 0;
+    const next = prev + 1;
+    seen.set(base, next);
+
+    return next === 1 ? base : `${base}__${next}`;
+  });
+};
+
 const detectDelimiter = (headerLine: string): string => {
   const commaCount = (headerLine.match(/,/g) ?? []).length;
   const semicolonCount = (headerLine.match(/;/g) ?? []).length;
@@ -78,7 +95,7 @@ export const parseCsvToRecords = (text: string): CsvRecord[] => {
   const rows = parseCsvToRows(trimmed, delimiter);
   if (rows.length === 0) return [];
 
-  const headers = (rows[0] ?? []).map((h) => h.trim());
+  const headers = normalizeHeaders((rows[0] ?? []).map((h) => h));
   const records: CsvRecord[] = [];
 
   for (const row of rows.slice(1)) {
@@ -87,7 +104,7 @@ export const parseCsvToRecords = (text: string): CsvRecord[] => {
     const record: CsvRecord = {};
     for (let i = 0; i < headers.length; i++) {
       const key = headers[i];
-      if (!key) continue;
+      if (key === undefined) continue;
       record[key] = (row[i] ?? "").trim();
     }
     records.push(record);
