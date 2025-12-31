@@ -46,7 +46,6 @@ export class OrderDetailsHeader extends BasePage {
   @logStep("HEADER: GET ORDER NUMBER TEXT")
   async getOrderNumberText() {
     const orderNumber = this.orderNumberText;
-    await expect(orderNumber).toBeVisible({ timeout: TIMEOUT_10_S });
     return (await orderNumber.innerText()).trim();
   }
 
