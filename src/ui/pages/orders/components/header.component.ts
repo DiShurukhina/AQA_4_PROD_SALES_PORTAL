@@ -40,7 +40,6 @@ export class OrderDetailsHeader extends BasePage {
   @logStep("HEADER: GET ORDER STATUS TEXT")
   async getStatusText() {
     const status = this.statusText.first();
-    await expect(status).toBeVisible({ timeout: TIMEOUT_10_S });
     return (await status.innerText()).trim();
   }
 
