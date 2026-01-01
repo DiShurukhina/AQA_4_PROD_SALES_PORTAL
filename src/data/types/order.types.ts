@@ -16,6 +16,17 @@ export interface IOrderResponse extends IResponseFields {
   DeliveryInfo: IDeliveryInfo;
 }
 
+export interface IGetAllOrdersQuery 
+extends Record<string, string | number | string[]> {
+  page?: number;
+  limit?: number;
+  search?: string;
+  status?: ORDER_STATUS[];
+  sortField?: OrdersTableHeader;
+  sortOrder?: SortOrder;
+}
+
+
 export interface IOrderHistoryResponse extends IResponseFields {
   history: IOrderHistory[];
 }
