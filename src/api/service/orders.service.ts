@@ -10,6 +10,7 @@ import { getOrderSchema } from "data/schemas/orders/get.schema";
 import { EntitiesStore } from "api/service/stores/entities.store";
 import { faker } from "@faker-js/faker";
 import { logStep } from "utils/report/logStep.utils.js";
+import { MANAGER_IDS } from "config/env";
 
 export class OrdersApiService {
   constructor(
@@ -132,9 +133,7 @@ export class OrdersApiService {
     managerId?: string,
   ): Promise<IOrderFromResponse> {
     const createdOrder = await this.createOrderWithDelivery(token, numberOfProducts);
-    const managerIdsEnv = process.env.MANAGER_IDS;
-    const managerIds = managerIdsEnv ? (JSON.parse(managerIdsEnv) as string[]) : [];
-    managerId = managerId || managerIds[0] || "";
+    managerId = managerId || MANAGER_IDS[0] || "";
     const assignRes = await this.ordersApi.assingManager(token, createdOrder._id, managerId);
     validateResponse(assignRes, {
       status: STATUS_CODES.OK,
@@ -383,11 +382,6 @@ export class OrdersApiService {
 
   @logStep("GET AVAILABLE MANAGERS - API")
   async getAvailableManagers(): Promise<string[]> {
-    // Get list of users (managers) from API
-    // This assumes there's a users endpoint that returns available managers
-    // For now, read from env var MANAGER_IDS
-    const managerIdsEnv = process.env.MANAGER_IDS;
-    const managerIds = managerIdsEnv ? (JSON.parse(managerIdsEnv) as string[]) : [];
-    return managerIds;
+    return MANAGER_IDS;
   }
 }

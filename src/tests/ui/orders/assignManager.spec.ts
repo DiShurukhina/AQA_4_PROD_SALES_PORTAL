@@ -28,7 +28,6 @@ test.describe("[UI][Orders][Assign Manager]", () => {
       );
     }
   });
-
   test(
     "Cancel manager assignment without saving",
     { tag: [TAGS.UI, TAGS.ORDERS, TAGS.MANAGERS, TAGS.REGRESSION] },

@@ -18,13 +18,7 @@ export class AssignManagerUIService {
 
   @logStep("OPEN ASSIGN MANAGER MODAL")
   async openAssignManagerModal() {
-    // Check if modal is already open
-    const isOpen = await this.orderDetailsPage.assignManagerModal.uniqueElement.isVisible();
-
-    if (!isOpen) {
-      await this.orderDetailsPage.header.openAssignManagerModal();
-    }
-
+    await this.orderDetailsPage.header.openAssignManagerModal();
     await this.orderDetailsPage.assignManagerModal.waitForOpened();
   }
 
@@ -32,9 +26,8 @@ export class AssignManagerUIService {
   async assignManagerByName(managerName: string) {
     await this.openAssignManagerModal();
     await this.orderDetailsPage.assignManagerModal.selectManager(managerName);
+    await expect(this.orderDetailsPage.assignManagerModal.saveButton).toBeEnabled({ timeout: TIMEOUT_10_S });
     await this.orderDetailsPage.assignManagerModal.clickSave();
-
-    // Wait for modal to close and page to stabilize
     await this.orderDetailsPage.assignManagerModal.waitForClosed();
     await this.orderDetailsPage.waitForSpinners();
   }
@@ -46,6 +39,7 @@ export class AssignManagerUIService {
     await expect(managers.length).toBeGreaterThan(0);
     const managerName = managers[0]!;
     await this.orderDetailsPage.assignManagerModal.selectManager(managerName);
+    await expect(this.orderDetailsPage.assignManagerModal.saveButton).toBeEnabled({ timeout: TIMEOUT_10_S });
     await this.orderDetailsPage.assignManagerModal.clickSave();
     await this.orderDetailsPage.assignManagerModal.waitForClosed();
     await this.orderDetailsPage.waitForSpinners();
@@ -71,17 +65,16 @@ export class AssignManagerUIService {
   @logStep("VERIFY MANAGER ASSIGNED")
   async expectManagerAssigned(expectedManagerName: string) {
     // Manager info should be visible in the header's assigned manager container
-    const assignedManagerContainer = this.page.locator("#assigned-manager-container");
     const expectedDisplayName = expectedManagerName.split("(")[0]!.trim();
-    await expect(assignedManagerContainer).toContainText(expectedDisplayName, { timeout: TIMEOUT_10_S });
+    await expect(this.orderDetailsPage.header.assignedManagerContainer).toContainText(expectedDisplayName, {
+      timeout: TIMEOUT_10_S,
+    });
   }
 
   @logStep("VERIFY NO MANAGER ASSIGNED")
   async expectNoManagerAssigned() {
     // When no manager assigned, the trigger button should be available
-    const assignedManagerContainer = this.page.locator("#assigned-manager-container");
-    const assignButton = assignedManagerContainer.locator('[onclick*="renderAssigneManagerModal"]').first();
-    await expect(assignButton).toBeVisible({ timeout: TIMEOUT_10_S });
+    await expect(this.orderDetailsPage.header.assignManagerTrigger).toBeVisible({ timeout: TIMEOUT_10_S });
   }
 
   @logStep("UNASSIGN MANAGER")

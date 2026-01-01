@@ -1,4 +1,4 @@
-import { expect, Page } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { BaseModal } from "../../base.modal";
 import { logStep } from "utils/report/logStep.utils.js";
 import { TIMEOUT_10_S, TIMEOUT_15_S } from "data/salesPortal/constants";
@@ -16,11 +16,6 @@ export class AssignManagerModal extends BaseModal {
   readonly closeButton = this.modal.locator("button.btn-close");
   readonly cancelButton = this.modal.locator("#cancel-edit-manager-modal-btn");
 
-  constructor(page: Page) {
-    super(page);
-  }
-
-  @logStep("WAIT FOR ASSIGN MANAGER MODAL TO OPEN")
   async waitForOpened() {
     await expect(this.uniqueElement).toBeVisible({ timeout: TIMEOUT_15_S });
     await expect(this.managerList).toBeVisible({ timeout: TIMEOUT_10_S });
@@ -33,7 +28,6 @@ export class AssignManagerModal extends BaseModal {
     await this.page.waitForTimeout(300); // Wait for filtering
   }
 
-  @logStep("SELECT MANAGER FROM LIST BY PARTIAL NAME")
   async selectManager(managerName: string) {
     // Don't use searchManager first - just get all items and find by text
     // This avoids issues where search input text doesn't match displayed text exactly
@@ -45,8 +39,6 @@ export class AssignManagerModal extends BaseModal {
       if (text.toLowerCase().includes(managerName.toLowerCase())) {
         // Click to activate (sets .active class and enables Save button)
         await item.click();
-        // Wait for Save button to be enabled
-        await expect(this.saveButton).toBeEnabled({ timeout: TIMEOUT_10_S });
         return;
       }
     }
@@ -88,18 +80,7 @@ export class AssignManagerModal extends BaseModal {
     await this.closeButton.click();
   }
 
-  @logStep("CHECK IF SAVE BUTTON IS ENABLED")
   async isSaveEnabled(): Promise<boolean> {
     return !(await this.saveButton.isDisabled());
-  }
-
-  @logStep("EXPECT SAVE BUTTON TO BE DISABLED")
-  async expectSaveDisabled() {
-    await expect(this.saveButton).toBeDisabled();
-  }
-
-  @logStep("EXPECT SAVE BUTTON TO BE ENABLED")
-  async expectSaveEnabled() {
-    await expect(this.saveButton).toBeEnabled();
   }
 }
