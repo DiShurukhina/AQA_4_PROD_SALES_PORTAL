@@ -10,6 +10,7 @@ import { getOrderSchema } from "data/schemas/orders/get.schema";
 import { EntitiesStore } from "api/service/stores/entities.store";
 import { faker } from "@faker-js/faker";
 import { logStep } from "utils/report/logStep.utils.js";
+import { MANAGER_IDS } from "config/env";
 
 export class OrdersApiService {
   constructor(
@@ -132,9 +133,7 @@ export class OrdersApiService {
     managerId?: string,
   ): Promise<IOrderFromResponse> {
     const createdOrder = await this.createOrderWithDelivery(token, numberOfProducts);
-    const managerIdsEnv = process.env.MANAGER_IDS;
-    const managerIds = managerIdsEnv ? (JSON.parse(managerIdsEnv) as string[]) : [];
-    managerId = managerId || managerIds[0] || "";
+    managerId = managerId || MANAGER_IDS[0] || "";
     const assignRes = await this.ordersApi.assingManager(token, createdOrder._id, managerId);
     validateResponse(assignRes, {
       status: STATUS_CODES.OK,
@@ -355,5 +354,34 @@ export class OrdersApiService {
     this.entitiesStore.trackProducts(productIds);
 
     return { customerId: customer._id, productIds, customerName: customer.name, productNames };
+  }
+
+  @logStep("ASSIGN MANAGER TO ORDER - API")
+  async assignManager(token: string, orderId: string, managerId: string): Promise<IOrderFromResponse> {
+    const response = await this.ordersApi.assingManager(token, orderId, managerId);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getOrderSchema,
+    });
+    return response.body.Order;
+  }
+
+  @logStep("UNASSIGN MANAGER FROM ORDER - API")
+  async unassignManager(token: string, orderId: string): Promise<IOrderFromResponse> {
+    const response = await this.ordersApi.unassingManager(token, orderId);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getOrderSchema,
+    });
+    return response.body.Order;
+  }
+
+  @logStep("GET AVAILABLE MANAGERS - API")
+  async getAvailableManagers(): Promise<string[]> {
+    return MANAGER_IDS;
   }
 }
