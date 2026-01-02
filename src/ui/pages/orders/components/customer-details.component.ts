@@ -24,6 +24,7 @@ export class OrderDetailsCustomerDetails extends BasePage {
     return this.editOrderCustomerModal;
   }
 
+  @logStep("CUSTOMER: GET DATA")
   async getCustomerData(): Promise<ICustomerDetails> {
     const [email, name, country, city, street, house, flat, phone, createdOn, notes] =
       await this.details.allInnerTexts();
@@ -39,5 +40,12 @@ export class OrderDetailsCustomerDetails extends BasePage {
       createdOn: createdOn!,
       notes: notes!,
     };
+  }
+
+  async isVisible() {
+    return this.uniqueElement.isVisible();
+  }
+  async isEditVisible() {
+    return this.editButton.isVisible();
   }
 }

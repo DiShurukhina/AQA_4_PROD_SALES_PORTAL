@@ -22,19 +22,23 @@ test.describe("[Integration] [Orders]", () => {
   });
 
   for (const { title, customersMock, notification } of editCustomerinOrderNegativeCases) {
-    test(title, { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] }, async ({ mock, orderDetailsPage }) => {
-      await customersMock(mock);
-      const customerDetails = orderDetailsPage.customerDetails;
-      const editCustomerModal = await customerDetails.clickEdit();
-      await expect(editCustomerModal.uniqueElement).not.toBeVisible();
-      await expect(orderDetailsPage.toastMessage).toBeVisible();
-      await expect(orderDetailsPage.toastMessage).toHaveText(notification);
-    });
+    test(
+      title,
+      { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION, TAGS.INTEGRATION] },
+      async ({ mock, orderDetailsPage }) => {
+        await customersMock(mock);
+        const customerDetails = orderDetailsPage.customerDetails;
+        const editCustomerModal = await customerDetails.clickEdit();
+        await expect(editCustomerModal.uniqueElement).not.toBeVisible();
+        await expect(orderDetailsPage.toastMessage).toBeVisible();
+        await expect(orderDetailsPage.toastMessage).toHaveText(notification);
+      },
+    );
   }
 
   test(
     "Should display mocked customers in customers dropdown",
-    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
+    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION, TAGS.INTEGRATION] },
     async ({ mock, orderDetailsPage }) => {
       const customer1 = generateCustomerResponseData();
       const customer2 = generateCustomerResponseData();
@@ -54,7 +58,7 @@ test.describe("[Integration] [Orders]", () => {
 
   test(
     "Should NOT open edit customer modal with customers/all 401 error",
-    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
+    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION, TAGS.INTEGRATION] },
     async ({ mock, orderDetailsPage, loginPage, context }) => {
       await mock.getCustomersAll(
         {
@@ -75,7 +79,7 @@ test.describe("[Integration] [Orders]", () => {
   for (const { title, responseMock } of editOrderCustomerResponseErrorCases) {
     test(
       title,
-      { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
+      { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION, TAGS.INTEGRATION] },
       async ({ orderDetailsPage, mock, customersApiService, cleanup }) => {
         const secondCustomer = await customersApiService.create(token);
         cleanup.addCustomer(secondCustomer._id);
@@ -94,7 +98,7 @@ test.describe("[Integration] [Orders]", () => {
 
   test(
     "Should logout when response status 401",
-    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
+    { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION, TAGS.INTEGRATION] },
     async ({ mock, orderDetailsPage, loginPage, context, customersApiService, cleanup }) => {
       const secondCustomer = await customersApiService.create(token);
       cleanup.addCustomer(secondCustomer._id);
