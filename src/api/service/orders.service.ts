@@ -1,7 +1,13 @@
 import { OrdersApi } from "api/api/orders.api";
 import { ORDER_STATUS } from "data/salesPortal/order-status";
 import { STATUS_CODES } from "data/statusCodes";
-import { IGetAllOrdersQuery, IOrderCreateBody, IOrderFromResponse, IOrdersResponse, IOrderUpdateBody } from "data/types/order.types";
+import {
+  IGetAllOrdersQuery,
+  IOrderCreateBody,
+  IOrderFromResponse,
+  IOrdersResponse,
+  IOrderUpdateBody,
+} from "data/types/order.types";
 import { CustomersApiService } from "api/service/customer.service";
 import { ProductsApiService } from "api/service/products.service";
 import { validateResponse } from "utils/validation/validateResponse.utils";
@@ -366,7 +372,7 @@ export class OrdersApiService {
       IsSuccess: true,
       ErrorMessage: null,
       schema: getAllOrdersSchema,
-  });
+    });
     return response.body;
   }
 
