@@ -2,7 +2,7 @@ import { COUNTRY } from "data/salesPortal/country";
 import { DELIVERY_CONDITION, DELIVERY_LOCATION } from "data/salesPortal/delivery-status";
 import { ICreateDeliveryCaseUI, ICreatePickupDeliveryCaseUI } from "data/types/delivery.types";
 import { IOrderFromResponse } from "data/types/order.types";
-import { ScheduleDeliveryPage } from "ui/pages/orders/scheduleDelivery.page";
+import { ScheduleDeliveryPage } from "ui/pages/orders/components/delivery/scheduleDelivery.page";
 import { OrderDetailsUIService } from "ui/service/orderDetails.ui-service";
 
 export const productIdsOf = (order: IOrderFromResponse): string[] => order.products.map((p) => p._id);

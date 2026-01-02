@@ -1,7 +1,7 @@
 import { DELIVERY_CONDITION, DELIVERY_LOCATION, IDeliveryInfo } from "data/salesPortal/delivery-status";
 import { ORDER_HISTORY_ACTIONS, ORDER_STATUS } from "data/salesPortal/order-status";
 import { ICase } from "./core.types";
-import { ScheduleDeliveryPage } from "ui/pages/orders/scheduleDelivery.page";
+import { ScheduleDeliveryPage } from "ui/pages/orders/components/delivery/scheduleDelivery.page";
 import { COUNTRY } from "data/salesPortal/country";
 
 export type DeliveryInfo = {

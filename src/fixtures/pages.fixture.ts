@@ -112,7 +112,7 @@ export const test = base.extend<IPages>({
   },
   orderDetailsUIService: async ({ page }, use) => {
     await use(new OrderDetailsUIService(page));
-
+  },
   assignManagerUIService: async ({ page }, use) => {
     await use(new AssignManagerUIService(page));
   },
