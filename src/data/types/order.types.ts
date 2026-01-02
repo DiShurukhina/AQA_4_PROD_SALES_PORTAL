@@ -146,7 +146,7 @@ export interface IUpdateOrderErrorCase {
   invalidProductId?: string;
 }
 
-export interface IManagerAssignCases {
+export interface IOrderInStatusCases {
   name: string;
   create: (ordersApiService: OrdersApiService, token: string) => Promise<IOrderFromResponse>;
 }

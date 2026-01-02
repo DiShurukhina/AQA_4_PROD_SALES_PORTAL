@@ -1,8 +1,8 @@
 import { STATUS_CODES } from "data/statusCodes";
-import { IManagerAssignCases } from "data/types/order.types";
+import { IOrderInStatusCases } from "data/types/order.types";
 import { RESPONSE_ERRORS } from "../errors";
 
-export const orderInStatus: IManagerAssignCases[] = [
+export const orderInStatus: IOrderInStatusCases[] = [
   { name: "Draft", create: (ordersApiService, token) => ordersApiService.createOrderAndEntities(token, 1) },
   {
     name: "In Process",

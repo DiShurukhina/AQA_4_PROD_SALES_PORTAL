@@ -8,6 +8,8 @@ export enum NOTIFICATIONS {
   CUSTOMER_DELETED = "Customer was successfully deleted",
   CUSTOMER_UPDATED = "Customer was successfully updated",
   NO_CUSTOMERS_FOUND = "No customers found. Please add one before creating an order.",
+  CUSTOMER_UNABLE_TO_UPDATE = "Unable to update customer. Please try again later.",
+  CUSTOMER_FAILED_TO_UPDATE = "Failed to update customer. Please try again later.",
 
   ORDER_PROCESSED = "Order processing was successfully started",
   ORDER_CANCELED = "Order was successfully canceled",

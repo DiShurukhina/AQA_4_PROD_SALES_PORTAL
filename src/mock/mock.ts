@@ -51,4 +51,8 @@ export class Mock {
   async getProductsAll(body: IProductsResponse | IResponseFields, statusCode: STATUS_CODES = STATUS_CODES.OK) {
     await this.routeRequest(apiConfig.baseURL + apiConfig.endpoints.productsAll, body, statusCode);
   }
+
+  async orderById(body: IOrderResponse | IResponseFields, orderId: string, statusCode: STATUS_CODES = STATUS_CODES.OK) {
+    await this.routeRequest(apiConfig.baseURL + apiConfig.endpoints.orderById(orderId), body, statusCode);
+  }
 }
