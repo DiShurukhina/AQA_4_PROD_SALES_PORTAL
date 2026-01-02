@@ -11,9 +11,9 @@ import {
   ManagerField,
 } from "data/types/delivery.types";
 import { logStep } from "utils/report/logStep.utils";
-import { BaseComponent } from "ui/pages/base.component";
+import { SalesPortalPage } from "ui/pages/salesPortal.page";
 
-export class OrderHistoryTab extends BaseComponent {
+export class OrderHistoryTab extends SalesPortalPage {
   readonly tab = this.page.locator('#history.tab-pane.active.show[role="tabpanel"]');
   readonly title = this.tab.locator("h4", { hasText: "Order History" });
   readonly body = this.tab.locator("#history-body");

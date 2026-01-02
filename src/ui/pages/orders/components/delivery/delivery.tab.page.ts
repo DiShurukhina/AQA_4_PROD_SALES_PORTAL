@@ -1,44 +1,43 @@
-// import { DeliveryInfo } from "data/types/delivery.types";
 import { logStep } from "utils/report/logStep.utils";
-import { BaseComponent } from "ui/pages/base.component";
 import { DeliveryInfo } from "data/types/delivery.types";
+import { SalesPortalPage } from "ui/pages/salesPortal.page";
 
-export class DeliveryTab extends BaseComponent {
+export class DeliveryTab extends SalesPortalPage {
   readonly tab = this.page.locator('#delivery.tab-pane.active.show[role="tabpanel"]');
   readonly title = this.tab.locator("h4", { hasText: "Delivery Information" });
-  readonly orderInfoTable = this.tab.locator("div.mb-4.p-3");
-  readonly values = this.orderInfoTable.locator("div.c-details > span:last-child");
   readonly scheduleDeliveryButton = this.tab.locator("#delivery-btn");
   readonly uniqueElement = this.tab;
 
+  //delivery info
+  readonly orderInfoTable = this.tab.locator("div.mb-4.p-3");
+  readonly rows = this.orderInfoTable.locator("div.c-details");
+  readonly labelCells = this.rows.locator("span:first-child");
+  readonly valueCells = this.rows.locator("span:last-child");
+
   @logStep("GET ALL DATA FROM DELIVERY INFO")
   async getData(): Promise<DeliveryInfo> {
-    const rows = this.orderInfoTable.locator("div.c-details");
+    const [fieldLabels, fieldValues] = await Promise.all([
+      this.labelCells.allInnerTexts(),
+      this.valueCells.allInnerTexts(),
+    ]);
 
-    const map = await rows.evaluateAll((els) => {
-      const res: Record<string, string> = {};
-      for (const el of els) {
-        const label = el.querySelector("span:first-child")?.textContent?.trim();
-        const value = el.querySelector("span:last-child")?.textContent?.trim() ?? "";
-        if (label) res[label] = value;
-      }
-      return res;
-    });
-
-    const toInt = (v: string) => {
-      const n = Number(v);
-      if (Number.isNaN(n)) throw new Error(`Cannot parse number from "${v}"`);
-      return n;
-    };
-
+    const labelToValueMap = fieldLabels.reduce<Record<string, string>>((result, rawLabel, index) => {
+      const label = rawLabel?.trim();
+      if (!label) return result;
+      const value = (fieldValues[index] ?? "").trim();
+      result[label] = value;
+      return result;
+    }, {});
+    const text = (label: string) => (labelToValueMap[label] ?? "").trim();
+    const num = (label: string) => Number(text(label));
     return {
-      deliveryType: map["Delivery Type"] ?? "",
-      deliveryDate: map["Delivery Date"] ?? "",
-      country: map["Country"] ?? "",
-      city: map["City"] ?? "",
-      street: map["Street"] ?? "",
-      house: toInt(map["House"] ?? ""),
-      flat: toInt(map["Flat"] ?? ""),
+      deliveryType: text("Delivery Type"),
+      deliveryDate: text("Delivery Date"),
+      country: text("Country"),
+      city: text("City"),
+      street: text("Street"),
+      house: num("House"),
+      flat: num("Flat"),
     };
   }
 

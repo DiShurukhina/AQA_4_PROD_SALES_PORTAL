@@ -17,12 +17,7 @@ import { CustomersListPage } from "ui/pages/customers/customersList.page";
 import { OrdersListPage } from "ui/pages/orders/ordersList.page";
 import { OrderDetailsPage } from "ui/pages/orders/order-details.page";
 import { CommentsUIService } from "ui/service/comments.ui-service";
-import { DeliveryTab } from "ui/pages/orders/components/delivery/delivery.tab.page";
-import { ScheduleDeliveryPage } from "ui/pages/orders/scheduleDelivery.page";
-import { DeliveryUIService } from "ui/service/delivery.ui-servise";
-import { ScheduleDeliveryUIService } from "ui/service/scheduleDelivery.ui-service";
-import { OrderHistoryTab } from "ui/pages/orders/components/delivery/orderHistory.tab.page";
-import { OrderHistoryUIService } from "ui/service/orderHistory.ui-service";
+import { OrderDetailsUIService } from "ui/service/orderDetails.ui-service";
 
 export interface IPages {
   //pages
@@ -36,9 +31,6 @@ export interface IPages {
   customersListPage: CustomersListPage;
   ordersListPage: OrdersListPage;
   orderDetailsPage: OrderDetailsPage;
-  deliveryTab: DeliveryTab;
-  scheduleDeliveryPage: ScheduleDeliveryPage;
-  orderHistoryTab: OrderHistoryTab;
 
   //ui-services
   homeUIService: HomeUIService;
@@ -49,9 +41,7 @@ export interface IPages {
   addNewCustomerUIService: AddNewCustomerUIService;
   customersListUIService: CustomersListUIService;
   commentsUIService: CommentsUIService;
-  deliveryUIService: DeliveryUIService;
-  scheduleDeliveryUIService: ScheduleDeliveryUIService;
-  orderHistoryUIService: OrderHistoryUIService;
+  orderDetailsUIService: OrderDetailsUIService;
 }
 
 export const test = base.extend<IPages>({
@@ -84,15 +74,6 @@ export const test = base.extend<IPages>({
   },
   orderDetailsPage: async ({ page }, use) => {
     await use(new OrderDetailsPage(page));
-  },
-  deliveryTab: async ({ page }, use) => {
-    await use(new DeliveryTab(page));
-  },
-  scheduleDeliveryPage: async ({ page }, use) => {
-    await use(new ScheduleDeliveryPage(page));
-  },
-  orderHistoryTab: async ({ page }, use) => {
-    await use(new OrderHistoryTab(page));
   },
 
   //ui-services
@@ -127,14 +108,8 @@ export const test = base.extend<IPages>({
   commentsUIService: async ({ page }, use) => {
     await use(new CommentsUIService(page));
   },
-  deliveryUIService: async ({ page }, use) => {
-    await use(new DeliveryUIService(page));
-  },
-  scheduleDeliveryUIService: async ({ page }, use) => {
-    await use(new ScheduleDeliveryUIService(page));
-  },
-  orderHistoryUIService: async ({ page }, use) => {
-    await use(new OrderHistoryUIService(page));
+  orderDetailsUIService: async ({ page }, use) => {
+    await use(new OrderDetailsUIService(page));
   },
 });
 

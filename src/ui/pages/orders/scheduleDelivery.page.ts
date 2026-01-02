@@ -1,5 +1,5 @@
 import { Locator } from "@playwright/test";
-import { DeliveryInfo } from "data/types/delivery.types";
+import { DeliveryDateAction, DeliveryInfo } from "data/types/delivery.types";
 import { logStep } from "utils/report/logStep.utils";
 import { SalesPortalPage } from "ui/pages/salesPortal.page";
 
@@ -21,6 +21,9 @@ export class ScheduleDeliveryPage extends SalesPortalPage {
   // actions
   readonly saveButton = this.container.locator("#save-delivery");
   readonly cancelButton = this.container.locator("#back-to-order-details-page");
+
+  //calendar
+  readonly activeDaysOfCurrentMonth = this.page.locator(".datepicker-days td.day:not(.disabled):not(.old):not(.new)");
 
   @logStep("READING STRING FIELDS")
   private async readField(field: Locator): Promise<string> {
@@ -63,7 +66,7 @@ export class ScheduleDeliveryPage extends SalesPortalPage {
   }
 
   async pickRandomAvailableDate(): Promise<Date> {
-    const days = this.page.locator(".datepicker-days td.day:not(.disabled):not(.old):not(.new)");
+    const days = this.activeDaysOfCurrentMonth;
     const count = await days.count();
     if (!count) throw new Error("No enabled days in datepicker");
     const idx = Math.floor(Math.random() * count);
@@ -71,5 +74,12 @@ export class ScheduleDeliveryPage extends SalesPortalPage {
     const ts = Number(await cell.getAttribute("data-date"));
     await cell.click();
     return new Date(ts);
+  }
+
+  @logStep("PICK DELIVERY DATE")
+  async pickDateIfNeeded(action?: DeliveryDateAction) {
+    if (!action) return;
+    await this.dateInput.click();
+    await action(this);
   }
 }

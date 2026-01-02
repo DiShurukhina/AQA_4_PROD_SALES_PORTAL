@@ -10,6 +10,7 @@ import { getOrderSchema } from "data/schemas/orders/get.schema";
 import { EntitiesStore } from "api/service/stores/entities.store";
 import { faker } from "@faker-js/faker";
 import { logStep } from "utils/report/logStep.utils.js";
+import { createOrderSchema } from "data/schemas/orders/create.schema";
 
 export class OrdersApiService {
   constructor(
@@ -44,7 +45,7 @@ export class OrdersApiService {
       status: STATUS_CODES.CREATED,
       IsSuccess: true,
       ErrorMessage: null,
-      // schema: createOrderSchema,
+      schema: createOrderSchema,
     });
 
     return response.body.Order;

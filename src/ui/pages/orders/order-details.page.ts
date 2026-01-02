@@ -7,6 +7,7 @@ import { CommentsTab } from "./components/delivery/comments.tab.page";
 import { TIMEOUT_30_S } from "data/salesPortal/constants";
 import { DeliveryTab } from "./components/delivery/delivery.tab.page";
 import { OrderHistoryTab } from "./components/delivery/orderHistory.tab.page";
+import { ScheduleDeliveryPage } from "./scheduleDelivery.page";
 
 /**
  * Order Details PageObject orchestrator.
@@ -39,6 +40,7 @@ export class OrderDetailsPage extends SalesPortalPage {
   readonly commentsTab: CommentsTab;
   readonly deliveryTab: DeliveryTab;
   readonly orderHistoryTab: OrderHistoryTab;
+  readonly scheduleDeliveryPage: ScheduleDeliveryPage;
 
   constructor(page: Page) {
     super(page);
@@ -48,6 +50,7 @@ export class OrderDetailsPage extends SalesPortalPage {
     this.commentsTab = new CommentsTab(page);
     this.deliveryTab = new DeliveryTab(page);
     this.orderHistoryTab = new OrderHistoryTab(page);
+    this.scheduleDeliveryPage = new ScheduleDeliveryPage(page);
   }
 
   // Modals

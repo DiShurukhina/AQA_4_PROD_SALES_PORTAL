@@ -19,16 +19,16 @@ test.describe("[Create/edit delivery]", () => {
     for (const tc of DEFAULT_SCHEDULE_FORM_CASES) {
       test(
         tc.title,
-        async ({ ordersApiService, ordersApi, loginApiService, deliveryUIService, scheduleDeliveryPage }) => {
+        async ({ ordersApiService, ordersApi, loginApiService, orderDetailsUIService, orderDetailsPage }) => {
           const token = await loginApiService.loginAsAdmin();
           const order = await ordersApiService.createOrderAndEntities(token, 1);
           const orderResponse = await ordersApi.getById(order._id, token);
           const customer = orderResponse.body.Order.customer;
-          await deliveryUIService.openOrderDelivery(order._id);
-          await deliveryUIService.openScheduleDeliveryForm();
-          await expect(scheduleDeliveryPage.title).toHaveText("Schedule Delivery");
-          await expect(scheduleDeliveryPage.saveButton).toBeDisabled();
-          const scheduleDeliveryInfo = await scheduleDeliveryPage.getScheduleDeliveryData();
+          await orderDetailsUIService.openOrderDelivery(order._id);
+          await orderDetailsUIService.openScheduleDeliveryForm();
+          await expect(orderDetailsPage.scheduleDeliveryPage.title).toHaveText("Schedule Delivery");
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeDisabled();
+          const scheduleDeliveryInfo = await orderDetailsPage.scheduleDeliveryPage.getScheduleDeliveryData();
           const customerComparable = _.omit(customer, ["_id", "email", "name", "phone", "createdOn", "notes"]);
           const scheduleDeliveryComparable = _.omit(scheduleDeliveryInfo, ["deliveryType", "deliveryDate", "location"]);
           expect(scheduleDeliveryComparable).toEqual(customerComparable);
@@ -42,26 +42,19 @@ test.describe("[Create/edit delivery]", () => {
       test(
         tc.title,
         { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
-        async ({
-          ordersApiService,
-          loginApiService,
-          deliveryUIService,
-          scheduleDeliveryPage,
-          scheduleDeliveryUIService,
-          deliveryTab,
-        }) => {
+        async ({ ordersApiService, loginApiService, orderDetailsUIService, orderDetailsPage }) => {
           const token = await loginApiService.loginAsAdmin();
           const order = await ordersApiService.createOrderAndEntities(token, 1);
-          await deliveryUIService.openOrderDelivery(order._id);
-          await deliveryUIService.openScheduleDeliveryForm();
-          await expect(scheduleDeliveryPage.title).toHaveText("Schedule Delivery");
-          await expect(scheduleDeliveryPage.saveButton).toBeDisabled();
-          await applyDeliveryCase(scheduleDeliveryPage, tc);
-          await expect(scheduleDeliveryPage.saveButton).toBeEnabled();
-          const formInfo = await scheduleDeliveryPage.getScheduleDeliveryData();
+          await orderDetailsUIService.openOrderDelivery(order._id);
+          await orderDetailsUIService.openScheduleDeliveryForm();
+          await expect(orderDetailsPage.scheduleDeliveryPage.title).toHaveText("Schedule Delivery");
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeDisabled();
+          await applyDeliveryCase(orderDetailsPage.scheduleDeliveryPage, tc, orderDetailsUIService);
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeEnabled();
+          const formInfo = await orderDetailsPage.scheduleDeliveryPage.getScheduleDeliveryData();
           const expectedForDeliveryTab = _.omit(formInfo, ["location"]);
-          await scheduleDeliveryUIService.clickSaveDelivery();
-          const actual = await deliveryTab.getData();
+          await orderDetailsUIService.clickSaveDelivery();
+          const actual = await orderDetailsPage.deliveryTab.getData();
           expect(actual).toEqual(expectedForDeliveryTab);
         },
       );
@@ -73,29 +66,22 @@ test.describe("[Create/edit delivery]", () => {
       test(
         tc.title,
         { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
-        async ({
-          ordersApiService,
-          loginApiService,
-          deliveryUIService,
-          scheduleDeliveryPage,
-          scheduleDeliveryUIService,
-          deliveryTab,
-        }) => {
+        async ({ ordersApiService, loginApiService, orderDetailsPage, orderDetailsUIService }) => {
           const token = await loginApiService.loginAsAdmin();
           const order = await ordersApiService.createOrderAndEntities(token, 1);
-          await deliveryUIService.openOrderDelivery(order._id);
-          await deliveryUIService.openScheduleDeliveryForm();
-          await applyDeliveryCase(scheduleDeliveryPage, tc);
-          await scheduleDeliveryUIService.clickSaveDelivery();
-          await deliveryUIService.openScheduleDeliveryForm();
-          await expect(scheduleDeliveryPage.title).toHaveText("Edit Delivery");
-          await expect(scheduleDeliveryPage.saveButton).toBeDisabled();
-          await applyDeliveryCase(scheduleDeliveryPage, tc);
-          await expect(scheduleDeliveryPage.saveButton).toBeEnabled();
-          const formInfo = await scheduleDeliveryPage.getScheduleDeliveryData();
+          await orderDetailsUIService.openOrderDelivery(order._id);
+          await orderDetailsUIService.openScheduleDeliveryForm();
+          await applyDeliveryCase(orderDetailsPage.scheduleDeliveryPage, tc, orderDetailsUIService);
+          await orderDetailsUIService.clickSaveDelivery();
+          await orderDetailsUIService.openScheduleDeliveryForm();
+          await expect(orderDetailsPage.scheduleDeliveryPage.title).toHaveText("Edit Delivery");
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeDisabled();
+          await applyDeliveryCase(orderDetailsPage.scheduleDeliveryPage, tc, orderDetailsUIService);
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeEnabled();
+          const formInfo = await orderDetailsPage.scheduleDeliveryPage.getScheduleDeliveryData();
           const expectedForDeliveryTab = _.omit(formInfo, ["location"]);
-          await scheduleDeliveryUIService.clickSaveDelivery();
-          const actual = await deliveryTab.getData();
+          await orderDetailsUIService.clickSaveDelivery();
+          const actual = await orderDetailsPage.deliveryTab.getData();
           expect(actual).toEqual(expectedForDeliveryTab);
         },
       );
@@ -107,26 +93,19 @@ test.describe("[Create/edit delivery]", () => {
       test(
         tc.title,
         { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
-        async ({
-          ordersApiService,
-          loginApiService,
-          deliveryUIService,
-          scheduleDeliveryPage,
-          scheduleDeliveryUIService,
-          deliveryTab,
-        }) => {
+        async ({ ordersApiService, loginApiService, orderDetailsPage, orderDetailsUIService }) => {
           const token = await loginApiService.loginAsAdmin();
           const order = await ordersApiService.createOrderAndEntities(token, 1);
-          await deliveryUIService.openOrderDelivery(order._id);
-          await deliveryUIService.openScheduleDeliveryForm();
-          await expect(scheduleDeliveryPage.title).toHaveText("Schedule Delivery");
-          await expect(scheduleDeliveryPage.saveButton).toBeDisabled();
-          await applyPickupCase(scheduleDeliveryPage, tc);
-          await expect(scheduleDeliveryPage.saveButton).toBeEnabled();
-          const expected = await scheduleDeliveryPage.getScheduleDeliveryData();
+          await orderDetailsUIService.openOrderDelivery(order._id);
+          await orderDetailsUIService.openScheduleDeliveryForm();
+          await expect(orderDetailsPage.scheduleDeliveryPage.title).toHaveText("Schedule Delivery");
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeDisabled();
+          await applyPickupCase(orderDetailsPage.scheduleDeliveryPage, tc, { selectType: true }, orderDetailsUIService);
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeEnabled();
+          const expected = await orderDetailsPage.scheduleDeliveryPage.getScheduleDeliveryData();
           expect(expected.deliveryType).toBe(DELIVERY_CONDITION.PICKUP);
-          await scheduleDeliveryUIService.clickSaveDelivery();
-          const actual = await deliveryTab.getData();
+          await orderDetailsUIService.clickSaveDelivery();
+          const actual = await orderDetailsPage.deliveryTab.getData();
           expect(actual).toEqual(expected);
         },
       );
@@ -138,29 +117,27 @@ test.describe("[Create/edit delivery]", () => {
       test(
         tc.title,
         { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
-        async ({
-          ordersApiService,
-          loginApiService,
-          deliveryUIService,
-          scheduleDeliveryPage,
-          scheduleDeliveryUIService,
-          deliveryTab,
-        }) => {
+        async ({ ordersApiService, loginApiService, orderDetailsPage, orderDetailsUIService }) => {
           const token = await loginApiService.loginAsAdmin();
           const order = await ordersApiService.createOrderAndEntities(token, 1);
-          await deliveryUIService.openOrderDelivery(order._id);
-          await deliveryUIService.openScheduleDeliveryForm();
-          await applyPickupCase(scheduleDeliveryPage, tc, { selectType: true });
-          await scheduleDeliveryUIService.clickSaveDelivery();
-          await deliveryUIService.openScheduleDeliveryForm();
-          await expect(scheduleDeliveryPage.title).toHaveText("Edit Delivery");
-          await expect(scheduleDeliveryPage.saveButton).toBeDisabled();
-          await applyPickupCase(scheduleDeliveryPage, tc, { selectType: false });
-          await expect(scheduleDeliveryPage.saveButton).toBeEnabled();
-          const expected = await scheduleDeliveryPage.getScheduleDeliveryData();
+          await orderDetailsUIService.openOrderDelivery(order._id);
+          await orderDetailsUIService.openScheduleDeliveryForm();
+          await applyPickupCase(orderDetailsPage.scheduleDeliveryPage, tc, { selectType: true }, orderDetailsUIService);
+          await orderDetailsUIService.clickSaveDelivery();
+          await orderDetailsUIService.openScheduleDeliveryForm();
+          await expect(orderDetailsPage.scheduleDeliveryPage.title).toHaveText("Edit Delivery");
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeDisabled();
+          await applyPickupCase(
+            orderDetailsPage.scheduleDeliveryPage,
+            tc,
+            { selectType: false },
+            orderDetailsUIService,
+          );
+          await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeEnabled();
+          const expected = await orderDetailsPage.scheduleDeliveryPage.getScheduleDeliveryData();
           expect(expected.deliveryType).toBe(DELIVERY_CONDITION.PICKUP);
-          await scheduleDeliveryUIService.clickSaveDelivery();
-          const actual = await deliveryTab.getData();
+          await orderDetailsUIService.clickSaveDelivery();
+          const actual = await orderDetailsPage.deliveryTab.getData();
           expect(actual).toEqual(expected);
         },
       );

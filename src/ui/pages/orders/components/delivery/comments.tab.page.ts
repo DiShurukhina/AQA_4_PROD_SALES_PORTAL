@@ -1,8 +1,8 @@
 import { expect, Locator } from "@playwright/test";
 import { logStep } from "utils/report/logStep.utils";
-import { BaseComponent } from "ui/pages/base.component";
+import { SalesPortalPage } from "ui/pages/salesPortal.page";
 
-export class CommentsTab extends BaseComponent {
+export class CommentsTab extends SalesPortalPage {
   readonly tab = this.page.locator('#comments[role="tabpanel"]');
   readonly uniqueElement = this.tab.locator("h4", { hasText: "Comments" });
   // form
