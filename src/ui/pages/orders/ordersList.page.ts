@@ -4,6 +4,7 @@ import { IOrderInTable, OrdersTableHeader } from "data/types/order.types";
 import { CreateOrderModal } from "./createOrderModal.page";
 import { ExportModal, ordersFieldNamesMapper } from "../export.modal";
 import { ORDER_STATUS } from "data/salesPortal/order-status";
+import { NavBar } from "../navbar.component";
 
 export class OrdersListPage extends SalesPortalPage {
   private readonly headerText = (name: OrdersTableHeader): string => {
@@ -20,6 +21,7 @@ export class OrdersListPage extends SalesPortalPage {
   };
 
   readonly createOrderModal = new CreateOrderModal(this.page);
+  readonly navBar = new NavBar(this.page);
   readonly exportModal = new ExportModal(this.page, ordersFieldNamesMapper);
   readonly title = this.page.locator("h2.fw-bold");
   readonly createOrderButton = this.page.locator('[name="add-button"]');
@@ -44,7 +46,8 @@ export class OrdersListPage extends SalesPortalPage {
       .locator("thead th", { has: this.page.locator("div", { hasText: this.headerText(name) }) })
       .locator(`i.${direction === "asc" ? "bi-arrow-down" : "bi-arrow-up"}`);
 
-  readonly detailsButton = (orderNumber: string) => this.tableRowByName(orderNumber).getByTitle("Details");
+  readonly detailsButton = (orderNumber: string) =>
+    this.tableRowByName(orderNumber).getByTitle("Details", { exact: true });
   readonly reopenButton = (orderNumber: string) => this.tableRowByName(orderNumber).getByTitle("Reopen");
   readonly uniqueElement = this.createOrderButton;
   readonly searchInput = this.page.locator("#search");
@@ -54,6 +57,7 @@ export class OrdersListPage extends SalesPortalPage {
   @logStep("CLICK ADD NEW ORDER BUTTON")
   async clickCreateOrderButton() {
     await this.createOrderButton.click();
+    return this.createOrderModal;
   }
 
   @logStep("GET ORDER'S DATA BY ORDER NUMBER")

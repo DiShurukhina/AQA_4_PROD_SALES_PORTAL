@@ -93,6 +93,8 @@ const test = base.extend<IApi>({
     });
 
     const token = await loginApiService.loginAsAdmin();
+
+    // Delete orders, products, customers
     await ordersApiService.fullDelete(token);
   },
 });

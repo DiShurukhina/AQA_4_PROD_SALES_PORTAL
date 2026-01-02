@@ -1,7 +1,7 @@
 import { OrdersApi } from "api/api/orders.api";
 import { ORDER_STATUS } from "data/salesPortal/order-status";
 import { STATUS_CODES } from "data/statusCodes";
-import { IOrderCreateBody, IOrderFromResponse, IOrderUpdateBody } from "data/types/order.types";
+import { IGetAllOrdersQuery, IOrderCreateBody, IOrderFromResponse, IOrdersResponse, IOrderUpdateBody } from "data/types/order.types";
 import { CustomersApiService } from "api/service/customer.service";
 import { ProductsApiService } from "api/service/products.service";
 import { validateResponse } from "utils/validation/validateResponse.utils";
@@ -11,6 +11,8 @@ import { EntitiesStore } from "api/service/stores/entities.store";
 import { faker } from "@faker-js/faker";
 import { logStep } from "utils/report/logStep.utils.js";
 import { createOrderSchema } from "data/schemas/orders/create.schema";
+import { getAllOrdersSchema } from "data/schemas/orders/getAllOrders.schema";
+import { MANAGER_IDS } from "config/env";
 
 export class OrdersApiService {
   constructor(
@@ -133,8 +135,7 @@ export class OrdersApiService {
     managerId?: string,
   ): Promise<IOrderFromResponse> {
     const createdOrder = await this.createOrderWithDelivery(token, numberOfProducts);
-    managerId = managerId || process.env.CURRENT_ADMIN_ID || "";
-
+    managerId = managerId || MANAGER_IDS[0] || "";
     const assignRes = await this.ordersApi.assingManager(token, createdOrder._id, managerId);
     validateResponse(assignRes, {
       status: STATUS_CODES.OK,
@@ -355,5 +356,46 @@ export class OrdersApiService {
     this.entitiesStore.trackProducts(productIds);
 
     return { customerId: customer._id, productIds, customerName: customer.name, productNames };
+  }
+
+  @logStep("GET ALL ORDERS - API")
+  async getAll(token: string, params: IGetAllOrdersQuery): Promise<IOrdersResponse> {
+    const response = await this.ordersApi.getAll(token, params);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getAllOrdersSchema,
+  });
+    return response.body;
+  }
+
+  @logStep("ASSIGN MANAGER TO ORDER - API")
+  async assignManager(token: string, orderId: string, managerId: string): Promise<IOrderFromResponse> {
+    const response = await this.ordersApi.assingManager(token, orderId, managerId);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getAllOrdersSchema,
+    });
+    return response.body.Order;
+  }
+
+  @logStep("UNASSIGN MANAGER FROM ORDER - API")
+  async unassignManager(token: string, orderId: string): Promise<IOrderFromResponse> {
+    const response = await this.ordersApi.unassingManager(token, orderId);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getOrderSchema,
+    });
+    return response.body.Order;
+  }
+
+  @logStep("GET AVAILABLE MANAGERS - API")
+  async getAvailableManagers(): Promise<string[]> {
+    return MANAGER_IDS;
   }
 }

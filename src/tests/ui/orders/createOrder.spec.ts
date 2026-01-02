@@ -28,8 +28,8 @@ test.describe("[UI][Orders][Create Order]", async () => {
     async ({ ordersListPage, cleanup, productsApiService }) => {
       const product = await productsApiService.create(token);
       cleanup.addProduct(product._id);
-      await ordersListPage.clickCreateOrderButton();
-      const createdOrder = await ordersListPage.createOrderModal.createOrder(customer.name, [product.name]);
+      const createOrderModal = await ordersListPage.clickCreateOrderButton();
+      const createdOrder = await createOrderModal.createOrder(customer.name, [product.name]);
       await ordersListPage.waitForOpened();
       cleanup.addOrder(createdOrder._id);
       await expect.soft(ordersListPage.toastMessage).toContainText(NOTIFICATIONS.ORDER_CREATED);
@@ -49,8 +49,8 @@ test.describe("[UI][Orders][Create Order]", async () => {
         cleanup.addProduct(product._id);
         products.push(product);
       }
-      await ordersListPage.clickCreateOrderButton();
-      const createdOrder = await ordersListPage.createOrderModal.createOrder(
+      const createOrderModal = await ordersListPage.clickCreateOrderButton();
+      const createdOrder = await createOrderModal.createOrder(
         customer.name,
         products.map((p) => p.name),
       );
@@ -66,15 +66,14 @@ test.describe("[UI][Orders][Create Order]", async () => {
   test(
     "Check remove product from order before creation",
     { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
-    async ({ page, ordersListPage, cleanup, productsApiService }) => {
-      const createOrderModal = new CreateOrderModal(page);
+    async ({ ordersListPage, cleanup, productsApiService }) => {
       const products: IProductFromResponse[] = [];
       for (let i = 0; i < 2; i++) {
         const product = await productsApiService.create(token);
         cleanup.addProduct(product._id);
         products.push(product);
       }
-      await ordersListPage.clickCreateOrderButton();
+      const createOrderModal = await ordersListPage.clickCreateOrderButton();
       await createOrderModal.waitForOpened();
       await createOrderModal.selectCustomer(customer.name);
       await createOrderModal.selectProduct(0, products[0]!.name);
@@ -107,11 +106,10 @@ test.describe("[UI][Orders][Create Order]", async () => {
     test(
       `Should close modal whith ${testData.name} button`,
       { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION] },
-      async ({ ordersListPage, cleanup, productsApiService, page }) => {
-        const createOrderModal = new CreateOrderModal(page);
+      async ({ ordersListPage, cleanup, productsApiService }) => {
         const product = await productsApiService.create(token);
         cleanup.addProduct(product._id);
-        await ordersListPage.clickCreateOrderButton();
+        const createOrderModal = await ordersListPage.clickCreateOrderButton();
         await createOrderModal.waitForOpened();
         await createOrderModal.selectCustomer(customer.name);
         await createOrderModal.selectProduct(0, product.name);

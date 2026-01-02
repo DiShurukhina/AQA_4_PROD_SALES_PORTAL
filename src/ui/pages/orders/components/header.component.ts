@@ -16,6 +16,8 @@ export class OrderDetailsHeader extends BasePage {
   readonly uniqueElement = this.page.locator("#order-info-container");
   readonly assignedManagerContainer = this.page.locator("#assigned-manager-container");
   readonly statusBarContainer = this.page.locator("#order-status-bar-container");
+  readonly orderNumberContainer = this.page.locator("//div[./span[contains(text(), 'Order number')]]");
+  readonly orderNumberText = this.orderNumberContainer.locator("//span[@class='fst-italic']");
 
   // Action buttons (conditionally rendered by status)
   readonly cancelButton = this.page.locator("#cancel-order");
@@ -34,6 +36,24 @@ export class OrderDetailsHeader extends BasePage {
   readonly statusText = this.statusBarContainer.locator(
     ".status-text, span.text-primary, span.text-danger, span.text-warning, span.text-success",
   );
+
+  @logStep("HEADER: GET ORDER STATUS TEXT")
+  async getStatusText() {
+    const status = this.statusText.first();
+    return (await status.innerText()).trim();
+  }
+
+  @logStep("HEADER: GET ORDER NUMBER TEXT")
+  async getOrderNumberText() {
+    const orderNumber = this.orderNumberText;
+    return (await orderNumber.innerText()).trim();
+  }
+
+  @logStep("HEADER: EXPECT ORDER STATUS")
+  async expectStatus(status: string) {
+    const statusLabel = this.statusText.first();
+    await expect(statusLabel).toHaveText(status, { timeout: TIMEOUT_10_S });
+  }
 
   @logStep("HEADER: CLICK CANCEL ORDER")
   async cancelOrder() {

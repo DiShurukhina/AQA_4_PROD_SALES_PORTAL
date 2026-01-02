@@ -7,12 +7,15 @@ import { RequestApi } from "../../api/apiClients/requestApi";
 test("create storage state for authenticated user", async ({ context, request }) => {
   const loginApiService = new LoginService(new LoginApi(new RequestApi(request)));
   const token = await loginApiService.loginAsAdmin(credentials);
+  const url = new URL(SALES_PORTAL_URL);
+  const path = url.pathname.length > 1 && url.pathname.endsWith("/") ? url.pathname.slice(0, -1) : url.pathname;
 
   await context.addCookies([
     {
       name: "Authorization",
       value: token,
-      url: SALES_PORTAL_URL,
+      domain: url.hostname,
+      path: path,
       expires: -1,
       httpOnly: false,
       secure: false,
