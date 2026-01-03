@@ -1,24 +1,8 @@
-import { DELIVERY_CONDITION, IDeliveryInfo } from "data/salesPortal/delivery-status";
+import { DELIVERY_CONDITION, DELIVERY_LOCATION, IDeliveryInfo } from "data/salesPortal/delivery-status";
 import { ORDER_HISTORY_ACTIONS, ORDER_STATUS } from "data/salesPortal/order-status";
-
-type CommonFormFields = {
-  deliveryType: IDeliveryInfo["condition"];
-  date: IDeliveryInfo["finalDate"];
-  country: IDeliveryInfo["address"]["country"];
-  city: IDeliveryInfo["address"]["city"];
-  street: IDeliveryInfo["address"]["street"];
-  house: IDeliveryInfo["address"]["house"];
-  flat: IDeliveryInfo["address"]["flat"];
-};
-
-export type ScheduleDeliveryFormData =
-  | (CommonFormFields & {
-      deliveryType: DELIVERY_CONDITION.DELIVERY;
-      location: string;
-    })
-  | (CommonFormFields & {
-      deliveryType: DELIVERY_CONDITION.PICKUP;
-    });
+import { ICase } from "./core.types";
+import { ScheduleDeliveryPage } from "ui/pages/orders/components/delivery/scheduleDelivery.page";
+import { COUNTRY } from "data/salesPortal/country";
 
 export type DeliveryInfo = {
   deliveryType: string;
@@ -26,8 +10,8 @@ export type DeliveryInfo = {
   country: string;
   city: string;
   street: string;
-  house: string;
-  flat: string;
+  house: number;
+  flat: number;
 };
 
 export type HistoryEventRow = {
@@ -80,3 +64,18 @@ export type OrderStatusChange = {
   previous: ORDER_STATUS;
   updated: ORDER_STATUS;
 };
+
+export interface ICreateDeliveryCaseUI extends ICase {
+  deliveryType: DELIVERY_CONDITION.DELIVERY;
+  deliveryLocation: DELIVERY_LOCATION;
+  deliveryData: Partial<IDeliveryInfo>;
+  deliveryDateAction: DeliveryDateAction;
+}
+
+export interface ICreatePickupDeliveryCaseUI extends ICase {
+  deliveryType: DELIVERY_CONDITION.PICKUP;
+  country: COUNTRY;
+  deliveryDateAction: DeliveryDateAction;
+}
+
+export type DeliveryDateAction = (page: ScheduleDeliveryPage) => Promise<Date>;

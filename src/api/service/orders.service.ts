@@ -1,7 +1,13 @@
 import { OrdersApi } from "api/api/orders.api";
 import { ORDER_STATUS } from "data/salesPortal/order-status";
 import { STATUS_CODES } from "data/statusCodes";
-import { IOrderCreateBody, IOrderFromResponse, IOrderUpdateBody } from "data/types/order.types";
+import {
+  IGetAllOrdersQuery,
+  IOrderCreateBody,
+  IOrderFromResponse,
+  IOrdersResponse,
+  IOrderUpdateBody,
+} from "data/types/order.types";
 import { CustomersApiService } from "api/service/customer.service";
 import { ProductsApiService } from "api/service/products.service";
 import { validateResponse } from "utils/validation/validateResponse.utils";
@@ -10,6 +16,8 @@ import { getOrderSchema } from "data/schemas/orders/get.schema";
 import { EntitiesStore } from "api/service/stores/entities.store";
 import { faker } from "@faker-js/faker";
 import { logStep } from "utils/report/logStep.utils.js";
+import { createOrderSchema } from "data/schemas/orders/create.schema";
+import { getAllOrdersSchema } from "data/schemas/orders/getAllOrders.schema";
 import { MANAGER_IDS } from "config/env";
 
 export class OrdersApiService {
@@ -45,7 +53,7 @@ export class OrdersApiService {
       status: STATUS_CODES.CREATED,
       IsSuccess: true,
       ErrorMessage: null,
-      // schema: createOrderSchema,
+      schema: createOrderSchema,
     });
 
     return response.body.Order;
@@ -356,6 +364,18 @@ export class OrdersApiService {
     return { customerId: customer._id, productIds, customerName: customer.name, productNames };
   }
 
+  @logStep("GET ALL ORDERS - API")
+  async getAll(token: string, params: IGetAllOrdersQuery): Promise<IOrdersResponse> {
+    const response = await this.ordersApi.getAll(token, params);
+    validateResponse(response, {
+      status: STATUS_CODES.OK,
+      IsSuccess: true,
+      ErrorMessage: null,
+      schema: getAllOrdersSchema,
+    });
+    return response.body;
+  }
+
   @logStep("ASSIGN MANAGER TO ORDER - API")
   async assignManager(token: string, orderId: string, managerId: string): Promise<IOrderFromResponse> {
     const response = await this.ordersApi.assingManager(token, orderId, managerId);
@@ -363,7 +383,7 @@ export class OrdersApiService {
       status: STATUS_CODES.OK,
       IsSuccess: true,
       ErrorMessage: null,
-      schema: getOrderSchema,
+      schema: getAllOrdersSchema,
     });
     return response.body.Order;
   }

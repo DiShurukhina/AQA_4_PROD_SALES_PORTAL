@@ -5,11 +5,13 @@ import { CustomerTableHeader, ICustomerInTable } from "data/types/customer.types
 import { COUNTRY } from "data/salesPortal/country";
 import { ExportModal, customersFieldNamesMapper } from "../export.modal";
 import { logStep } from "utils/report/logStep.utils.js";
+import { NavBar } from "../navbar.component";
 
 export class CustomersListPage extends SalesPortalPage {
   readonly detailsModal = new CustomerDetailsModal(this.page);
   readonly deleteModal = new ConfirmationModal(this.page);
   readonly exportModal = new ExportModal(this.page, customersFieldNamesMapper);
+  readonly navBar = new NavBar(this.page);
 
   readonly customersPageTitle = this.page.locator("h2.fw-bold");
   readonly addNewCustomerButton = this.page.locator('[name="add-button"]');

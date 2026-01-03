@@ -3,7 +3,14 @@ import { apiConfig } from "config/apiConfig";
 import { IDeliveryInfo } from "data/salesPortal/delivery-status";
 import { ORDER_STATUS } from "data/salesPortal/order-status";
 import { IRequestOptions } from "data/types/core.types";
-import { IOrderCreateBody, IOrderResponse, IOrderUpdateBody } from "data/types/order.types";
+import {
+  IGetAllOrdersQuery,
+  IOrderCreateBody,
+  IOrderResponse,
+  IOrdersResponse,
+  IOrderUpdateBody,
+} from "data/types/order.types";
+import { convertRequestParams } from "utils/queryParams.utils";
 import { logStep } from "utils/report/logStep.utils";
 
 export class OrdersApi {
@@ -171,5 +178,22 @@ export class OrdersApi {
       },
     };
     return await this.apiClient.send<IOrderResponse>(options);
+  }
+
+  @logStep("GET /api/orders")
+  async getAll(token: string, params?: IGetAllOrdersQuery) {
+    const query = params ? convertRequestParams(params) : "";
+
+    const options: IRequestOptions = {
+      baseURL: apiConfig.baseURL,
+      url: `${apiConfig.endpoints.orders}${query}`,
+      method: "get",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    return await this.apiClient.send<IOrdersResponse>(options);
   }
 }
