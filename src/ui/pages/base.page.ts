@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 import { IResponse } from "data/types/core.types";
 import { logStep } from "utils/report/logStep.utils.js";
 
@@ -11,6 +11,27 @@ export abstract class BasePage {
       triggerAction(...args),
     ]);
     return request;
+  }
+
+  async expectRequest<T extends unknown[]>(
+    method: string,
+    url: string,
+    queryParams: Record<string, string>,
+    triggerAction: (...args: T) => Promise<void>,
+    ...args: T
+  ) {
+    const [request] = await Promise.all([
+      this.page.waitForRequest((request) => {
+        const urlAndMethodMatch = request.url().includes(url) && request.method() === method;
+        let queryParamMatch = true;
+        for (const [paramName, paramValue] of Object.entries(queryParams)) {
+          queryParamMatch = request.url().includes(`${paramName}=${paramValue}`);
+        }
+        return urlAndMethodMatch && queryParamMatch;
+      }),
+      triggerAction(...args),
+    ]);
+    expect(request).toBeTruthy();
   }
 
   async interceptResponse<U extends object | null, T extends unknown[]>(

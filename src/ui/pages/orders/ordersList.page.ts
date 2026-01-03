@@ -11,7 +11,7 @@ export class OrdersListPage extends SalesPortalPage {
     const map: Record<OrdersTableHeader, string> = {
       orderNumber: "Order Number",
       email: "Email",
-      price: "Total Price",
+      price: "Price",
       delivery: "Delivery",
       status: "Status",
       assignedManager: "Assigned Manager",
@@ -127,14 +127,11 @@ export class OrdersListPage extends SalesPortalPage {
 
   @logStep("SORT ORDERS TABLE")
   async sortBy(header: OrdersTableHeader, direction: "asc" | "desc") {
-    await this.clickTableHeader(header);
-    await this.waitForSpinners();
-
     const arrow = this.tableHeaderArrow(header, { direction });
-    if (!(await arrow.isVisible())) {
+    do {
       await this.clickTableHeader(header);
       await this.waitForSpinners();
-    }
+    } while (!(await arrow.isVisible()));
   }
 
   @logStep("GET ORDERS TABLE AS RECORDS")

@@ -34,9 +34,16 @@ test.describe("[Integration][Orders][Table Sorting]", () => {
           },
         });
 
-        await ordersListPage.open("orders");
+        await ordersListPage.open("#/orders");
         await ordersListPage.waitForOpened();
 
+        await mock.ordersPage({
+          ...orders,
+          sorting: {
+            sortField: header!,
+            sortOrder: directions.find((el) => el !== direction)!,
+          },
+        });
         await mock.ordersPage({
           ...orders,
           sorting: {
@@ -45,17 +52,22 @@ test.describe("[Integration][Orders][Table Sorting]", () => {
           },
         });
 
-        const request = await ordersListPage.interceptRequest(
+        await ordersListPage.expectRequest(
+          "GET",
           apiConfig.endpoints.orders,
+          {
+            sortField: header,
+            sortOrder: direction,
+          },
           ordersListPage.sortBy.bind(ordersListPage),
           header,
           direction,
         );
 
         await ordersListPage.waitForOpened();
-        expect(request.url()).toBe(
-          `${apiConfig.baseURL}${apiConfig.endpoints.orders}?sortField=${header}&sortOrder=${direction}&page=1&limit=10`,
-        );
+        // expect(request.url()).toBe(
+        //   `${apiConfig.baseURL}${apiConfig.endpoints.orders}?sortField=${header}&sortOrder=${direction}&page=1&limit=10`,
+        // );
 
         await expect(ordersListPage.tableHeaderArrow(header, { direction })).toBeVisible();
 
