@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { IProduct, IProductFromResponse } from "data/types/product.types";
+import { IProduct, IProductFromResponse, IOrderProductFromResponse } from "data/types/product.types";
 import { getRandomEnumValue } from "utils/enum.utils";
 import { MANUFACTURERS } from "./manufacturers";
 import { ObjectId } from "bson";
@@ -24,5 +24,15 @@ export function generateProductResponseData(params?: Partial<IProduct>): IProduc
     manufacturer: initial.manufacturer,
     createdOn: new Date().toISOString(),
     notes: initial.notes!,
+  };
+}
+
+export function generateIOrderProductFromResponse(
+  params?: Partial<IOrderProductFromResponse>,
+): IOrderProductFromResponse {
+  const initial = generateProductResponseData(params);
+  return {
+    ...initial,
+    received: params?.received || false,
   };
 }
