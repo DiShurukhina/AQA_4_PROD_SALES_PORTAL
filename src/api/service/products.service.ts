@@ -6,6 +6,9 @@ import { IProduct, IProductFromResponse } from "data/types/product.types";
 import { validateResponse } from "utils/validation/validateResponse.utils";
 import { logStep } from "utils/report/logStep.utils.js";
 
+export const getFieldValues = <T, K extends keyof T>(entities: T[], field: K): Array<T[K]> =>
+  entities.map((entity) => entity[field]);
+
 export class ProductsApiService {
   constructor(private productsApi: ProductsApi) {}
 
@@ -61,5 +64,12 @@ export class ProductsApiService {
     const products = productsResponse.body.Products;
     const ids = products.map((product) => product._id);
     await this.deleteProducts(token, ids);
+  }
+
+  @logStep("BULK CREATE PRODUCTS - API")
+  public async bulkCreate(token: string, amount: number, customData: Partial<IProduct>[] = []) {
+    return await Promise.all(
+      Array.from({ length: amount }, (_, idx) => this.create(token, generateProductData(customData[idx]))),
+    );
   }
 }

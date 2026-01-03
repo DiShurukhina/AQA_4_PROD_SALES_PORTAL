@@ -16,8 +16,7 @@ export interface IOrderResponse extends IResponseFields {
   DeliveryInfo: IDeliveryInfo;
 }
 
-export interface IGetAllOrdersQuery 
-extends Record<string, string | number | string[]> {
+export interface IGetAllOrdersQuery extends Record<string, string | number | string[]> {
   page?: number;
   limit?: number;
   search?: string;
@@ -25,7 +24,6 @@ extends Record<string, string | number | string[]> {
   sortField?: OrdersTableHeader;
   sortOrder?: SortOrder;
 }
-
 
 export interface IOrderHistoryResponse extends IResponseFields {
   history: IOrderHistory[];
@@ -148,7 +146,7 @@ export interface IUpdateOrderErrorCase {
   invalidProductId?: string;
 }
 
-export interface IManagerAssignCases {
+export interface IOrderInStatusCases {
   name: string;
   create: (ordersApiService: OrdersApiService, token: string) => Promise<IOrderFromResponse>;
 }

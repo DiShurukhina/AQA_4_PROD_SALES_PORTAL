@@ -10,7 +10,12 @@ import {
 } from "./components";
 import { CommentsTab } from "./components/delivery/comments.tab.page";
 import { TIMEOUT_30_S } from "data/salesPortal/constants";
+import { EditProductsModal } from "./editProducts.modal";
 import { NavBar } from "../navbar.component";
+import { DeliveryTab } from "./components/delivery/delivery.tab.page";
+import { OrderHistoryTab } from "./components/delivery/orderHistory.tab.page";
+import { ScheduleDeliveryPage } from "./components/delivery/scheduleDelivery.page";
+import { EditOrderCustomerModal } from "./components/editCustomer.modal";
 
 /**
  * Order Details PageObject orchestrator.
@@ -47,14 +52,22 @@ export class OrderDetailsPage extends SalesPortalPage {
   readonly requestedProducts: OrderDetailsRequestedProducts;
   readonly commentsTab: CommentsTab;
   readonly assignManagerModal: AssignManagerModal;
+  readonly deliveryTab: DeliveryTab;
+  readonly orderHistoryTab: OrderHistoryTab;
+  readonly scheduleDeliveryPage: ScheduleDeliveryPage;
+  readonly editCustomerModal: EditOrderCustomerModal;
 
   constructor(page: Page) {
     super(page);
     this.header = new OrderDetailsHeader(page);
-    this.customerDetails = new OrderDetailsCustomerDetails(page);
     this.requestedProducts = new OrderDetailsRequestedProducts(page);
     this.commentsTab = new CommentsTab(page);
     this.assignManagerModal = new AssignManagerModal(page);
+    this.deliveryTab = new DeliveryTab(page);
+    this.orderHistoryTab = new OrderHistoryTab(page);
+    this.scheduleDeliveryPage = new ScheduleDeliveryPage(page);
+    this.editCustomerModal = new EditOrderCustomerModal(page);
+    this.customerDetails = new OrderDetailsCustomerDetails(page);
   }
 
   // Modals
@@ -62,6 +75,7 @@ export class OrderDetailsPage extends SalesPortalPage {
   processModal = this.confirmationModal;
   cancelModal = this.confirmationModal;
   reopenModal = this.confirmationModal;
+  readonly editProductsModal = new EditProductsModal(this.page);
 
   @logStep("OPEN ORDER DETAILS BY ROUTE")
   async openByRoute(route: string) {

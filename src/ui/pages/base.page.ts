@@ -1,4 +1,4 @@
-import { expect, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { IResponse } from "data/types/core.types";
 import { logStep } from "utils/report/logStep.utils.js";
 
@@ -54,5 +54,20 @@ export abstract class BasePage {
   async getAuthToken() {
     const token = (await this.page.context().cookies()).find((c) => c.name === "Authorization")!.value;
     return token;
+  }
+
+  @logStep("FIELD IS DISABLED")
+  async expectLocked(input: Locator) {
+    if (await input.isDisabled()) {
+      await expect(input).toBeDisabled();
+      return;
+    }
+    await expect(input).toHaveJSProperty("readOnly", true);
+  }
+
+  @logStep("GET COOKIE BY NAME")
+  async getCookieByName(cookieName: string) {
+    const cookies = await this.page.context().cookies();
+    return cookies.find((c) => c.name === cookieName);
   }
 }
