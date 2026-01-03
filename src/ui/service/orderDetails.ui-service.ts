@@ -2,7 +2,7 @@ import { expect, Page } from "@playwright/test";
 import { OrderDetailsPage } from "ui/pages/orders/order-details.page";
 import { logStep } from "utils/report/logStep.utils";
 export class OrderDetailsUIService {
-  orderDetailsPage: OrderDetailsPage;
+  readonly orderDetailsPage: OrderDetailsPage;
 
   constructor(private page: Page) {
     this.orderDetailsPage = new OrderDetailsPage(page);
@@ -57,5 +57,11 @@ export class OrderDetailsUIService {
     await this.orderDetailsPage.waitForOpened();
     await this.orderDetailsPage.openHistoryTab();
     await this.orderDetailsPage.orderHistoryTab.waitForOpened();
+  }
+
+  @logStep("OPEN ORDER DETAILS PAGE")
+  async openOrderById(orderId: string) {
+    await this.orderDetailsPage.open(`#/orders/${orderId}`);
+    await this.orderDetailsPage.waitForOpened();
   }
 }

@@ -43,4 +43,10 @@ export abstract class BasePage {
     }
     await expect(input).toHaveJSProperty("readOnly", true);
   }
+
+  @logStep("GET COOKIE BY NAME")
+  async getCookieByName(cookieName: string) {
+    const cookies = await this.page.context().cookies();
+    return cookies.find((c) => c.name === cookieName);
+  }
 }
