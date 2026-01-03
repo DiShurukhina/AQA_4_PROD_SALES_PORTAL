@@ -20,7 +20,7 @@ test.describe("[UI][Orders][Requested Products]", () => {
 
   test(
     "Edit requested products: increase products count to 5",
-    { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
+    { tag: [TAGS.REGRESSION, TAGS.SMOKE, TAGS.UI, TAGS.ORDERS] },
     async ({ ordersApiService, productsApiService, ordersApi, orderDetailsPage, page, cleanup }) => {
       const order = await ordersApiService.createOrderAndEntities(token, 1);
       cleanup.addOrder(order._id);
@@ -72,7 +72,7 @@ test.describe("[UI][Orders][Requested Products]", () => {
 
   test(
     "Edit requested products: decrease products count to 1",
-    { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
+    { tag: [TAGS.REGRESSION, TAGS.SMOKE, TAGS.UI, TAGS.ORDERS] },
     async ({ ordersApiService, ordersApi, orderDetailsPage, page, cleanup }) => {
       const order = await ordersApiService.createOrderAndEntities(token, PRODUCTS_MAX_COUNT);
       cleanup.addOrder(order._id);
@@ -110,8 +110,31 @@ test.describe("[UI][Orders][Requested Products]", () => {
   );
 
   test(
-    "Edit requested products: replace all products in the order",
+    "Edit requested products: delete product option is not available when order has 1 product",
     { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
+    async ({ ordersApiService, orderDetailsPage, page, cleanup }) => {
+      const order = await ordersApiService.createOrderAndEntities(token, 1);
+      cleanup.addOrder(order._id);
+
+      await orderDetailsPage.openByOrderId(order._id);
+      await orderDetailsPage.waitForOpened();
+      await expect(orderDetailsPage.statusOrderLabel).toHaveText(ORDER_STATUS.DRAFT);
+      await orderDetailsPage.requestedProducts.expectLoaded();
+      await expect(orderDetailsPage.requestedProducts.editButton).toBeVisible();
+
+      await orderDetailsPage.requestedProducts.clickEdit();
+
+      const editProductsModal = new EditProductsModal(page);
+      await editProductsModal.waitForOpened();
+      await expect(editProductsModal.productRows).toHaveCount(1);
+
+      await expect(editProductsModal.deleteProductButton.first()).not.toBeVisible();
+    },
+  );
+
+  test(
+    "Edit requested products: replace all products in the order",
+    { tag: [TAGS.REGRESSION, TAGS.SMOKE, TAGS.UI, TAGS.ORDERS] },
     async ({ ordersApiService, productsApiService, ordersApi, orderDetailsPage, page, cleanup }) => {
       const order = await ordersApiService.createOrderAndEntities(token, 2);
       cleanup.addOrder(order._id);
@@ -156,6 +179,58 @@ test.describe("[UI][Orders][Requested Products]", () => {
       const actualNames = updatedOrder.products.map((p) => p.name).sort();
       expect(actualNames).toEqual(desiredProductNames.slice().sort());
       expect(actualNames).not.toEqual(originalNames);
+    },
+  );
+
+  test(
+    "Edit requested products: add product functionality is not available when order already has 5 products",
+    { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
+    async ({ ordersApiService, orderDetailsPage, page, cleanup }) => {
+      const order = await ordersApiService.createOrderAndEntities(token, PRODUCTS_MAX_COUNT);
+      cleanup.addOrder(order._id);
+
+      await orderDetailsPage.openByOrderId(order._id);
+      await orderDetailsPage.waitForOpened();
+      await expect(orderDetailsPage.statusOrderLabel).toHaveText(ORDER_STATUS.DRAFT);
+      await orderDetailsPage.requestedProducts.expectLoaded();
+      await expect(orderDetailsPage.requestedProducts.editButton).toBeVisible();
+
+      await orderDetailsPage.requestedProducts.clickEdit();
+
+      const editProductsModal = new EditProductsModal(page);
+      await editProductsModal.waitForOpened();
+      await expect(editProductsModal.productRows).toHaveCount(PRODUCTS_MAX_COUNT);
+      await expect(editProductsModal.addProductButton).not.toBeVisible();
+    },
+  );
+
+  test(
+    "Edit requested products: edit functionality is NOT available for In Process order",
+    { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
+    async ({ ordersApiService, orderDetailsPage, cleanup }) => {
+      const order = await ordersApiService.createOrderInProcess(token, 1);
+      cleanup.addOrder(order._id);
+
+      await orderDetailsPage.openByOrderId(order._id);
+      await orderDetailsPage.waitForOpened();
+      await expect(orderDetailsPage.statusOrderLabel).toHaveText(ORDER_STATUS.PROCESSING);
+      await orderDetailsPage.requestedProducts.expectLoaded();
+      await expect(orderDetailsPage.requestedProducts.editButton).not.toBeVisible();
+    },
+  );
+
+  test(
+    "Edit requested products: edit functionality is NOT available for Canceled order",
+    { tag: [TAGS.REGRESSION, TAGS.UI, TAGS.ORDERS] },
+    async ({ ordersApiService, orderDetailsPage, cleanup }) => {
+      const order = await ordersApiService.createCanceledOrder(token, 1);
+      cleanup.addOrder(order._id);
+
+      await orderDetailsPage.openByOrderId(order._id);
+      await orderDetailsPage.waitForOpened();
+      await expect(orderDetailsPage.statusOrderLabel).toHaveText(ORDER_STATUS.CANCELED);
+      await orderDetailsPage.requestedProducts.expectLoaded();
+      await expect(orderDetailsPage.requestedProducts.editButton).not.toBeVisible();
     },
   );
 });
