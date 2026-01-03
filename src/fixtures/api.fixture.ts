@@ -30,7 +30,7 @@ export interface IApi {
   // utils
   cleanup: {
     addOrder: (orderId: string) => void;
-    addProduct: (id: string) => void;
+    addProduct: (...ids: string[]) => void;
     addCustomer: (id: string) => void;
   };
 }
@@ -88,7 +88,7 @@ const test = base.extend<IApi>({
   cleanup: async ({ loginApiService, ordersApiService }, use) => {
     await use({
       addOrder: (orderId: string) => ordersApiService.trackOrderId(orderId),
-      addProduct: (id: string) => ordersApiService.trackProductIds([id]),
+      addProduct: (...ids: string[]) => ordersApiService.trackProductIds(ids),
       addCustomer: (id: string) => ordersApiService.trackCustomerId(id),
     });
 

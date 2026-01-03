@@ -10,6 +10,7 @@ import {
 } from "./components";
 import { CommentsTab } from "./components/delivery/comments.tab.page";
 import { TIMEOUT_30_S } from "data/salesPortal/constants";
+import { EditProductsModal } from "./editProducts.modal";
 
 /**
  * Order Details PageObject orchestrator.
@@ -60,6 +61,7 @@ export class OrderDetailsPage extends SalesPortalPage {
   processModal = this.confirmationModal;
   cancelModal = this.confirmationModal;
   reopenModal = this.confirmationModal;
+  readonly editProductsModal = new EditProductsModal(this.page);
 
   @logStep("OPEN ORDER DETAILS BY ROUTE")
   async openByRoute(route: string) {

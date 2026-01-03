@@ -4,11 +4,18 @@ import { IOrderFromResponse, IOrderResponse } from "data/types/order.types";
 import { apiConfig } from "config/apiConfig";
 import { STATUS_CODES } from "data/statusCodes";
 import { BaseModal } from "../base.modal";
+import { ORDER_STATUS } from "data/salesPortal/order-status";
+import { OrderDetailsRequestedProducts } from "./components/requested-products.component";
 
 export class EditProductsModal extends BaseModal {
   readonly uniqueElement = this.page.locator("#edit-products-modal");
   readonly title = this.uniqueElement.getByText("Edit Products");
   readonly closeButton = this.uniqueElement.locator("button.btn-close");
+  // Order Details page anchor (used to open modal with built-in waits)
+  readonly orderStatusLabel = this.page.locator(
+    "div:nth-child(1) > span.text-primary, div:nth-child(1) > span.text-danger",
+  );
+
   readonly productsSection = this.uniqueElement.locator("#edit-products-section");
   readonly productRows = this.productsSection.locator("div[data-id]");
   readonly selectProductsDropdown = this.productsSection.locator(".form-select[name='Product']");
@@ -17,6 +24,18 @@ export class EditProductsModal extends BaseModal {
   readonly saveUpdateButton = this.uniqueElement.locator("#update-products-btn");
   readonly deleteProductButton = this.productsSection.locator('button.del-btn-modal[title="Delete"]');
   readonly totalPrice = this.uniqueElement.locator("#total-price-order-modal");
+
+  @logStep("OPEN EDIT PRODUCTS MODAL FROM ORDER DETAILS")
+  async openFromOrderDetails(
+    requestedProducts: OrderDetailsRequestedProducts,
+    expectedStatus: ORDER_STATUS = ORDER_STATUS.DRAFT,
+  ) {
+    await requestedProducts.expectLoaded();
+    await expect(this.orderStatusLabel).toHaveText(expectedStatus);
+    await expect(requestedProducts.editButton).toBeVisible();
+    await requestedProducts.clickEdit();
+    await this.waitForOpened();
+  }
 
   @logStep("GET PRODUCTS COUNT IN EDIT PRODUCTS MODAL")
   async getProductsCount(): Promise<number> {
@@ -57,22 +76,21 @@ export class EditProductsModal extends BaseModal {
     expect(products.length).toBeLessThanOrEqual(5);
 
     const targetCount = products.length;
+    const currentRowsCount = await this.getProductsCount();
 
     // Remove extra rows if modal currently has more
-    let current = await this.getProductsCount();
-    while (current > targetCount) {
-      await this.deleteProduct(current - 1);
-      current = await this.getProductsCount();
+    if (currentRowsCount > targetCount) {
+      for (let i = currentRowsCount - 1; i >= targetCount; i--) {
+        await this.deleteProduct(i);
+      }
     }
 
     // Add missing rows if modal currently has fewer
-    while (current < targetCount) {
-      await this.clickAddProductButton();
-      current = await this.getProductsCount();
-    }
-
-    // Select products for each row (replacement-safe)
-    for (let i = 0; i < products.length; i++) {
+    for (let i = 0; i < targetCount; i++) {
+      if (i >= currentRowsCount) {
+        await this.clickAddProductButton();
+      }
+      // Select products for each row (replacement-safe)
       await this.selectProduct(i, products[i]!);
     }
 
