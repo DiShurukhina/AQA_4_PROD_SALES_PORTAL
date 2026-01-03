@@ -10,6 +10,7 @@ import {
 } from "./components";
 import { CommentsTab } from "./components/delivery/comments.tab.page";
 import { TIMEOUT_30_S } from "data/salesPortal/constants";
+import { EditProductsModal } from "./editProducts.modal";
 import { NavBar } from "../navbar.component";
 import { DeliveryTab } from "./components/delivery/delivery.tab.page";
 import { OrderHistoryTab } from "./components/delivery/orderHistory.tab.page";
@@ -71,6 +72,7 @@ export class OrderDetailsPage extends SalesPortalPage {
   processModal = this.confirmationModal;
   cancelModal = this.confirmationModal;
   reopenModal = this.confirmationModal;
+  readonly editProductsModal = new EditProductsModal(this.page);
 
   @logStep("OPEN ORDER DETAILS BY ROUTE")
   async openByRoute(route: string) {
