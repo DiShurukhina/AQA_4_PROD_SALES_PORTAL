@@ -22,6 +22,10 @@ A comprehensive test automation framework for a Sales Portal application, implem
 - [Code Quality](#code-quality)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
+- [Advanced Development Patterns](#advanced-development-patterns)
+- [License](#license)
+- [Authors](#authors)
+- [Troubleshooting](#troubleshooting)
 
 ## 🎯 Overview
 
@@ -29,7 +33,7 @@ This project is a production-ready test automation framework designed to test a 
 
 - **Products Management** - Create, read, update, delete product operations
 - **Customers Management** - Customer lifecycle management  
-- **Orders Management** - Order processing and tracking with delivery management
+- **Orders Management** - Order processing, delivery lifecycle, managers assignment, comments, notifications
 - **Authentication & Authorization** - User login and role-based access
 - **Data Validation** - Comprehensive JSON schema validation
 - **Notifications** - Automated test result notifications via Telegram
@@ -42,11 +46,9 @@ The framework supports both API-level testing for backend validation and UI test
 - **Advanced Schema Validation**: Comprehensive JSON schema validation with AJV
 - **Modular Schema Architecture**: Reusable schema components for Orders, Delivery, Users
 - **Page Object Model**: Structured UI automation with reusable components
-- **API Service Layer**: Clean separation of API operations and business logic
-- **Test Data Generation**: Smart data generation with validation rules using Faker.js
 - **Parallel Execution**: Multi-worker test execution for faster feedback
-- **Multiple Test Projects**: Separate configurations for UI, API, and smoke tests
-- **Visual Testing**: Screenshot comparison and video recording
+- **Multiple Playwright Projects**: Separate projects for setup, UI, API and headless Chromium
+- **Test Artifacts**: Traces, screenshots, and video recording (configured in `playwright.config.ts`)
 - **Test Tagging**: Organized test execution with smoke, regression tags
 - **Allure Reporting**: Rich test reports with detailed analytics and environment info
 - **Telegram Notifications**: Automated test result notifications
@@ -65,7 +67,8 @@ The framework supports both API-level testing for backend validation and UI test
 ### Advanced Test Infrastructure
 - **Smart Data Generation**: Enhanced customer and product data generation with validation rules
 - **Notification System**: Telegram integration for automated test result notifications
-- **Global Teardown**: Post-test cleanup and notification handling
+- **Post-test Cleanup**: Automatic deletion of created entities (fixture-based teardown)
+- **CI Notifications**: Telegram message is sent from GitHub Actions workflow
 - **Enhanced Reporting**: Improved Allure reports with environment information
 
 ### Code Quality Improvements
@@ -80,146 +83,200 @@ The framework supports both API-level testing for backend validation and UI test
 |----------|------------|
 | **Test Framework** | Playwright 1.57.0 |
 | **Language** | TypeScript 5.9.3 |
-| **Test Data** | Faker.js, BSON |
-| **Schema Validation** | AJV with custom schemas |
-| **Reporting** | Allure 3.4.3, Playwright HTML |
-| **Notifications** | Telegram Bot API |
-| **Code Quality** | ESLint 9.39.1, Prettier 3.7.3 |
-| **Package Manager** | npm |
-| **CI/CD** | GitHub Actions, Husky 9.1.7 |
-| **Utilities** | Lodash, Moment.js |
+| **Schema Validation** | AJV 8.x with custom JSON schemas |
+| **Reporting** | Playwright HTML, Allure Playwright 3.4.3 + allure-commandline 2.34.1 |
+| **Code Quality** | ESLint 9.39.1, Prettier 3.7.3, Husky 9.1.7, lint-staged 16.2.7 |
+| **CI/CD** | GitHub Actions (tests in Playwright Docker image) |
+| **Utilities** | Lodash, Moment.js, Faker, BSON |
 
 ## 📁 Project Structure
 
 ```
 src/
-├── api/                          # API Testing Layer
-│   ├── api/                      # API endpoint implementations
-│   │   ├── customers.api.ts      # Customer API operations
-│   │   ├── login.api.ts          # Authentication API
-│   │   └── products.api.ts       # Product API operations
-│   ├── apiClients/              # HTTP clients
-│   │   ├── baseApiClient.ts     # Abstract API client
-│   │   ├── requestApi.ts        # Playwright request implementation
-│   │   └── types.ts             # API client interfaces
-│   └── service/                 # Business logic services
-│       ├── customer.service.ts   # Customer business operations
-│       ├── login.service.ts     # Login business operations
-│       └── products.service.ts   # Product business operations
+├── api/                          # API layer
+│   ├── api/                      # Endpoint wrappers
+│   │   ├── customers.api.ts
+│   │   ├── login.api.ts
+│   │   ├── notifications.api.ts
+│   │   ├── orders.api.ts
+│   │   └── products.api.ts
+│   ├── apiClients/               # HTTP client abstraction
+│   │   ├── baseApiClient.ts
+│   │   ├── requestApi.ts
+│   │   └── types.ts
+│   ├── facades/
+│   │   └── ordersFacade.service.ts
+│   └── service/                  # Business flows/services
+│       ├── customer.service.ts
+│       ├── login.service.ts
+│       ├── orders.service.ts
+│       ├── products.service.ts
+│       └── stores/
+│           └── entities.store.ts
 │
-├── config/                      # Configuration files
-│   ├── apiConfig.ts            # API endpoints configuration
-│   ├── env.ts                  # Environment variables
-│   └── global.teardown.ts      # Global test teardown with notifications
+├── config/                       # Configuration
+│   ├── apiConfig.ts
+│   └── env.ts
 │
-├── data/                       # Test data and schemas
-│   ├── salesPortal/           # Domain-specific constants and generators
-│   │   ├── constants.ts       # Timeout constants
-│   │   ├── country.ts         # Country enumerations
-│   │   ├── delivery-status.ts # Delivery status and interfaces
-│   │   ├── order-status.ts    # Order status enumerations
-│   │   ├── customers/         # Customer data generators
-│   │   ├── orders/           # Order data generators with delivery
-│   │   └── products/         # Product-related data and test cases
-│   ├── schemas/               # JSON schemas for validation
-│   │   ├── core.schema.ts    # Common schema patterns
-│   │   ├── customers/        # Customer validation schemas
-│   │   ├── delivery/         # Delivery information schemas
-│   │   ├── login/           # Authentication schemas
-│   │   ├── orders/          # Order validation schemas
-│   │   ├── products/        # Product validation schemas
-│   │   └── users/           # User management schemas
-│   └── types/               # TypeScript interfaces
-│       ├── core.types.ts    # Common type definitions
-│       ├── credentials.types.ts # Authentication types
-│       ├── customer.types.ts # Customer interfaces
-│       ├── order.types.ts   # Order interfaces with delivery
-│       ├── product.types.ts # Product interfaces with test cases
-│       └── user.types.ts    # User management types
+├── data/                         # Test data + schemas + types
+│   ├── salesPortal/
+│   │   ├── constants.ts
+│   │   ├── country.ts
+│   │   ├── delivery-status.ts
+│   │   ├── errors.ts
+│   │   ├── notifications.ts
+│   │   ├── order-status.ts
+│   │   ├── customers/
+│   │   ├── orders/
+│   │   └── products/
+│   ├── schemas/                  # JSON schemas (AJV)
+│   │   ├── core.schema.ts
+│   │   ├── customers/
+│   │   ├── delivery/
+│   │   ├── login/
+│   │   ├── orders/
+│   │   ├── products/
+│   │   └── users/
+│   ├── types/
+│   │   ├── core.types.ts
+│   │   ├── credentials.types.ts
+│   │   ├── customer.types.ts
+│   │   ├── delivery.types.ts
+│   │   ├── metrics.types.ts
+│   │   ├── notifications.types.ts
+│   │   ├── order.types.ts
+│   │   ├── product.types.ts
+│   │   └── user.types.ts
+│   └── tags.ts
 │
-├── fixtures/                  # Test fixtures and utilities
-│   ├── api.fixture.ts        # API test fixtures with services
-│   ├── business.fixture.ts   # Business logic fixtures
-│   ├── pages.fixture.ts      # Page object fixtures
-│   └── index.ts             # Fixture aggregator with mergeTests
+├── fixtures/                     # Fixtures
+│   ├── api.fixture.ts
+│   ├── business.fixture.ts
+│   ├── mock.fixture.ts
+│   ├── pages.fixture.ts
+│   └── index.ts
 │
-├── tests/                    # Test suites
-│   ├── api/                 # API test cases with DDT
-│   │   ├── customers/       # Customer API tests with positive/negative scenarios
-│   │   ├── orders/         # Order API tests (planned)
-│   │   └── products/       # Product API tests with CRUD operations
-│   └── ui/                 # UI test cases
-│       └── sales-portal/   # Sales portal UI tests
+├── mock/
+│   └── mock.ts
 │
-├── ui/                      # UI Testing Layer
-│   └── pages/              # Page Object Models
-│       ├── base.page.ts    # Base page with request/response interceptors
-│       ├── base.modal.ts   # Base modal functionality
-│       ├── home.page.ts    # Home page with metrics
-│       ├── login/          # Login page components
-│       └── salesPortal.page.ts # Sales portal base page
+├── tests/
+│   ├── api/
+│   │   ├── customers/
+│   │   ├── orders/
+│   │   └── products/
+│   └── ui/
+│       ├── auth.setup.ts
+│       ├── integration/
+│       └── orders/
 │
-└── utils/                   # Utility functions
-    ├── date.utils.ts       # Date manipulation with Moment.js
-    ├── enum.utils.ts       # Enum helper functions
-    ├── notifications/      # Notification services
-    │   ├── notifications.service.ts # Abstract notification interface
-    │   └── telegram.service.ts     # Telegram Bot implementation
-    ├── queryParams.utils.ts # URL query parameter utilities
-    ├── report/             # Reporting utilities
-    │   └── logStep.utils.ts # Test step logging with decorators
-    └── validation/         # Validation utilities
-        ├── validateResponse.utils.ts # Response validation with schemas
-        └── validateSchema.utils.ts   # JSON schema validation
+├── ui/
+│   ├── pages/
+│   │   ├── base.modal.ts
+│   │   ├── base.page.ts
+│   │   ├── confirmation.modal.ts
+│   │   ├── export.modal.ts
+│   │   ├── home.page.ts
+│   │   ├── navbar.component.ts
+│   │   ├── salesPortal.page.ts
+│   │   ├── login/
+│   │   ├── customers/
+│   │   ├── orders/
+│   │   └── products/
+│   └── service/
+│       ├── addNewCustomer.ui-service.ts
+│       ├── addNewProduct.ui-service.ts
+│       ├── assignManager.ui-service.ts
+│       ├── comments.ui-service.ts
+│       ├── customersList.ui-service.ts
+│       ├── editProduct.ui-service.ts
+│       ├── home.ui-service.ts
+│       ├── login.ui-service.ts
+│       ├── orderDetails.ui-service.ts
+│       └── productsList.ui-service.ts
+│
+└── utils/
+    ├── assertions/
+    ├── date.utils.ts
+    ├── enum.utils.ts
+    ├── files/
+    │   ├── csv.utils.ts
+    │   └── exportFile.utils.ts
+    ├── log.utils.ts
+    ├── maskSecrets.ts
+    ├── notifications/
+    │   ├── notifications.service.ts
+    │   └── telegram.service.ts
+    ├── orders/
+    ├── queryParams.utils.ts
+    ├── report/
+    │   └── logStep.utils.ts
+    └── validation/
+        ├── validateResponse.utils.ts
+        └── validateSchema.utils.ts
 ```
 
 ## 🚀 Setup
 
 ### Prerequisites
 
-- **Node.js** (v16 or higher)
-- **npm** (v8 or higher)  
+- **Node.js** (v18 or higher recommended)
+- **npm**
 - **Git**
-- **Java** (for Allure reports)
+- **Java** (required to generate Allure reports locally)
 
 ### Installation
 
 1. **Clone the repository:**
 
-   ```bash
-   git clone https://github.com/DorityTM/AQA_4_PROD_SALES_PORTAL.git
-   cd AQA_4_PROD_SALES_PORTAL
-   ```
+  ```bash
+  git clone https://github.com/DorityTM/AQA_4_PROD_SALES_PORTAL.git
+  cd AQA_4_PROD_SALES_PORTAL
+  ```
 
 2. **Install dependencies:**
 
-   ```bash
-   npm install
-   ```
+  ```bash
+  npm ci
+  # or:
+  npm install
+  ```
 
 3. **Install Playwright browsers:**
 
-   ```bash
-   npx playwright install
-   ```
+  ```bash
+  npx playwright install
+  ```
 
 4. **Set up environment variables:**
-   ```bash
-   cp .env.dist .env
-   ```
-   Edit `.env` file with your configuration:
-   ```env
-   USER_NAME=your_username
-   USER_PASSWORD=your_password
-   SALES_PORTAL_URL=https://your-sales-portal.com
-   SALES_PORTAL_API_URL=https://your-api.com
-   TELEGRAM_BOT_TOKEN=your_bot_token
-   TELEGRAM_CHAT_ID=your_chat_id
-   ```
+
+  ```bash
+  cp .env.dist .env
+  ```
+
+  Add required values to `.env`:
+
+  ```env
+  USER_NAME=your_username
+  USER_PASSWORD=your_password
+  SALES_PORTAL_URL=https://your-sales-portal.com
+  SALES_PORTAL_API_URL=https://your-api.com
+
+  # Required by some Orders/Managers scenarios (JSON array string)
+  MANAGER_IDS=["id1","id2"]
+
+  # Optional (used by CI workflow Telegram step and local TelegramService)
+  TELEGRAM_BOT_TOKEN=your_bot_token
+  TELEGRAM_CHAT_ID=your_chat_id
+  ```
 
 ## ⚙️ Configuration
 
 ### Environment Variables
+
+Environment variables are loaded by Playwright config from `.env` by default,
+or from `.env.dev` when `TEST_ENV=dev` (see `playwright.config.ts`).
+
+Required variables (see `src/config/env.ts`):
 
 | Variable | Description | Required | Example |
 |----------|-------------|----------|---------|
@@ -227,74 +284,94 @@ src/
 | `USER_PASSWORD` | Login password | ✅ | secretPassword |
 | `SALES_PORTAL_URL` | Frontend application URL | ✅ | https://sales-portal.com |
 | `SALES_PORTAL_API_URL` | Backend API URL | ✅ | https://api.sales-portal.com |
-| `TELEGRAM_BOT_TOKEN` | Telegram bot token for notifications | ⚠️ | 123456:ABC-DEF |
-| `TELEGRAM_CHAT_ID` | Telegram chat ID for notifications | ⚠️ | -1001234567890 |
+| `MANAGER_IDS` | JSON array string of manager ids | ✅* | ["id1","id2"] |
+
+Optional variables:
+
+| Variable | Description | Required | Example |
+|----------|-------------|----------|---------|
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token (CI notifications / optional local TelegramService) | ⚠️ | 123456:ABC-DEF |
+| `TELEGRAM_CHAT_ID` | Telegram chat id (CI notifications / optional local TelegramService) | ⚠️ | -1001234567890 |
+
+> ✅* Required by some Orders/Managers tests. `.env.dist` contains only base variables,
+> so you may need to add `MANAGER_IDS` manually.
 
 ### Test Projects Configuration
 
-```typescript
-// playwright.config.ts projects:
-{
-  name: "setup",                    // Authentication setup
-  name: "sales-portal-ui",          // UI tests with auth state  
-  name: "sales-portal-api",         // API-only tests
-  name: "chromium",                 // Headless browser tests
-}
-```
+Projects are defined in `playwright.config.ts`:
+
+- `setup` (runs `src/tests/ui/auth.setup.ts` and generates `src/.auth/user.json`)
+- `sales-portal-ui` (UI tests using storage state)
+- `sales-portal-api` (API tests)
+- `chromium` (UI tests in headless Chromium)
 
 ## 🧪 Running Tests
 
 ### Available Commands
 
+Scripts are defined in `package.json`:
+
 ```bash
-# All Tests
-npm test                          # Run all tests
-npm run build                     # TypeScript compilation
+# All tests / build
+npm test
+npm run build
 
-# UI Tests  
-npm run test:ui                   # Run UI tests
-npm run test:ui:smoke             # Run UI smoke tests
-npm run test:ui:regression        # Run UI regression tests
-npm run ui-mode                   # Interactive test mode
+# UI
+npm run test:ui
+npm run test:ui:smoke
+npm run test:ui:regression
+npm run ui-mode
+npm run ui-mode:dev
 
-# API Tests
-npm run test:api                  # Run API tests
-npm run test:api:regression       # Run API regression tests
+# API
+npm run test:api
+npm run test:api:regression
 
-# Reporting
-npm run html-report-open          # Open Playwright HTML report
-npm run allure-report            # Generate Allure report
-npm run allure-report-open       # Generate and open Allure report
+# Run with .env.dev
+npm run test:dev
+
+# Reports
+npm run html-report-open
+npm run allure-report
+npm run allure-report-open
 ```
 
 ### Test Execution Examples
 
 ```bash
-# Run specific test types
+# Run specific projects
 npx playwright test --project=sales-portal-api
-npx playwright test --project=sales-portal-ui --grep "@smoke"
+npx playwright test --project=sales-portal-ui
 
-# Run specific test files
-npx playwright test src/tests/api/customers/
-npx playwright test src/tests/api/products/create.spec.ts
-
-# Run with specific tags
+# Run by tags
+npx playwright test --grep "@smoke"
 npx playwright test --grep "@regression"
-npx playwright test --grep "@smoke|@api"
 ```
+
+### Post-test Cleanup (important)
+
+- The repo currently relies on **fixture-based teardown** for cleanup (see `src/fixtures/api.fixture.ts`).
+- Many tests also call `ordersApiService.fullDelete(token)` explicitly.
+- Playwright `globalTeardown` is present in `playwright.config.ts` but is **commented out**.
 
 ### Test Tags System
 
-| Tag | Description | Usage |
-|-----|-------------|-------|
-| `@smoke` | Critical functionality tests | Quick validation |
-| `@regression` | Full regression test suite | Complete validation |
-| `@api` | API-specific tests | Backend testing |
-| `@ui` | UI-specific tests | Frontend testing |
-| `@integration` | Integration tests | End-to-end flows |
-| `@customers` | Customer management tests | Customer domain |
-| `@products` | Product management tests | Product domain |
-| `@orders` | Order management tests | Order domain |
+Tags are defined in `src/data/tags.ts`.
+
+| Tag | Description |
+|-----|-------------|
+| `@smoke` | Critical functionality tests |
+| `@regression` | Regression suite |
+| `@api` | API tests |
+| `@ui` | UI tests |
+| `@integration` | UI+API integration flows |
+| `@e2e` | End-to-end tests |
+| `@auth` | Auth tests |
+| `@home` | Home page tests |
+| `@products` | Products domain |
+| `@customers` | Customers domain |
+| `@orders` | Orders domain |
+| `@managers` | Managers domain |
 
 ## 🔍 Schema Validation
 
@@ -335,16 +412,8 @@ Advanced reporting with:
 
 ### Telegram Notifications  
 
-Automated notifications include:
-- **Test Completion Status**: Pass/fail summary
-- **Report Links**: Direct links to deployed reports
-- **CI/CD Integration**: Automatic notifications from GitHub Actions
-
-```typescript
-// Notification service usage
-const notificationService = new NotificationService(new TelegramService());
-await notificationService.postNotification("Test run completed!");
-```
+- CI sends a Telegram message from `.github/workflows/tests.yml` using GitHub secrets `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`.
+- Locally, a `TelegramService` implementation exists in `src/utils/notifications/telegram.service.ts`.
 
 ## 🔧 Code Quality
 
@@ -368,13 +437,12 @@ npm run prettier:fix             # Fix Prettier formatting
 - ✅ **Prettier** formatting
 - ✅ **Targeted linting** for changed files only
 
-```json
-{
-  "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": ["eslint --fix"],
-    "src/**/*.{ts,tsx,js,jsx,json,md,yml,yaml,css,scss}": ["prettier --write"]
-  }
-}
+`lint-staged` configuration is defined in `lint-staged.config.js`:
+
+```js
+module.exports = {
+  "*.ts": [() => "npm run build", "npm run lint:fix", "npm run prettier:fix"],
+};
 ```
 
 ## 🚀 CI/CD
@@ -511,13 +579,10 @@ This project is licensed under the ISC License.
 ## 👥 Authors
 
 **Tatsiana Davidziuk** - [GitHub Profile](https://github.com/DorityTM)
-
-**Contributors:**
-- **Aliaksei Harashchuk** - [GitHub Profile](https://github.com/aharashchuk)
-- **Diana Shurukhina** - [GitHub Profile](https://github.com/DiShurukhina)
-- **Palina Razumeika** - [GitHub Profile](https://github.com/rapolinka)
-- **Oleg Sushko** - [GitHub Profile](https://github.com/os8580)
-- **Nail Apkaev** - [GitHub Profile](https://github.com/NailApkaev)
+**Aliaksei Harashchuk** - [GitHub Profile](https://github.com/aharashchuk)
+**Diana Shurukhina** - [GitHub Profile](https://github.com/DiShurukhina)
+**Palina Razumeika** - [GitHub Profile](https://github.com/rapolinka)
+**Oleg Sushko** - [GitHub Profile](https://github.com/os8580)
 
 ---
 

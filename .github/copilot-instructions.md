@@ -47,4 +47,5 @@
 - With `module: nodenext`, some internal imports intentionally use a `.js` suffix (example: `utils/report/logStep.utils.js`); keep this style when adding new decorator usage.
 
 ## Reporting/notifications
-- Allure is configured in `playwright.config.ts`. CI also posts a Telegram notification in `src/config/global.teardown.ts` (only when `process.env.CI` is set).
+- Allure is configured in `playwright.config.ts`.
+- CI posts a Telegram notification from the GitHub Actions workflow (see `.github/workflows/tests.yml`); locally you can use `TelegramService` from `src/utils/notifications/telegram.service.ts` when `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID` are set.
