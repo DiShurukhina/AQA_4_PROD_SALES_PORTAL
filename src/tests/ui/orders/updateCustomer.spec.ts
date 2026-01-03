@@ -30,14 +30,12 @@ test.describe("[UI] [Orders] [Update customer]", () => {
       const secondCustomer = await customersApiService.create(token);
       cleanup.addCustomer(secondCustomer._id);
       const customerDetails = orderDetailsPage.customerDetails;
-      const customerData = await customerDetails.getCustomerData();
       const editCustomerModal = await customerDetails.clickEdit();
       await editCustomerModal.waitForOpened();
       await editCustomerModal.selectCustomer(secondCustomer.name);
       await editCustomerModal.clickSave();
       await orderDetailsPage.waitForOpened();
       const updatedCustomerData = await customerDetails.getCustomerData();
-      expect(customerData).not.toEqual(updatedCustomerData);
       expect(updatedCustomerData).toEqual({
         ..._.omit(secondCustomer, ["_id"]),
         createdOn: convertToDateAndTime(secondCustomer.createdOn),
