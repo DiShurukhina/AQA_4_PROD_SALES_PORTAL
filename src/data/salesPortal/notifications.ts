@@ -13,6 +13,7 @@ export enum NOTIFICATIONS {
   ORDER_CANCELED = "Order was successfully canceled",
   ORDER_REOPENED = "Order was successfully reopened",
   ORDER_CREATED = "Order was successfully created",
+  ORDER_UPDATED = "Order was successfully updated",
   ORDER_NOT_CREATED = "Failed to create an order. Please try again later.",
   ORDER_UNABLE_TO_CREATE = "Unable to create an order. Please try again later.",
 }
