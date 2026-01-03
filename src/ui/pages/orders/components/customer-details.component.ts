@@ -13,9 +13,9 @@ export class OrderDetailsCustomerDetails extends BasePage {
   readonly details = this.uniqueElement.locator("div.c-details > span:nth-child(2)");
   readonly editOrderCustomerModal: EditOrderCustomerModal;
 
-  constructor(page: Page, editOrderCustomerModal: EditOrderCustomerModal) {
+  constructor(page: Page) {
     super(page);
-    this.editOrderCustomerModal = editOrderCustomerModal;
+    this.editOrderCustomerModal = new EditOrderCustomerModal(page);
   }
 
   @logStep("CUSTOMER: CLICK EDIT")

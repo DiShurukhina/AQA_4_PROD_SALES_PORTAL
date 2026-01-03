@@ -59,7 +59,7 @@ test.describe("[Integration] [Orders]", () => {
   test(
     "Should NOT open edit customer modal with customers/all 401 error",
     { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION, TAGS.INTEGRATION] },
-    async ({ mock, orderDetailsPage, loginPage, context }) => {
+    async ({ mock, orderDetailsPage, loginPage }) => {
       await mock.getCustomersAll(
         {
           IsSuccess: false,
@@ -71,7 +71,7 @@ test.describe("[Integration] [Orders]", () => {
       const editCustomerModal = await customerDetails.clickEdit();
       await expect(editCustomerModal.uniqueElement).not.toBeVisible();
       await expect(loginPage.uniqueElement).toBeVisible();
-      const authToken = (await context.cookies()).some((c) => c.name === "Authorization");
+      const authToken = await loginPage.getCookieByName("Authorization");
       expect(authToken).toBeFalsy();
     },
   );
@@ -99,7 +99,7 @@ test.describe("[Integration] [Orders]", () => {
   test(
     "Should logout when response status 401",
     { tag: [TAGS.UI, TAGS.ORDERS, TAGS.REGRESSION, TAGS.INTEGRATION] },
-    async ({ mock, orderDetailsPage, loginPage, context, customersApiService, cleanup }) => {
+    async ({ mock, orderDetailsPage, loginPage, customersApiService, cleanup }) => {
       const secondCustomer = await customersApiService.create(token);
       cleanup.addCustomer(secondCustomer._id);
       const customerDetails = orderDetailsPage.customerDetails;
@@ -117,7 +117,7 @@ test.describe("[Integration] [Orders]", () => {
       await editCustomerModal.clickSave();
       await expect(editCustomerModal.uniqueElement).not.toBeVisible();
       await expect(loginPage.uniqueElement).toBeVisible();
-      const authToken = (await context.cookies()).some((c) => c.name === "Authorization");
+      const authToken = await loginPage.getCookieByName("Authorization");
       expect(authToken).toBeFalsy();
     },
   );

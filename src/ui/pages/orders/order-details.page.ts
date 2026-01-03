@@ -67,6 +67,7 @@ export class OrderDetailsPage extends SalesPortalPage {
     this.scheduleDeliveryPage = new ScheduleDeliveryPage(page);
     this.editCustomerModal = new EditOrderCustomerModal(page);
     this.customerDetails = new OrderDetailsCustomerDetails(page, this.editCustomerModal);
+    this.customerDetails = new OrderDetailsCustomerDetails(page);
   }
 
   // Modals
