@@ -11,6 +11,9 @@ import {
 import { CommentsTab } from "./components/delivery/comments.tab.page";
 import { TIMEOUT_30_S } from "data/salesPortal/constants";
 import { NavBar } from "../navbar.component";
+import { DeliveryTab } from "./components/delivery/delivery.tab.page";
+import { OrderHistoryTab } from "./components/delivery/orderHistory.tab.page";
+import { ScheduleDeliveryPage } from "./components/delivery/scheduleDelivery.page";
 
 /**
  * Order Details PageObject orchestrator.
@@ -47,6 +50,9 @@ export class OrderDetailsPage extends SalesPortalPage {
   readonly requestedProducts: OrderDetailsRequestedProducts;
   readonly commentsTab: CommentsTab;
   readonly assignManagerModal: AssignManagerModal;
+  readonly deliveryTab: DeliveryTab;
+  readonly orderHistoryTab: OrderHistoryTab;
+  readonly scheduleDeliveryPage: ScheduleDeliveryPage;
 
   constructor(page: Page) {
     super(page);
@@ -55,6 +61,9 @@ export class OrderDetailsPage extends SalesPortalPage {
     this.requestedProducts = new OrderDetailsRequestedProducts(page);
     this.commentsTab = new CommentsTab(page);
     this.assignManagerModal = new AssignManagerModal(page);
+    this.deliveryTab = new DeliveryTab(page);
+    this.orderHistoryTab = new OrderHistoryTab(page);
+    this.scheduleDeliveryPage = new ScheduleDeliveryPage(page);
   }
 
   // Modals
