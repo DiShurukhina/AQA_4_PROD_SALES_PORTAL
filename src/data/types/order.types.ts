@@ -85,7 +85,7 @@ export interface IOrderInTable extends ICreatedOn {
 }
 
 export interface IOrdersResponse extends IResponseFields {
-  orders: IOrderFromResponse[];
+  Orders: IOrderFromResponse[];
   limit: number;
   page: number;
   search: string;
@@ -93,14 +93,7 @@ export interface IOrdersResponse extends IResponseFields {
   total: number;
   sorting: { sortField: OrdersTableHeader; sortOrder: SortOrder };
 }
-export type OrdersTableHeader =
-  | "orderNumber"
-  | "email"
-  | "price"
-  | "delivery"
-  | "status"
-  | "assignedManager"
-  | "createdOn";
+export type OrdersTableHeader = "_id" | "email" | "price" | "delivery" | "status" | "assignedManager" | "createdOn";
 
 export interface IOrderCreateBody {
   customer: string;
