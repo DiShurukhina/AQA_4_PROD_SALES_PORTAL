@@ -3,6 +3,7 @@ import { IProduct, IProductFromResponse, IOrderProductFromResponse } from "data/
 import { getRandomEnumValue } from "utils/enum.utils";
 import { MANUFACTURERS } from "./manufacturers";
 import { ObjectId } from "bson";
+import _ from "lodash";
 
 export function generateProductData(params?: Partial<IProduct>): IProduct {
   return {
@@ -30,7 +31,7 @@ export function generateProductResponseData(params?: Partial<IProduct>): IProduc
 export function generateIOrderProductFromResponse(
   params?: Partial<IOrderProductFromResponse>,
 ): IOrderProductFromResponse {
-  const initial = generateProductResponseData(params);
+  const initial = _.omit(generateProductResponseData(params), "createdOn");
   return {
     ...initial,
     received: params?.received || false,

@@ -50,12 +50,12 @@ export const ordersListIntegrationData: IOrdersListIntegrationCase[] = [
   {
     title: "Sorting by Order Number descending",
     ordersCount: 5,
-    sorting: { sortField: "orderNumber", sortOrder: "desc" },
+    sorting: { sortField: "_id", sortOrder: "desc" },
   },
   {
     title: "Sorting by Order Number ascending",
     ordersCount: 5,
-    sorting: { sortField: "orderNumber", sortOrder: "asc" },
+    sorting: { sortField: "_id", sortOrder: "asc" },
   },
   {
     title: "Sorting by Email descending",

@@ -33,7 +33,7 @@ export class Mock {
   }
 
   async ordersPage(body: IOrdersResponse, statusCode: STATUS_CODES = STATUS_CODES.OK) {
-    await this.routeRequest(apiConfig.baseURL + apiConfig.endpoints.orders, body, statusCode);
+    await this.routeRequest(/\/api\/orders\?.*$/, body, statusCode);
   }
 
   async orderDetailsModal(body: IOrderResponse, statusCode: STATUS_CODES = STATUS_CODES.OK) {

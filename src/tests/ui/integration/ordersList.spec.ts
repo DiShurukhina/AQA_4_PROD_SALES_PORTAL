@@ -4,6 +4,7 @@ import { generateOrdersResponseData } from "data/salesPortal/orders/generateOrde
 import { ordersListIntegrationData } from "data/salesPortal/orders/ordersListIntegrationData";
 import { apiConfig } from "config/apiConfig";
 import { SortOrder } from "data/types/core.types";
+import { IOrderInTable } from "data/types/order.types";
 
 test.describe("[Integration][Orders][Table Sorting]", () => {
   const directions = ["asc", "desc"] as SortOrder[];
@@ -49,13 +50,13 @@ test.describe("[Integration][Orders][Table Sorting]", () => {
 
         await ordersListPage.waitForOpened();
         await expect(ordersListPage.tableHeaderArrow(header, { direction })).toBeVisible();
-        // const ordersList = orders.orders;
-        // const tableData = (await ordersListPage.getTableData()) as IOrderInTable[];
-        // expect.soft(tableData.length).toBe(ordersList.length);
-        // tableData.forEach((order, i) => {
-        //   const expected = _.pick(ordersList[i], ["assignedManager", "email", "orderId", "status", "price"]);
-        //   expect(order).toEqual(expected);
-        // });
+        const ordersList = orders.Orders;
+        const tableData = (await ordersListPage.getTableData()) as IOrderInTable[];
+        expect.soft(tableData.length).toBe(ordersList.length);
+        tableData.forEach((order, i) => {
+          const expectedId = ordersList[i]?._id;
+          expect(order.orderId).toEqual(expectedId);
+        });
       },
     );
   }

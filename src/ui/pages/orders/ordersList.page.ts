@@ -9,7 +9,7 @@ import { NavBar } from "../navbar.component";
 export class OrdersListPage extends SalesPortalPage {
   private readonly headerText = (name: OrdersTableHeader): string => {
     const map: Record<OrdersTableHeader, string> = {
-      orderNumber: "Order Number",
+      _id: "Order Number",
       email: "Email",
       price: "Price",
       delivery: "Delivery",

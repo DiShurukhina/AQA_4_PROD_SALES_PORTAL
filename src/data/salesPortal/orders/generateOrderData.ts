@@ -43,7 +43,7 @@ export function generateOrdersResponseData(
     orders.push(generateOrderData(params));
   }
   return {
-    orders,
+    Orders: orders,
     search: "",
     IsSuccess: true,
     ErrorMessage: null,
