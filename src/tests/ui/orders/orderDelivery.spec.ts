@@ -100,7 +100,7 @@ test.describe("[Create/edit delivery]", () => {
           await orderDetailsUIService.openScheduleDeliveryForm();
           await expect(orderDetailsPage.scheduleDeliveryPage.title).toHaveText("Schedule Delivery");
           await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeDisabled();
-          await applyPickupCase(orderDetailsPage.scheduleDeliveryPage, tc, { selectType: true }, orderDetailsUIService);
+          await applyPickupCase(orderDetailsPage.scheduleDeliveryPage, tc, orderDetailsUIService);
           await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeEnabled();
           const expected = await orderDetailsPage.scheduleDeliveryPage.getScheduleDeliveryData();
           expect(expected.deliveryType).toBe(DELIVERY_CONDITION.PICKUP);
@@ -122,17 +122,12 @@ test.describe("[Create/edit delivery]", () => {
           const order = await ordersApiService.createOrderAndEntities(token, 1);
           await orderDetailsUIService.openOrderDelivery(order._id);
           await orderDetailsUIService.openScheduleDeliveryForm();
-          await applyPickupCase(orderDetailsPage.scheduleDeliveryPage, tc, { selectType: true }, orderDetailsUIService);
+          await applyPickupCase(orderDetailsPage.scheduleDeliveryPage, tc, orderDetailsUIService);
           await orderDetailsUIService.clickSaveDelivery();
           await orderDetailsUIService.openScheduleDeliveryForm();
           await expect(orderDetailsPage.scheduleDeliveryPage.title).toHaveText("Edit Delivery");
           await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeDisabled();
-          await applyPickupCase(
-            orderDetailsPage.scheduleDeliveryPage,
-            tc,
-            { selectType: false },
-            orderDetailsUIService,
-          );
+          await applyPickupCase(orderDetailsPage.scheduleDeliveryPage, tc, orderDetailsUIService);
           await expect(orderDetailsPage.scheduleDeliveryPage.saveButton).toBeEnabled();
           const expected = await orderDetailsPage.scheduleDeliveryPage.getScheduleDeliveryData();
           expect(expected.deliveryType).toBe(DELIVERY_CONDITION.PICKUP);

@@ -20,7 +20,6 @@ export async function applyDeliveryCase(
   const addr = tc.deliveryData.address;
   if (tc.deliveryLocation === DELIVERY_LOCATION.HOME) {
     await ui.assertDeliveryHomeLocks();
-    if (addr?.street !== undefined) await page.streetInput.fill(String(addr.street));
     await page.pickDateIfNeeded(tc.deliveryDateAction);
     return;
   }
@@ -35,12 +34,9 @@ export async function applyDeliveryCase(
 export async function applyPickupCase(
   page: ScheduleDeliveryPage,
   tc: ICreatePickupDeliveryCaseUI,
-  opts: { selectType?: boolean } = { selectType: true },
   ui: OrderDetailsUIService,
 ) {
-  if (opts.selectType) {
-    await page.deliveryTypeSelect.selectOption({ label: DELIVERY_CONDITION.PICKUP });
-  }
+  await page.deliveryTypeSelect.selectOption({ label: DELIVERY_CONDITION.PICKUP });
   await ui.assertPickupLocks();
   await page.countryField.selectOption({ label: tc.country as COUNTRY });
   await page.pickDateIfNeeded(tc.deliveryDateAction);
